@@ -1,0 +1,1 @@
+- [Never declare env vars in docker-compose](feedback_env_vars.md) — Coolify manages all env vars via its dashboard, never in compose files

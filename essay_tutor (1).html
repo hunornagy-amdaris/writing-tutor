@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essay Writing Tutor</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07080C; --fg: #d0d0d0; --fg-bright: #f0f0f0; --fg-dim: #555; --fg-dark: #333;
+    --accent: #38BDF8; --green: #4ADE80; --red: #F87171; --orange: #FB923C; --purple: #A855F7; --yellow: #FBBF24;
+    --mono: 'IBM Plex Mono', monospace; --sans: 'Source Sans 3', sans-serif;
+    --surface: rgba(255,255,255,0.02); --border: rgba(255,255,255,0.04);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: var(--sans); min-height: 100vh; }
+  .container { max-width: 860px; margin: 0 auto; padding: 28px 16px; }
+  h1 { font-size: 24px; font-weight: 700; color: var(--fg-bright); letter-spacing: -0.01em; }
+  .subtitle { font-size: 12px; color: #444; font-family: var(--mono); margin-top: 4px; }
+  .pill { padding: 4px 12px; font-size: 11px; font-family: var(--mono); background: transparent; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; color: var(--fg-dim); cursor: pointer; transition: all 0.2s; }
+  .pill:hover { border-color: rgba(255,255,255,0.15); color: #aaa; }
+  textarea { width: 100%; padding: 14px; font-size: 14px; line-height: 1.8; font-family: var(--sans); background: var(--surface); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; color: #ccc; resize: vertical; outline: none; }
+  textarea:focus { border-color: rgba(255,255,255,0.14); }
+  .btn-primary { width: 100%; padding: 13px 0; font-size: 14px; font-weight: 600; font-family: var(--mono); background: #e8e8e8; border: none; border-radius: 10px; color: var(--bg); cursor: pointer; transition: all 0.3s; }
+  .btn-primary:disabled { background: rgba(255,255,255,0.03); color: var(--fg-dark); cursor: not-allowed; }
+  .btn-primary:not(:disabled):hover { background: #fff; }
+  .scores-bar { display: flex; gap: 8px; padding: 12px 16px; background: var(--surface); border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap; margin-bottom: 20px; }
+  .score-item { display: flex; align-items: center; gap: 4px; }
+  .score-label { font-size: 10px; font-family: var(--mono); color: var(--fg-dim); text-transform: uppercase; }
+  .score-value { font-size: 12px; font-family: var(--mono); font-weight: 700; }
+  .sentence-btn { display: block; width: 100%; text-align: left; padding: 12px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; cursor: pointer; transition: all 0.2s; }
+  .sentence-btn:hover { border-color: rgba(255,255,255,0.1); }
+  .sentence-btn.active { background: rgba(56,189,248,0.08); border-color: rgba(56,189,248,0.3); }
+  .sentence-btn.completed { background: rgba(74,222,128,0.04); border-color: rgba(74,222,128,0.15); }
+  .badge { font-size: 9px; font-family: var(--mono); padding: 1px 5px; border-radius: 4px; }
+  .badge-grammar { background: rgba(251,146,60,0.1); color: var(--orange); }
+  .badge-phrasing { background: rgba(168,85,247,0.1); color: var(--purple); }
+  .badge-clean { background: rgba(74,222,128,0.1); color: var(--green); }
+  .tutor-panel { padding: 20px; background: rgba(56,189,248,0.03); border-radius: 14px; border: 1px solid rgba(56,189,248,0.1); }
+  .data-tag { font-size: 10px; font-family: var(--mono); padding: 2px 6px; border-radius: 4px; display: inline-block; margin: 2px; }
+  .two-col { display: grid; gap: 16px; }
+  .error-box { margin-top: 10px; padding: 10px; background: rgba(255,80,80,0.06); border: 1px solid rgba(255,80,80,0.15); border-radius: 8px; font-size: 12px; color: var(--red); font-family: var(--mono); }
+  .section-label { font-size: 10px; font-family: var(--mono); color: #444; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(6px) } to { opacity:1; transform:translateY(0) } }
+  .fade-in { animation: fadeIn 0.4s ease; }
+  #widget-host { display: none; }
+  #widget-host.visible { display: block; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <div style="margin-bottom:28px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+      <span style="font-size:24px">🎓</span>
+      <h1>Essay Writing Tutor</h1>
+    </div>
+    <div class="subtitle">AI scoring + grammar correction + phraseology analysis → voice tutoring</div>
+  </div>
+
+  <!-- Input Phase -->
+  <div id="input-phase">
+    <div style="display:flex;gap:8px;margin-bottom:10px">
+      <button class="pill" onclick="loadSample('a1')">A1 Beginner</button>
+      <button class="pill" onclick="loadSample('c1')">C1 Advanced</button>
+    </div>
+    <div style="position:relative;margin-bottom:12px">
+      <textarea id="essay-input" rows="8" placeholder="Paste a student's English essay here…"></textarea>
+      <div id="word-count" style="position:absolute;bottom:8px;right:14px;font-size:10px;font-family:var(--mono);color:#2a2a2a">0 words</div>
+    </div>
+    <button class="btn-primary" id="analyze-btn" onclick="analyzeEssay()" disabled>Analyze & Start Tutoring</button>
+    <div id="error-msg" class="error-box" style="display:none"></div>
+  </div>
+
+  <!-- Tutoring Phase -->
+  <div id="tutor-phase" style="display:none" class="fade-in">
+    <div id="scores-bar" class="scores-bar"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <span id="progress-text" style="font-size:12px;font-family:var(--mono);color:var(--fg-dim)"></span>
+      <button class="pill" onclick="resetApp()">← New essay</button>
+    </div>
+    <div class="two-col" id="main-grid">
+      <div id="sentence-list"></div>
+      <div id="tutor-col" style="display:none">
+        <div class="section-label">Voice tutor</div>
+        <div class="tutor-panel" id="tutor-panel-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ElevenLabs widget lives here, outside the app container -->
+<div id="widget-host"></div>
+
+<script>
+// ─── CONFIG ───
+const AGENT_ID = "agent_4301kr039w7nf18s89nmjksbn04c";
+
+const SAMPLES = {
+  a1: `Dear Mauro, Thank you for agreeing to take a care of my house and my pets in my absence. This is my daily routine. Every day I water the plants, I walk the my dog in the morning and in the evening. I feed food it twice a day, I check water dog twice a week. I take out trash every Friday. I sweep the floor and clean house on Monday and on Wednesday. In your free time you can watch TV and play video games. In the fridge I left coca cola and ice-cream for you. Have a nice week.`,
+  c1: `Dear Mr. Tromps, It was so good to hear from you and your group of international buyers are visiting our company next month. And in response to your question, I would like to recommend some suggestions about business etiquette in my country. Firstly, you will need to make hotel reservations with anticipation, especially when the group is numerous. There are several five-star hotels in the commercial center of Guayaquil city, very close to our offices. Make business appointments well in advance and please do not be late.`,
+};
+
+const BASE_SYSTEM_PROMPT = `You are a warm, patient English writing tutor helping L2 (second language) learners improve their writing. You are kind, encouraging, and never condescending. You treat the student as a capable writer who is learning.
+
+## Your Teaching Approach (based on dialogic feedback research)
+- You do NOT just list errors. You discuss them conversationally, one at a time.
+- You name the PATTERN and RULE behind each error, not just the fix. For example: "In English, when we talk about doing something regularly, we use the present simple tense — so 'I walk' instead of 'I am walking every day.'"
+- You merge grammar corrections and phraseology (naturalness) issues into ONE holistic discussion. Don't separate them. For instance, if a word is both grammatically wrong AND sounds unnatural, address it as: "This phrase doesn't sound quite natural in English. A native speaker would say..."
+- You acknowledge what the student got RIGHT before discussing what needs work.
+- When the student responds or attempts a correction, encourage them warmly.
+- If the same error pattern appeared in a previous sentence, reference it: "Remember when we talked about articles earlier? Same pattern here."
+- Keep explanations concise — this is a conversation, not a lecture.
+
+## Conversation Flow
+1. Read the student's sentence aloud naturally
+2. Briefly acknowledge the meaning — show you understood what they were trying to say
+3. Ask gently: "Did anything sound a bit off to you when you heard it?"
+4. Whether or not they identify the issue, walk through the corrections ONE AT A TIME
+5. For each issue: name the pattern/rule, give the correction, and provide a quick example
+6. After covering all issues, read the corrected sentence aloud so they can hear the difference
+7. Ask if they have any questions before moving on
+
+## Important Rules
+- Speak naturally and conversationally — you're talking, not writing an essay
+- Keep turns SHORT — 2-3 sentences max per turn when possible
+- Never dump all errors at once
+- Never say "error" or "mistake" — use softer language like "let's adjust this" or "we can make this sound more natural"
+- If the student seems confused, try explaining the same concept a different way
+- Use analogies to their native language if they mention it
+
+## Data You Receive
+You will receive structured data about the sentence including:
+- Grammar corrections from GECToR (a grammatical error correction model)
+- Phraseology flags from RoBERTa (showing which words sound unnatural to native speakers, with alternatives)
+- A running summary of previous sentence discussions and patterns observed
+
+Use this data to inform your teaching, but deliver it conversationally — never reference the models or technical details.`;
+
+// ─── STATE ───
+let analysis = null;
+let activeSentence = null;
+let completedSentences = new Set();
+let sessionHistory = [];
+
+// ─── INPUT ───
+const essayInput = document.getElementById('essay-input');
+const analyzeBtn = document.getElementById('analyze-btn');
+essayInput.addEventListener('input', () => {
+  const wc = essayInput.value.trim().split(/\s+/).filter(Boolean).length;
+  document.getElementById('word-count').textContent = wc + ' words';
+  analyzeBtn.disabled = !essayInput.value.trim();
+});
+
+function loadSample(key) {
+  essayInput.value = SAMPLES[key];
+  essayInput.dispatchEvent(new Event('input'));
+}
+
+// ─── ANALYSIS ───
+async function analyzeEssay() {
+  const text = essayInput.value.trim();
+  if (!text) return;
+  
+  analyzeBtn.disabled = true;
+  analyzeBtn.textContent = '◌ Analyzing essay…';
+  document.getElementById('error-msg').style.display = 'none';
+
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 4000,
+        messages: [{ role: "user", content: `You are a 3-model essay analysis pipeline. Return ONLY valid JSON (no markdown, no backticks).
+
+MODEL 1 — SCORER: Score 6 dimensions (cohesion, syntax, vocabulary, phraseology, grammar, conventions) on 1.0-5.0 scale (nearest 0.5). Be strict: native-level = 4-5, beginner = 1-3.
+MODEL 2 — GECToR: Find token-level errors. Output edits with type (replace/delete/insert), token, correction.
+MODEL 3 — PHRASEOLOGY: Flag unnatural word combinations. For each: token, rank (higher=more unnatural), and 3 alternative suggestions.
+
+Catch: article errors, tense issues, collocations, missing commas, word order, unnatural phrasing.
+
+{
+  "scores": {"cohesion":N,"syntax":N,"vocabulary":N,"phraseology":N,"grammar":N,"conventions":N,"overall":N},
+  "sentences": [
+    {
+      "original": "...",
+      "corrected": "...",
+      "has_errors": true/false,
+      "grammar_edits": [{"type":"replace|delete|insert","token":"...","correction":"..."}],
+      "phraseology_flags": [{"token":"...","rank":N,"suggestions":["...","...","..."]}],
+      "phraseology_score": N
+    }
+  ]
+}
+
+Every sentence must appear. ESSAY:
+"""${text}"""`}],
+      }),
+    });
+    const data = await res.json();
+    const t = data.content?.map(b => b.text || "").join("") || "";
+    analysis = JSON.parse(t.replace(/```json|```/g, "").trim());
+    showTutoringPhase();
+  } catch (err) {
+    const errEl = document.getElementById('error-msg');
+    errEl.textContent = "Analysis failed: " + err.message;
+    errEl.style.display = 'block';
+    analyzeBtn.disabled = false;
+    analyzeBtn.textContent = 'Analyze & Start Tutoring';
+  }
+}
+
+// ─── RENDER TUTORING ───
+function showTutoringPhase() {
+  document.getElementById('input-phase').style.display = 'none';
+  document.getElementById('tutor-phase').style.display = 'block';
+
+  // Scores bar
+  const scoresBar = document.getElementById('scores-bar');
+  scoresBar.innerHTML = Object.entries(analysis.scores || {}).map(([dim, score]) => {
+    const color = score >= 4 ? 'var(--green)' : score >= 3 ? 'var(--yellow)' : 'var(--red)';
+    return `<div class="score-item"><span class="score-label">${dim}</span><span class="score-value" style="color:${color}">${typeof score === 'number' ? score.toFixed(1) : score}</span></div>`;
+  }).join('');
+
+  renderSentenceList();
+  updateProgress();
+}
+
+function renderSentenceList() {
+  const list = document.getElementById('sentence-list');
+  const sentences = analysis.sentences || [];
+  list.innerHTML = '<div class="section-label">Select a sentence to discuss</div>' +
+    sentences.map((s, i) => {
+      const hasIssues = s.has_errors || (s.phraseology_flags?.length > 0);
+      const isActive = activeSentence === i;
+      const isDone = completedSentences.has(i);
+      let cls = 'sentence-btn';
+      if (isActive) cls += ' active';
+      if (isDone) cls += ' completed';
+
+      let badges = '';
+      if (s.grammar_edits?.length > 0) badges += '<span class="badge badge-grammar">grammar</span>';
+      if (s.phraseology_flags?.length > 0) badges += '<span class="badge badge-phrasing">phrasing</span>';
+      if (!hasIssues) badges += '<span class="badge badge-clean">clean</span>';
+
+      const prefix = isDone ? '✓ ' : '';
+      const labelColor = isActive ? 'var(--accent)' : isDone ? 'var(--green)' : 'var(--fg-dim)';
+      const textColor = isActive ? '#e0e0e0' : '#999';
+
+      return `<button class="${cls}" onclick="selectSentence(${i})">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <span style="font-size:10px;font-family:var(--mono);color:${labelColor};font-weight:600">${prefix}SENTENCE ${i+1}</span>
+          <div style="display:flex;gap:4px">${badges}</div>
+        </div>
+        <div style="font-size:13px;line-height:1.6;color:${textColor};font-family:var(--sans)">${s.original}</div>
+      </button>`;
+    }).join('');
+}
+
+function updateProgress() {
+  const sentences = analysis.sentences || [];
+  const errorCount = sentences.filter(s => s.has_errors || (s.phraseology_flags?.length > 0)).length;
+  document.getElementById('progress-text').textContent =
+    `${completedSentences.size}/${sentences.length} reviewed · ${errorCount} with issues`;
+}
+
+// ─── SENTENCE SELECTION ───
+function selectSentence(index) {
+  // Remove existing widget
+  removeWidget();
+  
+  activeSentence = index;
+  renderSentenceList();
+  
+  const grid = document.getElementById('main-grid');
+  grid.style.gridTemplateColumns = '1fr 1fr';
+  
+  const tutorCol = document.getElementById('tutor-col');
+  tutorCol.style.display = 'block';
+  
+  const sentence = analysis.sentences[index];
+  renderTutorPanel(sentence, index);
+}
+
+function renderTutorPanel(sentence, index) {
+  const panel = document.getElementById('tutor-panel-content');
+  const firstMsg = buildFirstMessage(sentence);
+
+  let grammarHtml = '';
+  if (sentence.grammar_edits?.length > 0) {
+    grammarHtml = `<div style="margin-bottom:12px">
+      <div style="font-size:10px;font-family:var(--mono);color:var(--orange);margin-bottom:6px;font-weight:600">GRAMMAR DATA LOADED</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        ${sentence.grammar_edits.map(e => {
+          const label = e.type === 'replace' ? `${e.token}→${e.correction}` : e.type === 'delete' ? `⊘${e.token}` : `+${e.token}`;
+          return `<span class="data-tag" style="background:rgba(251,146,60,0.1);color:var(--orange);border:1px solid rgba(251,146,60,0.15)">${label}</span>`;
+        }).join('')}
+      </div>
+    </div>`;
+  }
+
+  let phraseHtml = '';
+  if (sentence.phraseology_flags?.length > 0) {
+    phraseHtml = `<div style="margin-bottom:12px">
+      <div style="font-size:10px;font-family:var(--mono);color:var(--purple);margin-bottom:6px;font-weight:600">PHRASEOLOGY DATA LOADED</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        ${sentence.phraseology_flags.map(f => {
+          return `<span class="data-tag" style="background:rgba(168,85,247,0.1);color:var(--purple);border:1px solid rgba(168,85,247,0.15)">"${f.token}" → ${f.suggestions.slice(0,2).join(', ')}</span>`;
+        }).join('')}
+      </div>
+    </div>`;
+  }
+
+  let historyHtml = '';
+  if (sessionHistory.length > 0) {
+    historyHtml = `<div style="margin-bottom:12px">
+      <div style="font-size:10px;font-family:var(--mono);color:var(--green);margin-bottom:4px;font-weight:600">RUNNING CONTEXT (${sessionHistory.length} prev)</div>
+      <div style="font-size:10px;font-family:var(--mono);color:var(--fg-dim);line-height:1.5;max-height:60px;overflow:hidden">${sessionHistory[sessionHistory.length-1]}</div>
+    </div>`;
+  }
+
+  panel.innerHTML = `
+    <div style="font-size:11px;font-family:var(--mono);color:var(--accent);font-weight:600;margin-bottom:12px">
+      🎙 TUTOR SESSION — SENTENCE ${index+1}
+    </div>
+    <div style="margin-bottom:16px">
+      <div style="font-size:12px;font-family:var(--mono);color:#666;margin-bottom:4px">First message:</div>
+      <div style="font-size:12px;font-family:var(--sans);color:#aaa;padding:8px 12px;background:rgba(0,0,0,0.2);border-radius:8px;line-height:1.6;font-style:italic">"${firstMsg}"</div>
+    </div>
+    ${grammarHtml}
+    ${phraseHtml}
+    ${historyHtml}
+    <div id="session-controls" style="margin-top:16px">
+      <button onclick="startVoiceSession(${index})" style="width:100%;padding:11px 0;font-size:13px;font-weight:600;font-family:var(--mono);background:var(--accent);border:none;border-radius:8px;color:var(--bg);cursor:pointer">
+        🎙 Start Voice Session
+      </button>
+    </div>
+  `;
+}
+
+// ─── ELEVENLABS WIDGET ───
+function buildTutorPrompt(sentence) {
+  const edits = sentence.grammar_edits || [];
+  const flags = sentence.phraseology_flags || [];
+  let dataBlock = `\n## Current Sentence\nOriginal: "${sentence.original}"\nCorrected: "${sentence.corrected}"\n`;
+  if (edits.length > 0) {
+    dataBlock += `\n## Grammar Corrections (from GECToR)\n`;
+    edits.forEach(e => {
+      if (e.type === "replace") dataBlock += `- Replace "${e.token}" with "${e.correction}"\n`;
+      else if (e.type === "delete") dataBlock += `- Delete unnecessary word "${e.token}"\n`;
+      else if (e.type === "insert") dataBlock += `- Insert "${e.token}" (missing word)\n`;
+    });
+  }
+  if (flags.length > 0) {
+    dataBlock += `\n## Phraseology Issues (from RoBERTa naturalness analysis)\n`;
+    flags.forEach(f => {
+      dataBlock += `- "${f.token}" sounds unnatural (rank ${f.rank}) — native speakers would more likely use: ${f.suggestions.join(", ")}\n`;
+    });
+  }
+  if (sessionHistory.length > 0) {
+    dataBlock += `\n## Previous Session Summary\n${sessionHistory.join("\n")}\n`;
+  }
+  if (!sentence.has_errors && flags.length === 0) {
+    dataBlock += `\nThis sentence has no errors! Praise the student and confirm the sentence sounds natural.\n`;
+  }
+  return BASE_SYSTEM_PROMPT + dataBlock;
+}
+
+function buildFirstMessage(sentence) {
+  if (!sentence.has_errors && (!sentence.phraseology_flags || sentence.phraseology_flags.length === 0)) {
+    return `Okay, let's look at your next sentence: "${sentence.original}" — this one sounds great! Nice work.`;
+  }
+  return `Okay, let's look at your next sentence: "${sentence.original}" — can you hear anything that sounds a bit off?`;
+}
+
+function removeWidget() {
+  const existing = document.querySelector('elevenlabs-convai');
+  if (existing) existing.remove();
+}
+
+function startVoiceSession(index) {
+  const sentence = analysis.sentences[index];
+  const prompt = buildTutorPrompt(sentence);
+  const firstMsg = buildFirstMessage(sentence);
+
+  // Update button to show connecting
+  document.getElementById('session-controls').innerHTML = `
+    <div style="text-align:center;padding:11px 0;font-size:13px;font-family:var(--mono);color:var(--accent)">◌ Connecting…</div>
+  `;
+
+  // Remove any existing widget
+  removeWidget();
+
+  // Create the widget
+  const widget = document.createElement('elevenlabs-convai');
+  widget.setAttribute('agent-id', AGENT_ID);
+  widget.setAttribute('override-prompt', prompt);
+  widget.setAttribute('override-first-message', firstMsg);
+
+  document.body.appendChild(widget);
+
+  // Update controls
+  setTimeout(() => {
+    document.getElementById('session-controls').innerHTML = `
+      <button onclick="endVoiceSession(${index})" style="width:100%;padding:11px 0;font-size:13px;font-weight:600;font-family:var(--mono);background:rgba(248,113,113,0.15);border:1px solid rgba(248,113,113,0.3);border-radius:8px;color:var(--red);cursor:pointer">
+        ■ End Session & Save Summary
+      </button>
+    `;
+  }, 1500);
+}
+
+function endVoiceSession(index) {
+  removeWidget();
+
+  const sentence = analysis.sentences[index];
+  const issues = [];
+  sentence.grammar_edits?.forEach(e => {
+    if (e.type === 'replace') issues.push(`${e.token} → ${e.correction}`);
+    else if (e.type === 'delete') issues.push(`removed "${e.token}"`);
+    else if (e.type === 'insert') issues.push(`added "${e.token}"`);
+  });
+  sentence.phraseology_flags?.forEach(f => {
+    issues.push(`"${f.token}" flagged as unnatural (rank ${f.rank})`);
+  });
+
+  const summary = `- Sentence ${index+1}: "${sentence.original.substring(0,50)}..." — Issues discussed: ${issues.join('; ') || 'none (clean sentence)'}`;
+  sessionHistory.push(summary);
+  completedSentences.add(index);
+
+  document.getElementById('session-controls').innerHTML = `
+    <div style="text-align:center;padding:11px 0;font-size:13px;font-family:var(--mono);color:var(--green)">✓ Session complete — select next sentence</div>
+  `;
+
+  renderSentenceList();
+  updateProgress();
+}
+
+function resetApp() {
+  removeWidget();
+  analysis = null;
+  activeSentence = null;
+  completedSentences = new Set();
+  sessionHistory = [];
+  document.getElementById('input-phase').style.display = 'block';
+  document.getElementById('tutor-phase').style.display = 'none';
+  document.getElementById('tutor-col').style.display = 'none';
+  document.getElementById('main-grid').style.gridTemplateColumns = '1fr';
+  const btn = document.getElementById('analyze-btn');
+  btn.disabled = false;
+  btn.textContent = 'Analyze & Start Tutoring';
+}
+</script>
+
+<!-- ElevenLabs widget script — loaded once, widgets are created/destroyed dynamically -->
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" type="text/javascript"></script>
+
+</body>
+</html>
