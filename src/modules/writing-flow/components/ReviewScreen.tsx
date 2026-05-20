@@ -80,67 +80,73 @@ export function ReviewScreen() {
   };
 
   return (
-    <div className="motion-fade-in-up app-container flex w-full gap-8 pt-8 pb-12">
-      <main className="flex flex-1 flex-col gap-4">
-        <ScoreBar data={scoreData} />
-        <ParagraphTabs
-          tabs={paragraphTabs.map((t) => ({
-            label: t.label,
-            hasErrors: t.hasErrors,
-          }))}
-          activeLabel={activeTab?.label ?? defaultLabel}
-          onChange={setActiveLabel}
-        />
-        <ul className="flex flex-col gap-2">
-          {visibleIndices.map((i) => {
-            const sentence = analysis.sentences[i];
-            if (!sentence) return null;
-            const isFixed = fixedSentenceIndices.includes(i);
-            const isEditing = editMode && editingSentenceIndex === i;
-            const fixedText = edits[i];
-            return (
-              <li key={i}>
-                <SentenceCard
-                  index={i}
-                  sentence={sentence}
-                  isSelected={selectedIndex === i}
-                  isEditing={isEditing}
-                  isFixed={isFixed}
-                  fixedText={fixedText}
-                  initialEditValue={edits[i] ?? sentence.corrected}
-                  onSelect={handleSelect}
-                  onCommitEdit={commitSentenceEdit}
-                />
-              </li>
-            );
-          })}
-        </ul>
-        <div className="mt-auto flex items-center justify-between pt-4">
-          <div className="flex items-center gap-3">
-            {!editMode && fixedSentenceIndices.length > 0 ? (
-              <button
-                type="button"
-                onClick={handleReenterEditMode}
-                className="motion-fade-in-up motion-press flex h-9 items-center justify-center rounded-pill border border-line bg-surface px-3 text-base-13 font-bold text-ink-600"
-              >
-                ✏️ Edit sentences first
-              </button>
-            ) : null}
-            <p className="text-xs font-normal text-ink-400">{helperText}</p>
+    <>
+      <main className="motion-fade-in-up flex h-[calc(100vh-var(--spacing-header))] w-full flex-col gap-4 overflow-hidden pt-8 pr-tutor-panel pb-12 pl-nav-x">
+        <div className="flex min-h-0 flex-1 flex-col gap-4 pr-nav-x">
+          <ScoreBar data={scoreData} />
+          <ParagraphTabs
+            tabs={paragraphTabs.map((t) => ({
+              label: t.label,
+              hasErrors: t.hasErrors,
+            }))}
+            activeLabel={activeTab?.label ?? defaultLabel}
+            onChange={setActiveLabel}
+          />
+          <ul className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto">
+            {visibleIndices.map((i) => {
+              const sentence = analysis.sentences[i];
+              if (!sentence) return null;
+              const isFixed = fixedSentenceIndices.includes(i);
+              const isEditing = editMode && editingSentenceIndex === i;
+              const fixedText = edits[i];
+              return (
+                <li key={i}>
+                  <SentenceCard
+                    index={i}
+                    sentence={sentence}
+                    isSelected={selectedIndex === i}
+                    isEditing={isEditing}
+                    isFixed={isFixed}
+                    fixedText={fixedText}
+                    initialEditValue={edits[i] ?? sentence.corrected}
+                    onSelect={handleSelect}
+                    onCommitEdit={commitSentenceEdit}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+          <div className="flex items-center justify-between pt-2">
+            <div className="flex items-center gap-3">
+              {!editMode && fixedSentenceIndices.length > 0 ? (
+                <button
+                  type="button"
+                  onClick={handleReenterEditMode}
+                  className="motion-fade-in-up motion-press flex h-9 items-center justify-center rounded-pill border border-line bg-surface px-3 text-base-13 font-bold text-ink-600"
+                >
+                  ✏️ Edit sentences first
+                </button>
+              ) : null}
+              <p className="text-xs font-normal text-ink-400">{helperText}</p>
+            </div>
+            <button
+              type="button"
+              onClick={handleCta}
+              disabled={isPending}
+              className="motion-press flex h-9 items-center gap-2 rounded-pill bg-magenta px-3 py-2 text-base-13 font-bold text-white transition-opacity duration-200 ease-out hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {isPending && <Loader2 className="size-4 animate-spin" aria-hidden />}
+              {isPending ? 'Re-analyzing…' : ctaLabel}
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={handleCta}
-            disabled={isPending}
-            className="motion-press flex h-9 items-center gap-2 rounded-pill bg-magenta px-3 py-2 text-base-13 font-bold text-white transition-opacity duration-200 ease-out hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {isPending && <Loader2 className="size-4 animate-spin" aria-hidden />}
-            {isPending ? 'Re-analyzing…' : ctaLabel}
-          </button>
         </div>
       </main>
-      <ReviewTutorPanel selectedSentence={selectedSentence} />
+
+      <aside className="fixed top-header right-0 bottom-0 w-tutor-panel">
+        <ReviewTutorPanel selectedSentence={selectedSentence} />
+      </aside>
+
       <QuizModal />
-    </div>
+    </>
   );
 }

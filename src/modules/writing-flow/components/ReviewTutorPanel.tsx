@@ -1,10 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import type { FormEvent } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import type { AnalyzedSentence } from '@/modules/writing-flow/types/analysis.types';
+import { ChatBubble } from '@/modules/writing-flow/components/ChatBubble';
 import { ComparisonCard } from '@/modules/writing-flow/components/ComparisonCard';
+import {
+  PracticeTutorPanel,
+  type TutorChip,
+} from '@/modules/writing-flow/components/PracticeTutorPanel';
 import { ReviewVoicePanel } from '@/modules/writing-flow/components/ReviewVoicePanel';
 import { useReviewTutor } from '@/modules/writing-flow/hooks/use-review-tutor';
 import { getSentenceFixPair } from '@/modules/writing-flow/lib/sentence-fix';
@@ -12,6 +16,7 @@ import {
   selectEditMode,
   selectFixProgress,
   selectPrompt,
+  selectReviewMessages,
   selectSelectedSentenceIndex,
   selectTutorMode,
   useFlowStore,
@@ -27,13 +32,14 @@ type ReviewTutorPanelProps = {
   selectedSentence: AnalyzedSentence | null;
 };
 
-const CHIPS = [
+const REVIEW_CHIPS: TutorChip[] = [
   { id: 'language', label: '🌐 Explain in my language' },
   { id: 'pattern', label: '🔍 What pattern is this?' },
   { id: 'discuss', label: '💬 Discuss more' },
-] as const;
+];
 
-type SendHandler = (text: string) => void;
+const NO_SELECTION_PLACEHOLDER = 'Select a sentence on the left to chat…';
+const SELECTED_PLACEHOLDER = 'Ask anything in your language…';
 
 export function ReviewTutorPanel({ selectedSentence }: ReviewTutorPanelProps) {
   const tutorMode = useFlowStore(selectTutorMode);
@@ -42,6 +48,7 @@ export function ReviewTutorPanel({ selectedSentence }: ReviewTutorPanelProps) {
   const editMode = useFlowStore(selectEditMode);
   const fixProgress = useFlowStore(useShallow(selectFixProgress));
   const selectedSentenceIndex = useFlowStore(selectSelectedSentenceIndex);
+  const reviewMessages = useFlowStore(selectReviewMessages);
   const setEditMode = useFlowStore((s) => s.setEditMode);
   const setEditingSentenceIndex = useFlowStore((s) => s.setEditingSentenceIndex);
   const openQuiz = useFlowStore((s) => s.openQuiz);
@@ -53,7 +60,7 @@ export function ReviewTutorPanel({ selectedSentence }: ReviewTutorPanelProps) {
   const canChat =
     selectedSentenceIndex !== null && selectedSentence !== null;
 
-  const handleSend: SendHandler = (text) => {
+  const handleSend = (text: string) => {
     if (!canChat) return;
     void sendMessage(text);
   };
@@ -62,8 +69,6 @@ export function ReviewTutorPanel({ selectedSentence }: ReviewTutorPanelProps) {
     ? getSentenceFixPair(selectedSentence)
     : null;
 
-  // When a sentence becomes selected, advance to socratic stage.
-  // When deselected, reset to initial.
   const effectiveStage: TutorPanelStage = (() => {
     if (!selectedSentence) return 'initial';
     if (stage === 'initial') return 'socratic';
@@ -77,9 +82,7 @@ export function ReviewTutorPanel({ selectedSentence }: ReviewTutorPanelProps) {
     }
   };
 
-  const handleNotSure = () => {
-    setStage('explained');
-  };
+  const handleNotSure = () => setStage('explained');
 
   const handleEditMyself = () => {
     setEditMode(true);
@@ -94,91 +97,113 @@ export function ReviewTutorPanel({ selectedSentence }: ReviewTutorPanelProps) {
     }
   };
 
-  return (
-    <aside className="motion-fade-in-right flex h-full w-tutor-panel flex-col border-l border-line bg-surface">
-      <PanelHeader mode={tutorMode} onChangeMode={setTutorMode} />
-
-      {tutorMode === 'voice' ? (
-        <ReviewVoicePanel
-          selectedSentence={selectedSentence}
-          prompt={prompt}
-          onDone={() => setTutorMode('type')}
-        />
-      ) : (
-        <div className="flex flex-1 flex-col gap-3 overflow-y-auto px-4 pt-4">
-          {editMode ? (
-            <div className="motion-fade-in-down flex flex-col gap-3">
-              <AiBubble>
-                {
-                  'Great — "energy" is correct. Edit the sentence directly above, then tap Resubmit to see your updated score.'
-                }
-              </AiBubble>
-              <FixProgressStrip progress={fixProgress} />
-            </div>
-          ) : null}
-
-          <AiBubble>
-            First, something you did well. You anchored the intro with a specific date —
-            that kind of concrete detail scores well on Content.
-          </AiBubble>
-
-          {effectiveStage === 'socratic' || effectiveStage === 'explained' ? (
-            <AiBubble>
-              Read that sentence aloud. Does one word sound a bit off to you?
-            </AiBubble>
-          ) : null}
-
-          {effectiveStage === 'socratic' ? (
-            <div className="flex flex-col gap-2">
-              <button
-                type="button"
-                onClick={handleYesSpotted}
-                className="motion-press w-full rounded-button border border-accent-violet-border bg-accent-violet-soft px-3 py-2 text-left text-xs font-bold text-quiz-violet-ink"
-              >
-                {"✏️ Yes — I think I know what's off"}
-              </button>
-              <button
-                type="button"
-                onClick={handleNotSure}
-                className="motion-press w-full rounded-button border border-line bg-surface-soft px-3 py-2 text-left text-xs font-bold text-ink-600"
-              >
-                🤷 Not sure — can you help me?
-              </button>
-            </div>
-          ) : null}
-
-          {effectiveStage === 'explained' ? (
-            <ExplainedBlock
-              pair={fixPair}
-              onEditMyself={handleEditMyself}
-              onPractise={handlePractise}
-            />
-          ) : null}
-
-        </div>
-      )}
-
-      <PanelFooter
-        onSend={handleSend}
-        disabled={!canChat}
-        isPending={isPending}
-      />
-    </aside>
+  const modeToggle = (
+    <ModeToggle mode={tutorMode} onChange={setTutorMode} />
   );
-}
 
-function PanelHeader({
-  mode,
-  onChangeMode,
-}: {
-  mode: TutorMode;
-  onChangeMode: (m: TutorMode) => void;
-}) {
+  if (tutorMode === 'voice') {
+    return (
+      <PracticeTutorPanel
+        messages={[]}
+        chips={[]}
+        onSendMessage={() => undefined}
+        topSlot={modeToggle}
+        bodySlot={
+          <ReviewVoicePanel
+            selectedSentence={selectedSentence}
+            prompt={prompt}
+            onDone={() => setTutorMode('type')}
+          />
+        }
+      />
+    );
+  }
+
+  const sentenceMessages =
+    selectedSentenceIndex !== null
+      ? reviewMessages.filter(
+          (m) => m.sentenceIndex === selectedSentenceIndex,
+        )
+      : [];
+
+  const bodySlot = (
+    <>
+      {editMode ? (
+        <div className="motion-fade-in-down flex flex-col gap-3">
+          <AiBubble>
+            {
+              'Great — edit the sentence directly above, then tap Resubmit to see your updated score.'
+            }
+          </AiBubble>
+          <FixProgressStrip progress={fixProgress} />
+        </div>
+      ) : null}
+
+      {!selectedSentence ? (
+        <AiBubble>
+          Click any flagged sentence on the left to start a discussion about it.
+        </AiBubble>
+      ) : null}
+
+      {effectiveStage === 'socratic' || effectiveStage === 'explained' ? (
+        <AiBubble>
+          Read that sentence aloud. Does one word sound a bit off to you?
+        </AiBubble>
+      ) : null}
+
+      {effectiveStage === 'socratic' ? (
+        <div className="flex flex-col gap-2">
+          <button
+            type="button"
+            onClick={handleYesSpotted}
+            className="motion-press w-full rounded-button border border-accent-violet-border bg-accent-violet-soft px-3 py-2 text-left text-xs font-bold text-quiz-violet-ink"
+          >
+            {"✏️ Yes — I think I know what's off"}
+          </button>
+          <button
+            type="button"
+            onClick={handleNotSure}
+            className="motion-press w-full rounded-button border border-line bg-surface-soft px-3 py-2 text-left text-xs font-bold text-ink-600"
+          >
+            🤷 Not sure — can you help me?
+          </button>
+        </div>
+      ) : null}
+
+      {effectiveStage === 'explained' ? (
+        <ExplainedBlock
+          pair={fixPair}
+          onEditMyself={handleEditMyself}
+          onPractise={handlePractise}
+        />
+      ) : null}
+
+      {sentenceMessages.map((m) => (
+        <ChatBubble key={m.id} role={m.role} content={m.content} />
+      ))}
+
+      {isPending ? (
+        <div className="motion-fade-in-up flex w-full justify-start">
+          <p className="rounded-tl-sm rounded-tr-msg rounded-br-msg rounded-bl-msg bg-msg-ai px-msg-x py-msg-y text-prompt text-ink-400">
+            …
+          </p>
+        </div>
+      ) : null}
+    </>
+  );
+
   return (
-    <div className="flex h-12 items-center justify-between border-b border-line px-4">
-      <span className="text-xs font-semibold text-ink-600">Practice Tutor</span>
-      <ModeToggle mode={mode} onChange={onChangeMode} />
-    </div>
+    <PracticeTutorPanel
+      messages={[]}
+      chips={REVIEW_CHIPS}
+      onSendMessage={handleSend}
+      isPending={isPending}
+      topSlot={modeToggle}
+      bodySlot={bodySlot}
+      inputPlaceholder={
+        canChat ? SELECTED_PLACEHOLDER : NO_SELECTION_PLACEHOLDER
+      }
+    />
   );
 }
 
@@ -246,9 +271,9 @@ function ExplainedBlock({
   return (
     <div className="flex flex-col gap-3">
       <AiBubble>
-        {
-          'Good instinct. In Spanish, "energías" is naturally plural — in English "energy" is uncountable. Here\'s the fix:'
-        }
+        {pair
+          ? "Here's the fix I'd suggest — compare your version with the corrected one:"
+          : 'This sentence already looks clean — nothing major to fix.'}
       </AiBubble>
       {pair ? <ComparisonCard pair={pair} /> : null}
       <button
@@ -265,72 +290,6 @@ function ExplainedBlock({
       >
         ⚡ Practise it — 2 quick questions
       </button>
-    </div>
-  );
-}
-
-function PanelFooter({
-  onSend,
-  disabled,
-  isPending,
-}: {
-  onSend: SendHandler;
-  disabled: boolean;
-  isPending: boolean;
-}) {
-  const [value, setValue] = useState<string>('');
-  const isDisabled = disabled || isPending;
-
-  const handleChipClick = (label: string) => {
-    if (isDisabled) return;
-    onSend(label);
-  };
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const trimmed = value.trim();
-    if (!trimmed || isDisabled) return;
-    onSend(trimmed);
-    setValue('');
-  };
-
-  return (
-    <div className="flex flex-col gap-2 border-t border-line px-4 py-3">
-      {CHIPS.map((chip) => (
-        <button
-          key={chip.id}
-          type="button"
-          onClick={() => handleChipClick(chip.label)}
-          disabled={isDisabled}
-          className="flex h-7 w-full items-center rounded-pill border border-line bg-surface-soft px-3 text-left text-meta font-semibold text-ink-600 disabled:opacity-50"
-        >
-          {chip.label}
-        </button>
-      ))}
-      <form
-        onSubmit={handleSubmit}
-        className="mt-1 flex h-tutor-input w-full items-center rounded-pill border border-line bg-surface-muted px-3"
-      >
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          disabled={isDisabled}
-          placeholder="Ask anything in your language…"
-          className="flex-1 bg-transparent text-input font-normal text-ink-900 placeholder:text-ink-400 focus:outline-none disabled:opacity-50"
-        />
-        <button
-          type="submit"
-          disabled={isDisabled || value.trim().length === 0}
-          className="flex size-7 items-center justify-center rounded-pill bg-nav-bg text-xs font-bold text-white disabled:opacity-50"
-          aria-label="Send"
-        >
-          →
-        </button>
-      </form>
-      <p className="text-center text-eyebrow font-normal text-ink-400">
-        English, Spanish, Portuguese, Hindi, or any language
-      </p>
     </div>
   );
 }

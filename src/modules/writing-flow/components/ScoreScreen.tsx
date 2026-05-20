@@ -45,44 +45,46 @@ export function ScoreScreen() {
   };
 
   return (
-    <main className="motion-fade-in-up app-container w-full pt-10 pb-12">
-      <h1 className="motion-fade-in-up text-display-26 font-extrabold text-nav-bg">
-        Good work, {STUDENT_NAME} 🎉
-      </h1>
+    <main className="motion-fade-in-up w-full pt-6 pb-12">
+      <div className="mx-auto w-reflect-card">
+        <h1 className="motion-fade-in-up text-display-26 font-extrabold text-nav-bg">
+          Good work, {STUDENT_NAME} 🎉
+        </h1>
 
-      <p className="motion-fade-in-up mt-1 text-base-13 font-normal text-ink-600">
-        Session 12 · DST essay · Estimated score based on PTE Academic rubric
-      </p>
+        <p className="motion-fade-in-up mt-2 text-base-13 font-normal text-ink-600">
+          Session 12 · DST essay · Estimated score based on PTE Academic rubric
+        </p>
 
-      <p className="mt-4 text-tiny font-bold text-nav-bg">YOUR SCORE</p>
+        <p className="mt-4 text-tiny font-bold text-nav-bg">YOUR SCORE</p>
 
-      <div className="mt-2 flex gap-6">
-        <ScoreCard variant="initial" rubric={initialRubric} />
-        <ScoreCard variant="after" rubric={afterRubric} />
-      </div>
+        <div className="mt-2 flex gap-6">
+          <ScoreCard variant="initial" rubric={initialRubric} />
+          <ScoreCard variant="after" rubric={afterRubric} />
+        </div>
 
-      <p className="mt-10 text-tiny font-bold text-nav-bg">REFLECT &amp; PLAN</p>
+        <p className="mt-10 text-tiny font-bold text-nav-bg">REFLECT &amp; PLAN</p>
 
-      <div className="mt-2 flex flex-col gap-3.5">
-        <ReflectCard eyebrow={REFLECT_PATTERN_EYEBROW} body={REFLECT_PATTERN_BODY} />
-        <ReflectCard eyebrow={REFLECT_NEXT_EYEBROW} body={REFLECT_NEXT_BODY} />
-      </div>
+        <div className="mt-2 flex flex-col gap-3.5">
+          <ReflectCard eyebrow={REFLECT_PATTERN_EYEBROW} body={REFLECT_PATTERN_BODY} />
+          <ReflectCard eyebrow={REFLECT_NEXT_EYEBROW} body={REFLECT_NEXT_BODY} />
+        </div>
 
-      <div className="mt-7 flex items-center justify-between">
-        <button
-          type="button"
-          onClick={handleDone}
-          className="motion-press inline-flex w-score-btn-done h-score-btn-h items-center justify-center rounded-pill border-2 border-line bg-surface text-base-13 font-semibold text-ink-600 transition-opacity duration-200 ease-out hover:opacity-90"
-        >
-          Done for today
-        </button>
-        <button
-          type="button"
-          onClick={handleNext}
-          className="motion-press inline-flex w-score-btn-next h-score-btn-h items-center justify-center rounded-pill bg-magenta text-base-13 font-bold text-white transition-opacity duration-200 ease-out hover:opacity-90"
-        >
-          Start next session →
-        </button>
+        <div className="mt-4 flex items-center justify-between">
+          <button
+            type="button"
+            onClick={handleDone}
+            className="motion-press inline-flex w-score-btn-done h-score-btn-h items-center justify-center rounded-pill border-2 border-line bg-surface text-base-13 font-semibold text-ink-600 transition-opacity duration-200 ease-out hover:opacity-90"
+          >
+            Done for today
+          </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            className="motion-press inline-flex w-score-btn-next h-score-btn-h items-center justify-center rounded-pill bg-magenta text-base-13 font-bold text-white transition-opacity duration-200 ease-out hover:opacity-90"
+          >
+            Start next session →
+          </button>
+        </div>
       </div>
     </main>
   );
