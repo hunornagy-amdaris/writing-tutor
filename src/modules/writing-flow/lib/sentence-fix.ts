@@ -1,4 +1,4 @@
-import type { AnalyzedSentence } from '@/modules/essay-tutor/types/analysis.types';
+import type { AnalyzedSentence } from '@/modules/writing-flow/types/analysis.types';
 import type {
   SentenceBadgeKind,
   SentenceFixPair,

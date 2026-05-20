@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { analysisResultSchema } from '@/modules/essay-tutor/schemas/analysis.schema';
+import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.schema';
 import { assembleEditedEssay } from '@/modules/writing-flow/lib/assemble-edited-essay';
 import {
   selectAnalysis,

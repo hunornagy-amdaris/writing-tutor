@@ -14,12 +14,6 @@ export type BrainstormCallState =
   | 'speaking'
   | 'ended';
 
-type StartSessionArgs = {
-  agentId: string;
-  connectionType: 'websocket';
-  dynamicVariables: Record<string, string>;
-};
-
 type IncomingMessage = {
   message: string;
   role?: string;
@@ -74,14 +68,11 @@ export function useBrainstormVoice() {
       setCallState('connecting');
       try {
         await navigator.mediaDevices.getUserMedia({ audio: true });
-        const args: StartSessionArgs = {
+        await conversation.startSession({
           agentId,
           connectionType: 'websocket',
           dynamicVariables: buildBrainstormVoiceVariables(prompt),
-        };
-        await conversation.startSession(
-          args as unknown as Parameters<typeof conversation.startSession>[0],
-        );
+        });
       } catch {
         setCallState('idle');
       }

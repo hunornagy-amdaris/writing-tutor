@@ -166,6 +166,21 @@
   --text-cell-num--line-height: 1rem;
   --text-cell-label: 0.5rem; /* 8/10 — cell label & card eyebrow */
   --text-cell-label--line-height: 0.625rem;
+
+  --spacing-app-container: 90rem; /* 1440px page container max-width */
+  --spacing-header: 4.5rem; /* 72px — taller than figma's 56 per user request */
+  --spacing-logo-h: 1.25rem; /* 20px — header logo height */
+  --spacing-user-avatar: 2rem; /* 32px — header user avatar (Figma) */
+  --spacing-essay-min: 32rem; /* 512px — write screen textarea min height */
+  --spacing-essay-tall: 38rem; /* 608px — essay card overall feel */
+  --spacing-start-writing-bottom: 4rem; /* 64px — gap under Start writing CTA */
+}
+
+@utility app-container {
+  width: 100%;
+  max-width: var(--spacing-app-container);
+  margin-inline: auto;
+  padding-inline: var(--spacing-nav-x);
 }
 
 body {

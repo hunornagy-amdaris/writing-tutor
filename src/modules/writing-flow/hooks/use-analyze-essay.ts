@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { analysisResultSchema } from '@/modules/essay-tutor/schemas/analysis.schema';
+import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.schema';
 import { useFlowStore } from '@/modules/writing-flow/stores/use-flow-store';
 
 // TODO Wave 3: migrate to TanStack Query mutation

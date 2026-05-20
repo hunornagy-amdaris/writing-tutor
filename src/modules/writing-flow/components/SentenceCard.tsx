@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import type { AnalyzedSentence } from '@/modules/essay-tutor/types/analysis.types';
+import type { AnalyzedSentence } from '@/modules/writing-flow/types/analysis.types';
 import { getSentenceBadgeKind } from '@/modules/writing-flow/lib/sentence-fix';
 
 type SentenceCardProps = {

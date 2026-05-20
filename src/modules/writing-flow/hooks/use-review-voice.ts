@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react';
 import { useConversation } from '@elevenlabs/react';
 import { env } from '@/lib/env';
 import { buildReviewVoiceDynamicVars } from '@/modules/writing-flow/lib/review-voice-dynamic-vars';
-import type { AnalyzedSentence } from '@/modules/essay-tutor/types/analysis.types';
+import type { AnalyzedSentence } from '@/modules/writing-flow/types/analysis.types';
 
 export type ReviewCallState =
   | 'idle'

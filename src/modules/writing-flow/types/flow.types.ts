@@ -1,4 +1,4 @@
-import type { AnalysisResult, EssayScores } from '@/modules/essay-tutor/types/analysis.types';
+import type { AnalysisResult, EssayScores } from '@/modules/writing-flow/types/analysis.types';
 
 export type FlowStep = 'brainstorm' | 'write' | 'review' | 'score';
 

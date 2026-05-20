@@ -57,17 +57,15 @@ export function WriteScreen() {
   };
 
   return (
-    <main className="flex min-h-screen w-full">
-      <div className="flex-1 px-8 pt-8">
-        <div className="w-full max-w-prompt-wide">
-          <PromptCard step="write" prompt={prompt} />
-          <EssayCard
-            value={essay}
-            onChange={setEssay}
-            onSubmit={() => analyze(essay)}
-            isPending={isAnalyzing}
-          />
-        </div>
+    <main className="app-container flex w-full gap-8 pt-8 pb-12">
+      <div className="flex flex-1 flex-col gap-6">
+        <PromptCard step="write" prompt={prompt} />
+        <EssayCard
+          value={essay}
+          onChange={setEssay}
+          onSubmit={() => analyze(essay)}
+          isPending={isAnalyzing}
+        />
       </div>
 
       <PracticeTutorPanel

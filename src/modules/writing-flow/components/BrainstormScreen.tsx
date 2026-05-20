@@ -85,7 +85,7 @@ export function BrainstormScreen() {
   const isVoice = brainstorm.mode === 'voice';
 
   return (
-    <main className="mx-auto flex w-prompt-narrow flex-col items-end gap-5.5 pt-22">
+    <main className="app-container flex w-full flex-col items-end gap-5.5 pt-22 pb-start-writing-bottom">
       <PromptCard step="brainstorm" prompt={prompt} />
 
       <BrainstormModeToggle

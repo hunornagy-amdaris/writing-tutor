@@ -80,8 +80,8 @@ export function ReviewScreen() {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-3.5rem)] w-full">
-      <main className="flex w-prompt-wide flex-col gap-4 pl-8 pt-8 pb-8">
+    <div className="app-container flex w-full gap-8 pt-8 pb-12">
+      <main className="flex flex-1 flex-col gap-4">
         <ScoreBar data={scoreData} />
         <ParagraphTabs
           tabs={paragraphTabs.map((t) => ({

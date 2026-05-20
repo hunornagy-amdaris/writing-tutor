@@ -77,8 +77,8 @@ function StepItem({ id, index, label, isActive, isReachable, onSelect }: StepIte
       <span
         className={
           isActive
-            ? 'text-xs font-semibold text-white'
-            : 'text-xs font-semibold text-nav-step-inactive'
+            ? 'text-sm font-semibold leading-none text-white'
+            : 'text-sm font-semibold leading-none text-nav-step-inactive'
         }
       >
         {label}

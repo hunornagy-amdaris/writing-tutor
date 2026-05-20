@@ -40,7 +40,7 @@ export function EssayCard({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Write your essay here…"
-        className="block min-h-72 w-full resize-none border-0 bg-surface p-5 text-base-13 font-normal text-ink-700 outline-none placeholder:text-ink-400"
+        className="block min-h-essay-min w-full resize-none border-0 bg-surface p-5 text-base-13 font-normal text-ink-700 outline-none placeholder:text-ink-400"
         aria-label="Your essay"
       />
 

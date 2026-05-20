@@ -27,7 +27,7 @@ export function ScoreScreen() {
 
   if (!analysis) {
     return (
-      <main className="px-nav-x py-12 text-ink-600">
+      <main className="app-container py-12 text-ink-600">
         <p className="text-base-13">No analysis available yet.</p>
       </main>
     );
@@ -45,7 +45,7 @@ export function ScoreScreen() {
   };
 
   return (
-    <main className="mx-auto w-reflect-card pt-10 pb-12">
+    <main className="app-container w-full pt-10 pb-12">
       <h1 className="text-display-26 font-extrabold text-nav-bg">
         Good work, {STUDENT_NAME} 🎉
       </h1>

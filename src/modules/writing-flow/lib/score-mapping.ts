@@ -1,4 +1,4 @@
-import type { EssayScores } from '@/modules/essay-tutor/types/analysis.types';
+import type { EssayScores } from '@/modules/writing-flow/types/analysis.types';
 import type {
   ScoreBarCellKey,
   ScoreBarCellValue,

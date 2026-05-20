@@ -1,10 +1,10 @@
-import type { AnalyzedSentence } from '@/modules/essay-tutor/types/analysis.types';
+import type { AnalyzedSentence } from '@/modules/writing-flow/types/analysis.types';
 import {
   buildGrammarData,
   buildPhraseologyData,
   buildSessionHistoryData,
   buildSpecialNote,
-} from '@/modules/essay-tutor/lib/build-tutor-prompt';
+} from '@/modules/writing-flow/lib/build-tutor-prompt';
 
 export type ReviewVoiceDynamicVariables = {
   current_sentence_original: string;

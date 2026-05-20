@@ -2,7 +2,7 @@
 
 import { ConversationProvider } from '@elevenlabs/react';
 import { useEffect } from 'react';
-import type { AnalyzedSentence } from '@/modules/essay-tutor/types/analysis.types';
+import type { AnalyzedSentence } from '@/modules/writing-flow/types/analysis.types';
 import { useReviewVoice } from '@/modules/writing-flow/hooks/use-review-voice';
 
 type ReviewVoicePanelProps = {

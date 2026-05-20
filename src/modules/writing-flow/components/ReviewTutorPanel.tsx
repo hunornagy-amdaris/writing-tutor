@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import type { AnalyzedSentence } from '@/modules/essay-tutor/types/analysis.types';
+import type { AnalyzedSentence } from '@/modules/writing-flow/types/analysis.types';
 import { ComparisonCard } from '@/modules/writing-flow/components/ComparisonCard';
 import { ReviewVoicePanel } from '@/modules/writing-flow/components/ReviewVoicePanel';
 import { useReviewTutor } from '@/modules/writing-flow/hooks/use-review-tutor';

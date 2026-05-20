@@ -1,4 +1,4 @@
-import type { AnalysisResult } from '@/modules/essay-tutor/types/analysis.types';
+import type { AnalysisResult } from '@/modules/writing-flow/types/analysis.types';
 
 export function assembleEditedEssay(
   analysis: AnalysisResult,

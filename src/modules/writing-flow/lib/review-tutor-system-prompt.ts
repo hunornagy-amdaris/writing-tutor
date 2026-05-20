@@ -1,7 +1,7 @@
 import type {
   GrammarEdit,
   PhraseologyFlag,
-} from '@/modules/essay-tutor/types/analysis.types';
+} from '@/modules/writing-flow/types/analysis.types';
 
 type BuildReviewTutorSystemPromptArgs = {
   writingTaskPrompt: string;
