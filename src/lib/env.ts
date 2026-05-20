@@ -11,6 +11,7 @@ export const env = createEnv({
   },
   client: {
     NEXT_PUBLIC_ELEVENLABS_AGENT_ID: z.string().min(1),
+    NEXT_PUBLIC_ELEVENLABS_BRAINSTORM_AGENT_ID: z.string().min(1).optional(),
   },
   runtimeEnv: {
     OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY,
@@ -19,6 +20,8 @@ export const env = createEnv({
     OPENROUTER_SITE_URL: process.env.OPENROUTER_SITE_URL,
     OPENROUTER_APP_NAME: process.env.OPENROUTER_APP_NAME,
     NEXT_PUBLIC_ELEVENLABS_AGENT_ID: process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID,
+    NEXT_PUBLIC_ELEVENLABS_BRAINSTORM_AGENT_ID:
+      process.env.NEXT_PUBLIC_ELEVENLABS_BRAINSTORM_AGENT_ID,
   },
   emptyStringAsUndefined: true,
 });

@@ -1,0 +1,2297 @@
+/* Nav */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 30px;
+gap: 1069px;
+
+position: absolute;
+width: 1280px;
+height: 56px;
+left: 0px;
+top: 0px;
+
+background: #0D004D;
+
+
+/* Frame 258 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-end;
+padding: 0px;
+gap: 46px;
+
+width: 838.5px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 55 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* pearson-logo */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4.71px;
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* LOGO */
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 0%;
+right: 91.19%;
+top: 0%;
+bottom: 1.7%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 5.59%;
+right: 91.19%;
+top: 8.8%;
+bottom: 10.61%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 94.02%;
+top: 0%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Logo */
+
+position: absolute;
+left: 10.81%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 72.82%;
+right: 12.91%;
+top: 30.01%;
+bottom: 0.04%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 23.16%;
+right: 63.39%;
+top: 30.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 87.89%;
+right: 0%;
+top: 30.01%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 52.74%;
+right: 38.09%;
+top: 30.01%;
+bottom: 1.71%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 37.29%;
+right: 48.45%;
+top: 30.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 60.7%;
+right: 27.43%;
+top: 30.01%;
+bottom: 0.01%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 10.81%;
+right: 75.94%;
+top: 0%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 371px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 255 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 92px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 1 */
+
+position: absolute;
+width: 4px;
+height: 11px;
+left: calc(50% - 4px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Brainstorm */
+
+width: 64px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 60px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 2 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Write */
+
+width: 32px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame 260 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 66px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #FFFFFF;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 3 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #0D1B40;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Review */
+
+width: 42px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 63px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 4 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Score */
+
+width: 35px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 251 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 32px;
+height: 32px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 252 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px;
+gap: 10px;
+
+width: 32px;
+height: 32px;
+
+background: rgba(255, 255, 255, 0.2);
+border-radius: 40px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* user/user-circle
+
+<p>icon, users, contact</p>
+
+<p>icon, users, contact, 24</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* box */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Vector */
+
+width: 24px;
+height: 24px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Score Bar */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 876px;
+height: 68px;
+left: 32px;
+top: 70px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+border-radius: 14px;
+
+
+/* Overall */
+
+position: absolute;
+width: 72px;
+height: 46px;
+left: 12px;
+top: 11px;
+
+background: #EFEDFF;
+border-radius: 9px;
+
+
+/* 72 */
+
+position: absolute;
+width: 28px;
+height: 30px;
+left: 10px;
+top: 6px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 24px;
+line-height: 30px;
+
+color: #4B5563;
+
+
+
+/* /90 */
+
+position: absolute;
+width: 18px;
+height: 13px;
+left: 40px;
+top: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #4B5563;
+
+opacity: 0.4;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 1px;
+height: 42px;
+left: 98px;
+top: 13px;
+
+background: #E5E7EB;
+
+
+/* Frame 2043683585 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 77px;
+
+position: absolute;
+width: 721px;
+height: 31px;
+left: 110px;
+top: calc(50% - 31px/2 + 0.5px);
+
+
+
+/* Frame 2043683578 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 37px;
+height: 31px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 3/3 */
+
+width: 37px;
+height: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #00B057;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Content */
+
+width: 37px;
+height: 11px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 2043683579 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 25px;
+height: 31px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 2/2 */
+
+width: 25px;
+height: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #00B057;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Form */
+
+width: 25px;
+height: 11px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 2043683580 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 41px;
+height: 31px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 5/6 */
+
+width: 41px;
+height: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #FF362A;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Develop. */
+
+width: 41px;
+height: 11px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 2043683581 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 42px;
+height: 31px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* 1/2 */
+
+width: 42px;
+height: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #FF362A;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Grammar */
+
+width: 42px;
+height: 11px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 2043683582 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 49px;
+height: 31px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 1/2 */
+
+width: 49px;
+height: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #FF362A;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ling. range */
+
+width: 49px;
+height: 11px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 2043683583 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 29px;
+height: 31px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* 2/2 */
+
+width: 29px;
+height: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #00B057;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Vocab */
+
+width: 29px;
+height: 11px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 2043683584 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 36px;
+height: 31px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* 2/2 */
+
+width: 36px;
+height: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #00B057;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Spelling */
+
+width: 36px;
+height: 11px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 264 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 477px;
+height: 31px;
+left: 32px;
+top: 152px;
+
+
+
+/* tab-Introduction */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 4px;
+
+width: 113px;
+height: 31px;
+
+background: #C1BFFF;
+border-radius: 9px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Introduction */
+
+width: 73px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #4B5563;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ● */
+
+width: 12px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #FF362A;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* tab-Body 1 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 4px;
+
+width: 141px;
+height: 31px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 9px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Body paragraph 1 */
+
+width: 101px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ● */
+
+width: 12px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #FF362A;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* tab-Body 2 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 10px;
+
+width: 121px;
+height: 31px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 9px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Body paragraph 2 */
+
+width: 105px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* tab-Conclusion */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 10px;
+
+width: 90px;
+height: 31px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 9px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Conclusion */
+
+width: 66px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* sent-Sentence 1 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-items: flex-start;
+align-content: flex-start;
+padding: 10px 14px;
+gap: 0px 729px;
+
+position: absolute;
+width: 874px;
+height: 58px;
+left: 32px;
+top: 192px;
+
+background: #FFCFCC;
+border-radius: 9px;
+
+
+/* Sentence 1 */
+
+width: 53px;
+height: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* badge */
+
+width: 64px;
+height: 18px;
+
+background: #FF362A;
+border-radius: 100px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* grammar */
+
+position: absolute;
+width: 45px;
+height: 13px;
+left: 9px;
+top: 1px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #FFCFCC;
+
+
+
+/* Daylight saving time was first introduced in 1916 as a way to save energies. */
+
+width: 844px;
+height: 20px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* identical to box height, or 154% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* sent-Sentence 2 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 10px 14px;
+gap: 3px;
+
+position: absolute;
+width: 876px;
+height: 56px;
+left: 32px;
+top: 262px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* Sentence 2 */
+
+width: 848px;
+height: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Many countries still use it today, but recent research shows it may not be effective. */
+
+width: 848px;
+height: 20px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* identical to box height, or 154% */
+
+color: #4B5563;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* sent-Sentence 3 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 10px 14px;
+gap: 3px;
+
+position: absolute;
+width: 876px;
+height: 56px;
+left: 32px;
+top: 330px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* Sentence 3 */
+
+width: 848px;
+height: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* This essay will discuss both perspectives and provide my own view on the matter. */
+
+width: 848px;
+height: 20px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* identical to box height, or 154% */
+
+color: #4B5563;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Click a flagged sentence to discuss or edit it inline. */
+
+position: absolute;
+width: 259px;
+height: 30px;
+left: 32px;
+top: 864px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+
+color: #9CA3AF;
+
+
+
+/* See Score → */
+
+position: absolute;
+width: 150px;
+height: 36px;
+left: 758px;
+top: 854px;
+
+background: #C5007C;
+border-radius: 100px;
+
+
+/* See my score → */
+
+position: absolute;
+width: 97px;
+height: 16px;
+left: 16px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 13px;
+line-height: 16px;
+
+color: #FFFFFF;
+
+
+
+/* Tutor Panel */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 340px;
+height: 832px;
+left: 940px;
+top: 0px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* Aside Header */
+
+position: absolute;
+width: 340px;
+height: 50px;
+left: 0px;
+top: 0px;
+
+background: #FFFFFF;
+
+
+/* Practice Tutor */
+
+position: absolute;
+width: 81px;
+height: 15px;
+left: 18px;
+top: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #4B5563;
+
+
+
+/* Rectangle */
+
+position: absolute;
+width: 340px;
+height: 1px;
+left: 0px;
+top: 49px;
+
+background: #E5E7EB;
+
+
+/* Mode Toggle */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 3px;
+gap: 2px;
+
+position: absolute;
+width: 148px;
+height: 30px;
+left: 180px;
+top: 10px;
+
+background: #EDECF6;
+border: 1px solid #E5E7EB;
+border-radius: 15px;
+
+
+/* btn-Type-active */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 68px;
+height: 24px;
+
+background: #FFFFFF;
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.08);
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Type */
+
+width: 27px;
+height: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* btn-Voice */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 68px;
+height: 24px;
+
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Voice */
+
+width: 31px;
+height: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Praise Msg */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 13px;
+gap: 10px;
+
+position: absolute;
+width: 308px;
+height: 80px;
+left: 16px;
+top: 62px;
+
+background: #F0F1F8;
+border-radius: 12px;
+
+
+/* First, something you did well. You anchored the intro with a specific date — that kind of concrete detail scores well on Content. */
+
+width: 282px;
+height: 60px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* or 154% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Socratic Q */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 13px;
+gap: 10px;
+
+position: absolute;
+width: 308px;
+height: 60px;
+left: 16px;
+top: 154px;
+
+background: #F0F1F8;
+border-radius: 12px;
+
+
+/* Read that sentence aloud. Does one word sound a bit off to you? */
+
+width: 282px;
+height: 40px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* or 154% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Btn-spotted */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 36px;
+left: 16px;
+top: 226px;
+
+background: #EFEDFF;
+border: 1px solid #DDD6FE;
+border-radius: 9px;
+
+
+/* ✏️ Yes — I think I know what's off */
+
+position: absolute;
+width: 189px;
+height: 15px;
+left: 12px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #5B21B6;
+
+
+
+/* Btn-unsure */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 36px;
+left: 16px;
+top: 274px;
+
+background: #F0F1F8;
+border: 1px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* 🤷 Not sure — can you help me? */
+
+position: absolute;
+width: 182px;
+height: 15px;
+left: 12px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #4B5563;
+
+
+
+/* Input */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 42px;
+left: 16px;
+top: 757px;
+
+background: #F6F6FB;
+border: 1.5px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* Ask anything in your language… */
+
+position: absolute;
+width: 189px;
+height: 16px;
+left: 14px;
+top: 12px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+
+color: #9CA3AF;
+
+
+
+/* Rectangle */
+
+position: absolute;
+width: 28px;
+height: 28px;
+left: 274px;
+top: 7px;
+
+background: #0D004D;
+border-radius: 15px;
+
+
+/* → */
+
+position: absolute;
+width: 10px;
+height: 15px;
+left: 283px;
+top: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+
+/* English, Spanish, Portuguese, Hindi, or any language */
+
+position: absolute;
+width: 308px;
+height: 13px;
+left: 16px;
+top: 807px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+text-align: center;
+
+color: #9CA3AF;
+
+
+
+/* chip */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 28px;
+left: 16px;
+top: 649px;
+
+background: #F0F1F8;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* 🌐 Explain in my language */
+
+position: absolute;
+width: 132px;
+height: 14px;
+left: 12px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+
+/* chip */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 28px;
+left: 16px;
+top: 685px;
+
+background: #F0F1F8;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* 🔍 What pattern is this? */
+
+position: absolute;
+width: 121px;
+height: 14px;
+left: 12px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+
+/* chip */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 28px;
+left: 16px;
+top: 721px;
+
+background: #F0F1F8;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* 💬 Discuss more */
+
+position: absolute;
+width: 84px;
+height: 14px;
+left: 12px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+

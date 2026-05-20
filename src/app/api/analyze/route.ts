@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { env } from '@/lib/env';
-import { analysisResultSchema } from '@/modules/essay-tutor/schemas/analysis.schema';
-import { buildAnalyzerPrompt } from '@/modules/essay-tutor/constants/analyzer-prompt';
+import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.schema';
+import { buildAnalyzerPrompt } from '@/modules/writing-flow/constants/analyzer-prompt';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';

@@ -27,13 +27,22 @@ pnpm dev
 | `OPENROUTER_BASE_URL` | no | `https://openrouter.ai/api/v1` | Override for proxies / self-hosted gateways. |
 | `OPENROUTER_APP_NAME` | no | `Writing Tutor` | Sent as `X-Title` for OpenRouter analytics. |
 | `OPENROUTER_SITE_URL` | no | — | Sent as `HTTP-Referer` for OpenRouter analytics (set to your deployment URL). |
-| `NEXT_PUBLIC_ELEVENLABS_AGENT_ID` | yes | — | Public agent ID from the ElevenLabs dashboard. |
+| `NEXT_PUBLIC_ELEVENLABS_AGENT_ID` | yes | — | Public agent ID for the per-sentence Review voice tutor (step 3). |
+| `NEXT_PUBLIC_ELEVENLABS_BRAINSTORM_AGENT_ID` | yes | — | Public agent ID for the Brainstorm voice tutor (different agent from the per-sentence Review tutor). |
 
 No `ELEVENLABS_API_KEY` is required — the app talks directly to the public agent and passes per-sentence context via **dynamic variables**.
 
-## Create the ElevenLabs agent
+## Create the ElevenLabs agents
 
-See [`ELEVENLABS_AGENT_PROMPT.md`](./ELEVENLABS_AGENT_PROMPT.md) — the full system prompt with `{{placeholder}}` variables and the dashboard checklist.
+The app uses **two distinct** ElevenLabs Conversational AI agents — both need to be created separately in the ElevenLabs dashboard.
+
+### Create the Review agent
+
+See [`ELEVENLABS_AGENT_PROMPT.md`](./ELEVENLABS_AGENT_PROMPT.md) — system prompt, `{{placeholder}}` variables, and dashboard checklist for the per-sentence Review tutor (step 3).
+
+### Create the Brainstorm agent
+
+See [`BRAINSTORM_AGENT_PROMPT.md`](./BRAINSTORM_AGENT_PROMPT.md) — system prompt, dynamic variables, and dashboard checklist for the Brainstorm tutor (step 1). This is a separate agent from the Review one — both need to be created in the ElevenLabs dashboard, and their agent IDs go in different env vars.
 
 ## Verify
 

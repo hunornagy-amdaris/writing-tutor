@@ -1,0 +1,2329 @@
+/* Nav */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 30px;
+gap: 1069px;
+
+position: absolute;
+width: 1280px;
+height: 56px;
+left: 0px;
+top: 0px;
+
+background: #0D004D;
+
+
+/* Frame 258 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-end;
+padding: 0px;
+gap: 46px;
+
+width: 838.5px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 55 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* pearson-logo */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4.71px;
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* LOGO */
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 0%;
+right: 91.19%;
+top: 0%;
+bottom: 1.7%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 5.59%;
+right: 91.19%;
+top: 8.8%;
+bottom: 10.62%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 94.02%;
+top: 0%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Logo */
+
+position: absolute;
+left: 10.81%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 72.82%;
+right: 12.91%;
+top: 30%;
+bottom: 0.04%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 23.16%;
+right: 63.39%;
+top: 30.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 87.89%;
+right: 0%;
+top: 30.01%;
+bottom: 1.71%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 52.74%;
+right: 38.09%;
+top: 30.01%;
+bottom: 1.71%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 37.29%;
+right: 48.45%;
+top: 30%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 60.7%;
+right: 27.43%;
+top: 30.01%;
+bottom: 0.01%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 10.81%;
+right: 75.94%;
+top: 0%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 371px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 255 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 92px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 1 */
+
+position: absolute;
+width: 4px;
+height: 11px;
+left: calc(50% - 4px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Brainstorm */
+
+width: 64px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 60px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 2 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Write */
+
+width: 32px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame 260 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 66px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #FFFFFF;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 3 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #0D1B40;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Review */
+
+width: 42px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 63px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 4 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Score */
+
+width: 35px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 251 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 32px;
+height: 32px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 252 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px;
+gap: 10px;
+
+width: 32px;
+height: 32px;
+
+background: rgba(255, 255, 255, 0.2);
+border-radius: 40px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* user/user-circle
+
+<p>icon, users, contact</p>
+
+<p>icon, users, contact, 24</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* box */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Vector */
+
+width: 24px;
+height: 24px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Score Bar */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 876px;
+height: 68px;
+left: 32px;
+top: 70px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+border-radius: 14px;
+
+
+/* Overall */
+
+position: absolute;
+width: 72px;
+height: 46px;
+left: 12px;
+top: 11px;
+
+background: #EFEDFF;
+border-radius: 9px;
+
+
+/* 72 */
+
+position: absolute;
+width: 28px;
+height: 30px;
+left: 10px;
+top: 6px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 24px;
+line-height: 30px;
+
+color: #4B5563;
+
+
+
+/* /90 */
+
+position: absolute;
+width: 18px;
+height: 13px;
+left: 40px;
+top: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #4B5563;
+
+opacity: 0.4;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 1px;
+height: 42px;
+left: 98px;
+top: 13px;
+
+background: #E5E7EB;
+
+
+/* 3/3 */
+
+position: absolute;
+width: 25px;
+height: 18px;
+left: 110px;
+top: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #00B057;
+
+
+
+/* Content */
+
+position: absolute;
+width: 37px;
+height: 11px;
+left: 110px;
+top: 33px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+
+/* 2/2 */
+
+position: absolute;
+width: 25px;
+height: 18px;
+left: 205px;
+top: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #00B057;
+
+
+
+/* Form */
+
+position: absolute;
+width: 23px;
+height: 11px;
+left: 205px;
+top: 33px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+
+/* 5/6 */
+
+position: absolute;
+width: 25px;
+height: 18px;
+left: 300px;
+top: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #FF362A;
+
+
+
+/* Dev. */
+
+position: absolute;
+width: 21px;
+height: 11px;
+left: 300px;
+top: 33px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+
+/* 1/2 */
+
+position: absolute;
+width: 22px;
+height: 18px;
+left: 395px;
+top: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #FF362A;
+
+
+
+/* Grammar */
+
+position: absolute;
+width: 42px;
+height: 11px;
+left: 395px;
+top: 33px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+
+/* 1/2 */
+
+position: absolute;
+width: 22px;
+height: 18px;
+left: 490px;
+top: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #FF362A;
+
+
+
+/* Ling. */
+
+position: absolute;
+width: 22px;
+height: 11px;
+left: 490px;
+top: 33px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+
+/* 2/2 */
+
+position: absolute;
+width: 25px;
+height: 18px;
+left: 585px;
+top: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #00B057;
+
+
+
+/* Vocab */
+
+position: absolute;
+width: 29px;
+height: 11px;
+left: 585px;
+top: 33px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+
+/* 2/2 */
+
+position: absolute;
+width: 25px;
+height: 18px;
+left: 680px;
+top: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #00B057;
+
+
+
+/* Spell */
+
+position: absolute;
+width: 22px;
+height: 11px;
+left: 680px;
+top: 33px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #9CA3AF;
+
+
+
+/* tab-Introduction */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 8px 12px;
+
+position: absolute;
+width: 111px;
+height: 31px;
+left: 32px;
+top: 152px;
+
+background: #C1BFFF;
+border-radius: 9px;
+
+
+/* Introduction */
+
+width: 73px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #4B5563;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ● */
+
+width: 14px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #FF362A;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* tab-Body 1 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 8px 10px;
+
+position: absolute;
+width: 72px;
+height: 31px;
+left: 151px;
+top: 152px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* Body 1 */
+
+width: 38px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ● */
+
+width: 14px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #FF362A;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* tab-Body 2 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 10px;
+
+position: absolute;
+width: 65px;
+height: 31px;
+left: 231px;
+top: 152px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* Body 2 */
+
+width: 41px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* tab-Conclusion */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 10px;
+
+position: absolute;
+width: 90px;
+height: 31px;
+left: 304px;
+top: 152px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* Conclusion */
+
+width: 66px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* sent-0 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 876px;
+height: 60px;
+left: 32px;
+top: 192px;
+
+background: #FFCFCC;
+border: 2px solid #0D004D;
+border-radius: 9px;
+
+
+/* Sentence 1 */
+
+position: absolute;
+width: 53px;
+height: 13px;
+left: 14px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+
+/* badge */
+
+position: absolute;
+width: 66px;
+height: 18px;
+left: 794px;
+top: 10px;
+
+background: #FF362A;
+border-radius: 100px;
+
+
+/* grammar */
+
+position: absolute;
+width: 45px;
+height: 13px;
+left: 8px;
+top: 4px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #FFCFCC;
+
+
+
+/* Daylight saving time was first introduced in 1916 as a way to save energies. */
+
+position: absolute;
+width: 844px;
+height: 20px;
+left: 14px;
+top: 26px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* identical to box height, or 154% */
+
+color: #111827;
+
+
+
+/* sent-1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 876px;
+height: 60px;
+left: 32px;
+top: 258px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* Sentence 2 */
+
+position: absolute;
+width: 55px;
+height: 13px;
+left: 14px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #9CA3AF;
+
+
+
+/* Many countries still use it today, but recent research shows it may not be effective. */
+
+position: absolute;
+width: 844px;
+height: 20px;
+left: 14px;
+top: 26px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* identical to box height, or 154% */
+
+color: #4B5563;
+
+
+
+/* sent-2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 876px;
+height: 60px;
+left: 32px;
+top: 324px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* Sentence 3 */
+
+position: absolute;
+width: 55px;
+height: 13px;
+left: 14px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #9CA3AF;
+
+
+
+/* This essay will discuss both perspectives and provide my own view on the matter. */
+
+position: absolute;
+width: 844px;
+height: 20px;
+left: 14px;
+top: 26px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* identical to box height, or 154% */
+
+color: #4B5563;
+
+
+
+/* Review sentences above, then get your score. */
+
+position: absolute;
+width: 259px;
+height: 15px;
+left: 32px;
+top: 412px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+
+color: #9CA3AF;
+
+
+
+/* See Score */
+
+position: absolute;
+width: 130px;
+height: 36px;
+left: 714px;
+top: 402px;
+
+background: #C5007C;
+border-radius: 100px;
+
+
+/* See my score → */
+
+position: absolute;
+width: 90px;
+height: 15px;
+left: 12px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+
+/* Tutor Panel */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 340px;
+height: 832px;
+left: 940px;
+top: 0px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* Aside Hdr */
+
+position: absolute;
+width: 340px;
+height: 50px;
+left: 0px;
+top: 0px;
+
+background: #FFFFFF;
+
+
+/* Practice Tutor */
+
+position: absolute;
+width: 81px;
+height: 15px;
+left: 18px;
+top: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #4B5563;
+
+
+
+/* Rectangle */
+
+position: absolute;
+width: 340px;
+height: 1px;
+left: 0px;
+top: 49px;
+
+background: #E5E7EB;
+
+
+/* ai */
+
+position: absolute;
+width: 308px;
+height: 86px;
+left: 16px;
+top: 62px;
+
+background: #F0F1F8;
+border-radius: 12px;
+
+
+/* First, something you did well. You anchored the intro with a specific date — concrete detail scores well on Content. */
+
+position: absolute;
+width: 282px;
+height: 60px;
+left: 13px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* or 154% */
+
+color: #111827;
+
+
+
+/* ai */
+
+position: absolute;
+width: 308px;
+height: 66px;
+left: 16px;
+top: 156px;
+
+background: #F0F1F8;
+border-radius: 12px;
+
+
+/* Read that sentence aloud. Does one word sound a bit off to you? */
+
+position: absolute;
+width: 282px;
+height: 40px;
+left: 13px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* or 154% */
+
+color: #111827;
+
+
+
+/* Btn-yes */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 36px;
+left: 16px;
+top: 230px;
+
+background: #EFEDFF;
+border: 1px solid #DDD6FE;
+border-radius: 9px;
+
+
+/* ✏️ Yes — I think I know what's off */
+
+position: absolute;
+width: 189px;
+height: 15px;
+left: 12px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #5B21B6;
+
+
+
+/* Btn-no */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 36px;
+left: 16px;
+top: 274px;
+
+background: #F0F1F8;
+border: 1px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* 🤷 Not sure — can you help me? */
+
+position: absolute;
+width: 182px;
+height: 15px;
+left: 12px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #4B5563;
+
+
+
+/* chip */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 28px;
+left: 16px;
+top: 649px;
+
+background: #F0F1F8;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* 🌐 Explain in my language */
+
+position: absolute;
+width: 132px;
+height: 14px;
+left: 12px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+
+/* chip */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 28px;
+left: 16px;
+top: 685px;
+
+background: #F0F1F8;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* 🔍 What pattern is this? */
+
+position: absolute;
+width: 121px;
+height: 14px;
+left: 12px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+
+/* chip */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 28px;
+left: 16px;
+top: 721px;
+
+background: #F0F1F8;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* 💬 Discuss more */
+
+position: absolute;
+width: 84px;
+height: 14px;
+left: 12px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+
+/* Input */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 42px;
+left: 16px;
+top: 757px;
+
+background: #F6F6FB;
+border: 1.5px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* Ask anything in your language… */
+
+position: absolute;
+width: 189px;
+height: 16px;
+left: 14px;
+top: 12px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+
+color: #9CA3AF;
+
+
+
+/* Rectangle */
+
+position: absolute;
+width: 28px;
+height: 28px;
+left: 274px;
+top: 7px;
+
+background: #0D004D;
+border-radius: 15px;
+
+
+/* → */
+
+position: absolute;
+width: 10px;
+height: 15px;
+left: 283px;
+top: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+
+/* English, Spanish, Portuguese, Hindi, or any language */
+
+position: absolute;
+width: 308px;
+height: 13px;
+left: 16px;
+top: 807px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+text-align: center;
+
+color: #9CA3AF;
+
+
+
+/* ai */
+
+position: absolute;
+width: 308px;
+height: 86px;
+left: 16px;
+top: 318px;
+
+background: #F0F1F8;
+border-radius: 12px;
+
+
+/* Good instinct. In Spanish, "energías" is naturally plural — in English "energy" is uncountable. Here's the fix: */
+
+position: absolute;
+width: 282px;
+height: 60px;
+left: 13px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* or 154% */
+
+color: #111827;
+
+
+
+/* Comparison */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 76px;
+left: 16px;
+top: 412px;
+
+background: #EDECF6;
+border: 1px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* YOURS */
+
+position: absolute;
+width: 36px;
+height: 13px;
+left: 12px;
+top: 12px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #FF362A;
+
+
+
+/* …to save energies. */
+
+position: absolute;
+width: 262px;
+height: 16px;
+left: 62px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+
+color: #111827;
+
+
+
+/* Rectangle */
+
+position: absolute;
+width: 308px;
+height: 1px;
+left: 0px;
+top: 38px;
+
+background: #E5E7EB;
+
+
+/* BETTER */
+
+position: absolute;
+width: 37px;
+height: 13px;
+left: 12px;
+top: 50px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #00B057;
+
+
+
+/* …to save energy. */
+
+position: absolute;
+width: 262px;
+height: 16px;
+left: 62px;
+top: 48px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 13px;
+line-height: 16px;
+
+color: #111827;
+
+
+
+/* quiz-btn */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 36px;
+left: 16px;
+top: 539px;
+
+background: #F9E6F3;
+border: 1px solid #F3C6E8;
+border-radius: 9px;
+
+
+/* ⚡ Practise it — 2 quick questions */
+
+position: absolute;
+width: 193px;
+height: 15px;
+left: 12px;
+top: 10px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #C5007C;
+
+
+
+/* Edit it myself btn */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 308px;
+height: 36px;
+left: 15px;
+top: 495px;
+
+background: #E2F5DC;
+border: 1px solid rgba(35, 121, 78, 0.25);
+border-radius: 9px;
+
+
+/* ✏️ Edit it myself */
+
+width: 92px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #00B057;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Modal */
+
+position: absolute;
+width: 460px;
+height: 292px;
+left: 410px;
+top: calc(50% - 292px/2);
+
+background: #FFFFFF;
+border-radius: 18px;
+
+
+/* Modal Hdr */
+
+position: absolute;
+width: 460px;
+height: 68px;
+left: 0px;
+top: 0px;
+
+background: #EFEDFF;
+border-radius: 18px 18px 0px 0px;
+
+
+/* Sentence 1 · Introduction */
+
+position: absolute;
+width: 184px;
+height: 19px;
+left: 20px;
+top: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 15px;
+line-height: 19px;
+/* identical to box height */
+
+color: #111827;
+
+
+
+/* Quick practice · 2 questions */
+
+position: absolute;
+width: 145px;
+height: 14px;
+left: 20px;
+top: 36px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #111827;
+
+opacity: 0.45;
+
+
+/* Frame 2043683586 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+width: 26px;
+height: 26px;
+left: 430px;
+top: 4px;
+
+
+
+/* Rectangle */
+
+width: 26px;
+height: 26px;
+
+background: #111827;
+opacity: 0.1;
+border-radius: 13px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Icon */
+
+position: absolute;
+width: 20px;
+height: 20px;
+left: calc(50% - 20px/2);
+top: calc(50% - 20px/2);
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Vector */
+
+position: absolute;
+left: 25%;
+right: 25%;
+top: 25%;
+bottom: 25%;
+
+border: 1.67px solid #111827;
+
+
+/* ✅ */
+
+position: absolute;
+width: 460px;
+height: 44px;
+left: 0px;
+top: 80px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 44px;
+line-height: 55px;
+text-align: center;
+
+color: #111827;
+
+
+
+/* Rule */
+
+position: absolute;
+width: 420px;
+height: 68px;
+left: 20px;
+top: 136px;
+
+border-radius: 9px;
+
+
+/* "Energy" is uncountable — no plural. Same rule: information, advice, research, progress, furniture. */
+
+position: absolute;
+width: 388px;
+height: 40px;
+left: 16px;
+top: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* or 154% */
+
+color: #111827;
+
+
+
+/* Continue */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 10px;
+
+position: absolute;
+width: 170px;
+height: 34px;
+left: calc(50% - 170px/2);
+top: 232px;
+
+background: #C5007C;
+border-radius: 100px;
+
+
+/* Continue reviewing → */
+
+width: 146px;
+height: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;

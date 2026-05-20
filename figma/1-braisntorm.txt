@@ -1,0 +1,1517 @@
+/* 1 · Brainstorm */
+
+position: relative;
+width: 1280px;
+height: 832px;
+
+background: #EDECF6;
+
+
+/* Nav */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 30px;
+gap: 1069px;
+
+position: absolute;
+width: 1280px;
+height: 56px;
+left: 0px;
+top: 0px;
+
+background: #0D004D;
+
+
+/* Frame 258 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-end;
+padding: 0px;
+gap: 46px;
+
+width: 838.5px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 55 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* pearson-logo */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4.71px;
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* LOGO */
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 0%;
+right: 91.19%;
+top: 0%;
+bottom: 1.7%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 5.59%;
+right: 91.19%;
+top: 8.8%;
+bottom: 10.61%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 94.02%;
+top: 0%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Logo */
+
+position: absolute;
+left: 10.81%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 72.82%;
+right: 12.91%;
+top: 30.01%;
+bottom: 0.04%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 23.16%;
+right: 63.39%;
+top: 30.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 87.89%;
+right: 0%;
+top: 30.01%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 52.74%;
+right: 38.09%;
+top: 30.01%;
+bottom: 1.71%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 37.29%;
+right: 48.45%;
+top: 30.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 60.7%;
+right: 27.43%;
+top: 30.01%;
+bottom: 0.01%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 10.81%;
+right: 75.94%;
+top: 0%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 371px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 255 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 92px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #FFFFFF;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 1 */
+
+position: absolute;
+width: 4px;
+height: 11px;
+left: calc(50% - 4px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #0D1B40;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Brainstorm */
+
+width: 64px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 60px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 2 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Write */
+
+width: 32px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame 259 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 66px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 3 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Review */
+
+width: 42px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Frame 260 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 63px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 4 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Score */
+
+width: 35px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 251 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 32px;
+height: 32px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 252 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px;
+gap: 10px;
+
+width: 32px;
+height: 32px;
+
+background: rgba(255, 255, 255, 0.2);
+border-radius: 40px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* user/user-circle
+
+<p>icon, users, contact</p>
+
+<p>icon, users, contact, 24</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* box */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Vector */
+
+width: 24px;
+height: 24px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Frame 262 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+padding: 0px;
+gap: 22px;
+
+position: absolute;
+width: 664px;
+height: 596px;
+left: 308px;
+top: 88px;
+
+
+
+/* Prompt Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 14px 22px;
+gap: 3px;
+
+width: 664px;
+height: 86px;
+
+background: #FFFFFF;
+border-radius: 14px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* WRITING TASK 2 · BRAINSTORM */
+
+width: 620px;
+height: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #111827;
+
+opacity: 0.35;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Some people think daylight saving time should be abolished. Others believe it still serves a useful purpose. Discuss both views and give your own opinion. */
+
+width: 620px;
+height: 42px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: italic;
+font-weight: 400;
+font-size: 13px;
+line-height: 21px;
+/* or 162% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 2043683587 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+padding: 0px;
+gap: 8px;
+
+width: 664px;
+height: 361px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Mode Toggle */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 3px;
+gap: 2px;
+
+width: 148px;
+height: 30px;
+
+background: #E2E1E9;
+border: 1px solid #E5E7EB;
+border-radius: 15px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* btn-Type-active */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 68px;
+height: 24px;
+
+background: #FFFFFF;
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.08);
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Type */
+
+width: 27px;
+height: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* btn-Voice */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 68px;
+height: 24px;
+
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Voice */
+
+width: 31px;
+height: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 253 */
+
+box-sizing: border-box;
+
+width: 664px;
+height: 323px;
+
+background: #FFFFFF;
+border: 2px solid #E5E7EB;
+border-radius: 24px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* msg-ai */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 13px;
+gap: 10px;
+
+position: absolute;
+width: 417px;
+height: 41px;
+left: 12px;
+top: 12px;
+
+background: #F6F6FB;
+border-radius: 4px 12px 12px 12px;
+
+
+/* When you read this prompt — gut reaction. Keep DST or scrap it? */
+
+width: 391px;
+height: 21px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 21px;
+/* identical to box height, or 162% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* msg-user */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 13px;
+gap: 10px;
+
+position: absolute;
+width: 399px;
+height: 41px;
+left: 253px;
+top: 65px;
+
+background: #EFEDFF;
+border-radius: 12px 12px 4px 12px;
+
+
+/* Scrap it. The time change is really annoying and bad for sleep. */
+
+width: 373px;
+height: 21px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 21px;
+/* identical to box height, or 162% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* msg-ai */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 13px;
+gap: 10px;
+
+position: absolute;
+width: 563.2px;
+height: 62px;
+left: 12px;
+top: 118px;
+
+background: #F6F6FB;
+border-radius: 4px 12px 12px 12px;
+
+
+/* Clear position — PTE rewards that. Now think like a lawyer: what's the strongest argument on your side, and the strongest one against? */
+
+width: 537.2px;
+height: 42px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 21px;
+/* or 162% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* msg-user */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 13px;
+gap: 10px;
+
+position: absolute;
+width: 460px;
+height: 41px;
+left: 192px;
+top: 192px;
+
+background: #EFEDFF;
+border-radius: 12px 12px 4px 12px;
+
+
+/* For: disrupts health and sleep. Against: maybe some industries benefit? */
+
+width: 434px;
+height: 21px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 21px;
+/* identical to box height, or 162% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* msg-ai */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 13px;
+gap: 10px;
+
+position: absolute;
+width: 563.2px;
+height: 62px;
+left: 12px;
+top: 245px;
+
+background: #F6F6FB;
+border-radius: 4px 12px 12px 12px;
+
+
+/* "Some industries benefit" is vague — can you sharpen it? Think about tourism, retail, or energy companies. A specific counter-argument scores much better. */
+
+width: 537.2px;
+height: 42px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 21px;
+/* or 162% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 261 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 664px;
+height: 105px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 263 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 12px;
+
+width: 514px;
+height: 30px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* chip-selected */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 10px;
+
+width: 161px;
+height: 30px;
+
+background: #F6F6FB;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 🤔 Help me take a position */
+
+width: 137px;
+height: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* chip-selected */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 10px;
+
+width: 151px;
+height: 30px;
+
+background: #F6F6FB;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 💡 Suggest an argument */
+
+width: 127px;
+height: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* chip-selected */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 10px;
+
+width: 178px;
+height: 30px;
+
+background: #F6F6FB;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* ⚖️ What’s the counter-view? */
+
+width: 154px;
+height: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Input Bar */
+
+box-sizing: border-box;
+
+width: 664px;
+height: 46px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 100px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ask anything in your language… */
+
+position: absolute;
+width: 189px;
+height: 16px;
+left: 16px;
+top: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+
+color: #9CA3AF;
+
+
+
+/* Rectangle */
+
+position: absolute;
+width: 28px;
+height: 28px;
+left: 627px;
+top: 9px;
+
+background: #0D1B40;
+border-radius: 15px;
+
+
+/* → */
+
+position: absolute;
+width: 10px;
+height: 15px;
+left: 635.5px;
+top: 15.5px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+
+/* You can write in English, Spanish, Portuguese, Hindi, or any language */
+
+width: 664px;
+height: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+text-align: center;
+
+color: #9CA3AF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Start writing → */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 10px;
+
+position: absolute;
+width: 108px;
+height: 31px;
+left: 855px;
+top: 722px;
+
+background: #C5007C;
+border-radius: 100px;
+
+
+/* Start writing → */
+
+width: 84px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;

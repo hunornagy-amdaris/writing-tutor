@@ -1,9 +1,5 @@
-import { EssayTutorClient, EssayTutorProvider } from '@/modules/essay-tutor';
+import { AppShell } from '@/modules/writing-flow';
 
 export default function HomePage() {
-  return (
-    <EssayTutorProvider>
-      <EssayTutorClient />
-    </EssayTutorProvider>
-  );
+  return <AppShell />;
 }

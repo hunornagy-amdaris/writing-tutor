@@ -1,191 +1,202 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:is(.dark *));
+@theme {
+  --font-sans: var(--font-plus-jakarta), system-ui, sans-serif;
 
-:root {
-  /* Pearson Brand Colors */
-  --pearson-navy: #0d004d;
-  --pearson-navy-light: #1a0066;
-  --pearson-lavender: #f0eef8;
-  --pearson-teal: #00c7b1;
-  --pearson-yellow: #ffcb05;
-  --pearson-purple: #7c4dff;
-  --pearson-magenta: #a80087;
-  --text-primary: #171717;
-  --text-secondary: #464646;
-  --surface-light: #f6f6fb;
-  --progress-track: #d1d1d1;
+  --color-canvas: oklch(94.675% 0.0134 290.746);
+  --color-nav-bg: oklch(19.962% 0.1261 274.350);
+  --color-nav-step-num-on: oklch(23.471% 0.0731 265.487);
+  --color-nav-step-inactive: oklch(40.759% 0.0514 266.817);
+  --color-nav-step-inactive-num: oklch(56.925% 0.0342 266.966);
 
-  /* Light Theme - Pearson Style */
-  --background: #edecf6;
-  --foreground: #0d004d;
-  --card: #ffffff;
-  --card-foreground: #0d004d;
-  --popover: #ffffff;
-  --popover-foreground: #0d004d;
-  --primary: #0d004d;
-  --primary-foreground: #ffffff;
-  --secondary: #ffffff;
-  --secondary-foreground: #0d004d;
-  --muted: #e8e6f0;
-  --muted-foreground: #5c5680;
-  --accent: #ffcb05;
-  --accent-foreground: #0d004d;
-  --destructive: #dc2626;
-  --destructive-foreground: #ffffff;
-  --border: #dcd8eb;
-  --input: #dcd8eb;
-  --ring: #0d004d;
-  --chart-1: #0d004d;
-  --chart-2: #00c7b1;
-  --chart-3: #7c4dff;
-  --chart-4: #ffcb05;
-  --chart-5: #ff6b6b;
-  --radius: 1rem;
-  --sidebar-background: #0d004d;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #00c7b1;
-  --sidebar-primary-foreground: #0d004d;
-  --sidebar-accent: #1a0066;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #2a1a5e;
-  --sidebar-ring: #00c7b1;
+  --color-ink-900: oklch(21.008% 0.0318 264.665);
+  --color-ink-700: oklch(27.808% 0.0296 256.848);
+  --color-ink-600: oklch(44.611% 0.0263 256.802);
+  --color-ink-500: oklch(55.102% 0.0234 264.364);
+  --color-ink-400: oklch(71.366% 0.0192 261.325);
+  --color-ink-300: oklch(71.300% 0.0166 257.215);
 
-  /* Success */
-  --success: #10b981;
-  --success-foreground: #ffffff;
+  --color-line: oklch(92.758% 0.0058 264.531);
+  --color-line-strong: oklch(89.108% 0.0261 295.516);
 
-  /* Feedback (from Figma) */
-  --feedback-correct: #00b057;
-  --feedback-correct-bg: #ebf9f0;
-  --feedback-incorrect: #ff362a;
-  --feedback-incorrect-bg: #ffcfcc;
-}
+  --color-surface: oklch(100% 0 0);
+  --color-surface-muted: oklch(97.456% 0.0066 286.276);
+  --color-surface-soft: oklch(95.939% 0.0094 279.688);
+  /* Inline-edit card bg — Figma #FAFAFF, a hair cooler than surface-muted. */
+  --color-surface-edit: oklch(98.391% 0.0083 286.276);
+  /* Fix-progress strip border — Figma rgba(35,121,78,0.2). */
+  --color-success-border-soft: oklch(51.389% 0.1062 157.107 / 0.2);
 
-.dark {
-  /* Dark Theme - Pearson Dark Navy */
-  --background: #0d004d;
-  --foreground: #ffffff;
-  --card: rgba(26, 0, 102, 0.6);
-  --card-foreground: #ffffff;
-  --popover: #1a0066;
-  --popover-foreground: #ffffff;
-  --primary: #00c7b1;
-  --primary-foreground: #0d004d;
-  --secondary: #1a0066;
-  --secondary-foreground: #ffffff;
-  --muted: #2a1a5e;
-  --muted-foreground: #b0a8c8;
-  --accent: #ffcb05;
-  --accent-foreground: #0d004d;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: #2a1a5e;
-  --input: #1a0066;
-  --ring: #00c7b1;
-  --chart-1: #00c7b1;
-  --chart-2: #7c4dff;
-  --chart-3: #ffcb05;
-  --chart-4: #ff6b6b;
-  --chart-5: #3b82f6;
-  --sidebar-background: #0d004d;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #00c7b1;
-  --sidebar-primary-foreground: #0d004d;
-  --sidebar-accent: #1a0066;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #2a1a5e;
-  --sidebar-ring: #00c7b1;
-}
+  --color-msg-ai: oklch(97.456% 0.0066 286.276);
+  --color-msg-user: oklch(95.293% 0.0241 291.043);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar-background: var(--sidebar-background);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --font-family-sans: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-family-body: 'Plus Jakarta Sans', 'Open Sans', system-ui, sans-serif;
-  --font-family-inter: 'Inter', system-ui, sans-serif;
-  --font-family-jakarta: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-family-open-sans: 'Open Sans', system-ui, sans-serif;
-  --color-pearson-navy: #0d004d;
-  --color-pearson-navy-light: #1a0066;
-  --color-pearson-magenta: #a80087;
-  --color-pearson-teal: #00c7b1;
-  --color-pearson-yellow: #ffcb05;
-  --color-pearson-lavender: #f0eef8;
-  --color-pearson-purple: #7c4dff;
-  --color-text-primary: #171717;
-  --color-text-secondary: #464646;
-  --color-surface-light: #f6f6fb;
-  --color-progress-track: #d1d1d1;
-  --color-success: var(--success);
-  --color-success-foreground: var(--success-foreground);
-  --color-feedback-correct: var(--feedback-correct);
-  --color-feedback-correct-bg: var(--feedback-correct-bg);
-  --color-feedback-incorrect: var(--feedback-incorrect);
-  --color-feedback-incorrect-bg: var(--feedback-incorrect-bg);
+  --color-accent-violet: oklch(82.864% 0.0893 285.707);
+  --color-accent-violet-soft: oklch(95.293% 0.0241 291.043);
+  --color-accent-violet-border: oklch(89.427% 0.0549 293.283);
+
+  --color-magenta: oklch(54.065% 0.2240 352.070);
+  --color-magenta-soft-bg: oklch(94.383% 0.0267 337.065);
+  --color-magenta-soft-border: oklch(87.571% 0.0674 334.889);
+
+  --color-quiz-violet-ink: oklch(43.199% 0.2106 292.759);
+
+  --color-danger: oklch(65.012% 0.2361 28.994);
+  --color-danger-soft: oklch(89.519% 0.0546 22.403);
+
+  --color-success: oklch(66.272% 0.1769 151.348);
+  --color-success-soft: oklch(96.924% 0.0189 157.877);
+  --color-success-ink: oklch(51.098% 0.1107 158.632);
+  --color-success-bright: oklch(69.237% 0.1674 154.102);
+
+  --color-edit-green-bg: oklch(94.941% 0.0387 138.159);
+  --color-edit-green-border: oklch(51.389% 0.1062 157.107 / 0.25);
+
+  --color-overlay: oklch(23.221% 0.0747 266.384 / 0.5);
+
+  --color-mode-toggle-bg: oklch(91.285% 0.0108 291.938);
+
+  /* Score screen — neutral grey for initial-score card header (#F5F5F6). */
+  --color-score-soft: oklch(96.516% 0.0019 286.378);
+
+  /* Named spacing for Figma-specific values not on the 4pt scale. */
+  --spacing-prompt-card-y: 0.875rem; /* 14px */
+  --spacing-prompt-card-x: 1.375rem; /* 22px */
+  --spacing-nav-x: 1.875rem; /* 30px */
+  --spacing-msg-x: 0.8125rem; /* 13px */
+  --spacing-msg-y: 0.625rem; /* 10px */
+  --spacing-tutor-panel: 21.25rem; /* 340px sidebar width */
+  --spacing-prompt-narrow: 41.5rem; /* 664px brainstorm column */
+  --spacing-prompt-wide: 54.75rem; /* 876px write/review column */
+  --spacing-write-area: 52rem; /* 832px write inner */
+  --spacing-nav-divider: 1.375rem; /* 22px step divider line */
+  --spacing-step-circle: 1.25rem; /* 20px step circle */
+  --spacing-card-h-x: 1.125rem; /* 18px essay card header/footer inner x */
+  --spacing-card-h-y: 0.875rem; /* 14px essay card header/footer inner y */
+  --spacing-card-btn: 1.9375rem; /* 31px Submit pill height */
+  --spacing-tutor-input: 2.625rem; /* 42px tutor chat input bar height */
+  --spacing-score-bar: 4.25rem; /* 68px score-bar height */
+  --spacing-score-overall: 4.5rem; /* 72px overall pill width */
+  --spacing-score-overall-h: 2.875rem; /* 46px overall pill height */
+  --spacing-score-divider: 2.625rem; /* 42px score-bar inner divider height */
+  --spacing-sentence-card: 3.75rem; /* 60px review sentence card height */
+  --spacing-paragraph-tab: 1.9375rem; /* 31px paragraph tab height */
+  --spacing-tutor-btn: 2.25rem; /* 36px tutor panel CTA height */
+  --spacing-mode-toggle: 1.875rem; /* 30px mode toggle height */
+  --spacing-mode-toggle-w: 9.25rem; /* 148px brainstorm mode toggle width */
+  --spacing-input-bar: 2.875rem; /* 46px chat input bar height */
+  --spacing-voice-cta-h: 2.375rem; /* 38px done CTA height */
+  --spacing-voice-cta-w: 12.5rem; /* 200px done CTA width */
+  --spacing-voice-panel: 22.5rem; /* 360px voice panel height */
+  --spacing-comparison-card: 4.75rem; /* 76px comparison card height */
+  --spacing-see-score: 1.9375rem; /* 31px see-score CTA height */
+  --spacing-score-card: 14.25rem; /* 228px score card width */
+  --spacing-score-card-h: 10rem; /* 160px score card height */
+  --spacing-score-cell: 3.5625rem; /* 57px score cell width */
+  --spacing-score-cell-h: 3.125rem; /* 50px score cell height */
+  --spacing-score-head: 3.75rem; /* 60px score card header height */
+  --spacing-reflect-card: 30rem; /* 480px reflect card width */
+  --spacing-reflect-card-h: 5.625rem; /* 90px reflect card height */
+  --spacing-score-btn-h: 2.125rem; /* 34px score-screen button height */
+  --spacing-score-btn-done: 8.125rem; /* 130px Done for today width */
+  --spacing-score-btn-next: 10.125rem; /* 162px Start next session width */
+  --spacing-score-col: 25rem; /* 400px left offset */
+  --spacing-score-col-2: 15.75rem; /* 252px offset between two score cards */
+
+  /* Quiz modal — Wave 3. */
+  --spacing-modal-w: 28.75rem; /* 460px modal width */
+  --spacing-modal-h: 17.25rem; /* 276px MC + Gap modal height */
+  --spacing-modal-h-complete: 18.25rem; /* 292px Complete modal height */
+  --spacing-modal-head: 4.25rem; /* 68px modal header strip height */
+  --spacing-modal-close: 1.625rem; /* 26px close button circle */
+  --spacing-quiz-progress-bar-w: 5rem; /* 80px progress bar segment width */
+  --spacing-quiz-progress-bar-h: 0.25rem; /* 4px progress bar segment height */
+  --spacing-quiz-check-w: 4.625rem; /* 74px Check pill width */
+  --spacing-quiz-check-h: 1.9375rem; /* 31px Check pill height */
+  --spacing-quiz-fb-h: 1.875rem; /* 30px feedback row height */
+  --spacing-quiz-fb-w: 26.25rem; /* 420px feedback / rule width */
+  --spacing-quiz-gap-w: 5.625rem; /* 90px gap-fill box width */
+  --spacing-quiz-gap-h: 2rem; /* 32px gap-fill box height */
+  --spacing-quiz-rule-h: 4.25rem; /* 68px Rule card height */
+  --spacing-quiz-continue-w: 10.625rem; /* 170px Continue pill width */
+  --spacing-quiz-continue-h: 2.125rem; /* 34px Continue pill height */
+  --spacing-quiz-emoji: 2.75rem; /* 44px completion emoji height */
+
+  /* Quiz typography — Figma-specific. */
+  --text-modal-title: 0.9375rem; /* 15/19 modal header title */
+  --text-modal-title--line-height: 1.1875rem;
+  --text-modal-sub: 0.6875rem; /* 11/14 modal header subtitle */
+  --text-modal-sub--line-height: 0.875rem;
+  --text-quiz-body: 0.875rem; /* 14/18 quiz body / gap fill prompt */
+  --text-quiz-body--line-height: 1.125rem;
+  --text-quiz-emoji: 2.75rem; /* 44/55 completion emoji */
+  --text-quiz-emoji--line-height: 3.4375rem;
+
+  /* Radii */
+  --radius-pill: 9999px;
+  --radius-card: 0.875rem; /* 14px */
+  --radius-panel: 1.125rem; /* 18px modal */
+  --radius-button: 0.5625rem; /* 9px tabs/quiz btn */
+  --radius-msg: 0.75rem; /* 12px chat bubble */
+  --radius-md: 0.375rem; /* 6px inline edit */
+  --radius-sm-plus: 0.5rem; /* 8px fix-progress strip */
+  --radius-xl: 1.5rem; /* 24px chat/voice panel */
+
+  /* Font sizes — small Figma-specific values; pair value + line-height. */
+  --text-eyebrow: 0.625rem;
+  --text-eyebrow--line-height: 0.8125rem;
+  --text-meta: 0.6875rem;
+  --text-meta--line-height: 0.875rem;
+  --text-base-13: 0.8125rem;
+  --text-base-13--line-height: 1.25rem;
+  --text-prompt: 0.8125rem;
+  --text-prompt--line-height: 1.3125rem;
+  --text-input: 0.8125rem;
+  --text-input--line-height: 1rem;
+  --text-tiny: 0.5625rem;
+  --text-tiny--line-height: 0.6875rem;
+
+  /* Score screen — Figma-specific sizes. */
+  --text-display-26: 1.625rem; /* 26/33 — Score greeting */
+  --text-display-26--line-height: 2.0625rem;
+  --text-score-big: 2.375rem; /* 38/48 — big score number */
+  --text-score-big--line-height: 3rem;
+  --text-score-slash: 0.875rem; /* 14/18 — "/ 90" */
+  --text-score-slash--line-height: 1.125rem;
+  --text-cell-num: 0.8125rem; /* 13/16 — cell numerator and reflect body */
+  --text-cell-num--line-height: 1rem;
+  --text-cell-label: 0.5rem; /* 8/10 — cell label & card eyebrow */
+  --text-cell-label--line-height: 0.625rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Open Sans', system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-canvas text-ink-900 font-sans antialiased;
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  width: 12px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #d1d1d1;
-  border-radius: 6px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #b8b8b8;
+.voice-orb {
+  background: linear-gradient(
+    45deg,
+    oklch(19.962% 0.1261 274.35) 39.67%,
+    oklch(54.065% 0.224 352.07) 110.4%
+  );
+  box-shadow: 0 0 24px 4px oklch(54.065% 0.224 352.07 / 0.35);
+  border-radius: var(--radius-pill);
+  animation: voice-orb-pulse 1.8s ease-in-out infinite;
 }
 
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes voice-orb-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.88;
+  }
 }
 
-.animate-spin-slow {
-  animation: spin-slow 8s linear infinite;
+@media (prefers-reduced-motion: reduce) {
+  .voice-orb {
+    animation: none;
+  }
 }

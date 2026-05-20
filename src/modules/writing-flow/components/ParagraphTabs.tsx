@@ -1,0 +1,45 @@
+'use client';
+
+import type { ParagraphLabel } from '@/modules/writing-flow/types/review.types';
+
+type ParagraphTabItem = {
+  label: ParagraphLabel;
+  hasErrors: boolean;
+};
+
+type ParagraphTabsProps = {
+  tabs: ParagraphTabItem[];
+  activeLabel: ParagraphLabel;
+  onChange: (label: ParagraphLabel) => void;
+};
+
+export function ParagraphTabs({ tabs, activeLabel, onChange }: ParagraphTabsProps) {
+  return (
+    <div role="tablist" aria-label="Paragraphs" className="flex items-center gap-1">
+      {tabs.map((tab) => {
+        const isActive = tab.label === activeLabel;
+        return (
+          <button
+            key={tab.label}
+            role="tab"
+            type="button"
+            aria-selected={isActive}
+            onClick={() => onChange(tab.label)}
+            className={
+              isActive
+                ? 'flex h-paragraph-tab items-center gap-1 rounded-button bg-accent-violet px-3 py-2 text-xs font-semibold text-ink-600'
+                : 'flex h-paragraph-tab items-center gap-1 rounded-button border border-line bg-surface px-3 py-2 text-xs font-semibold text-ink-400'
+            }
+          >
+            <span>{tab.label}</span>
+            {tab.hasErrors ? (
+              <span aria-label="has errors" className="text-xs leading-none text-danger">
+                ●
+              </span>
+            ) : null}
+          </button>
+        );
+      })}
+    </div>
+  );
+}

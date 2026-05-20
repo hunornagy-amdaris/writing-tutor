@@ -1,0 +1,1401 @@
+/* 2b · Write – chat active */
+
+position: relative;
+width: 1280px;
+height: 832px;
+
+background: #EDECF6;
+
+
+/* Nav */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 30px;
+gap: 1069px;
+
+position: absolute;
+width: 1280px;
+height: 56px;
+left: 0px;
+top: 0px;
+
+background: #0D004D;
+
+
+/* Frame 258 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-end;
+padding: 0px;
+gap: 46px;
+
+width: 838.5px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 55 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* pearson-logo */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4.71px;
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* LOGO */
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 0%;
+right: 91.19%;
+top: 0%;
+bottom: 1.7%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 5.59%;
+right: 91.19%;
+top: 8.8%;
+bottom: 10.61%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 94.02%;
+top: 0%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Logo */
+
+position: absolute;
+left: 10.81%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 72.82%;
+right: 12.91%;
+top: 30.01%;
+bottom: 0.04%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 23.16%;
+right: 63.39%;
+top: 30.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 87.89%;
+right: 0%;
+top: 30.01%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 52.74%;
+right: 38.09%;
+top: 30.01%;
+bottom: 1.71%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 37.29%;
+right: 48.45%;
+top: 30.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 60.7%;
+right: 27.43%;
+top: 30.01%;
+bottom: 0.01%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 10.81%;
+right: 75.94%;
+top: 0%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 371px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 255 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 92px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 1 */
+
+position: absolute;
+width: 4px;
+height: 11px;
+left: calc(50% - 4px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Brainstorm */
+
+width: 64px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 60px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #FFFFFF;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 2 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #0D1B40;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Write */
+
+width: 32px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame 259 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 66px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 3 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Review */
+
+width: 42px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Frame 260 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 63px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 4 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Score */
+
+width: 35px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 251 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 32px;
+height: 32px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 252 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px;
+gap: 10px;
+
+width: 32px;
+height: 32px;
+
+background: rgba(255, 255, 255, 0.2);
+border-radius: 40px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* user/user-circle
+
+<p>icon, users, contact</p>
+
+<p>icon, users, contact, 24</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* box */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Vector */
+
+width: 24px;
+height: 24px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Prompt Card */
+
+position: absolute;
+width: 876px;
+height: 86px;
+left: 32px;
+top: 70px;
+
+background: #FFFFFF;
+border-radius: 14px;
+
+
+/* WRITING TASK 2 · 40 MINUTES · 250+ WORDS */
+
+position: absolute;
+width: 220px;
+height: 13px;
+left: 22px;
+top: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #111827;
+
+opacity: 0.35;
+
+
+/* Some people think daylight saving time should be abolished. Others believe it still serves a useful purpose. Discuss both views and give your own opinion. */
+
+position: absolute;
+width: 832px;
+height: 42px;
+left: 22px;
+top: 30px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: italic;
+font-weight: 400;
+font-size: 13px;
+line-height: 21px;
+/* or 162% */
+
+color: #111827;
+
+
+
+/* Essay Card */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 876px;
+height: 320px;
+left: 32px;
+top: 172px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+border-radius: 14px;
+
+
+/* Header */
+
+position: absolute;
+width: 876px;
+height: 40px;
+left: 0px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 14px 14px 0px 0px;
+
+
+/* YOUR ESSAY */
+
+position: absolute;
+width: 69px;
+height: 14px;
+left: 18px;
+top: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #9CA3AF;
+
+
+
+/* 147 / 250 words */
+
+position: absolute;
+width: 82px;
+height: 14px;
+left: 780px;
+top: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #9CA3AF;
+
+
+
+/* Rectangle */
+
+position: absolute;
+width: 876px;
+height: 1px;
+left: 0px;
+top: 39px;
+
+background: #E5E7EB;
+
+
+/* Textarea */
+
+position: absolute;
+width: 876px;
+height: 160px;
+left: 0px;
+top: 40px;
+
+background: #FFFFFF;
+
+
+/* Daylight saving time was first introduced in 1916 as a way to save energy. Many countries still use it today, but recent research shows it may not be effective. Opponents of DST argue that it has significant negative effects on human health. Studies show that the disruption to sleep patterns caused by the time shift leads to increased rates of cardiovascular events. */
+
+position: absolute;
+width: 832px;
+height: 130px;
+left: 20px;
+top: 16px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 26px;
+/* or 186% */
+
+color: #4B5563;
+
+
+
+/* Footer */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 876px;
+height: 44px;
+left: 0px;
+top: 276px;
+
+background: #F0F1F8;
+border: 1px solid #E5E7EB;
+border-radius: 0px 0px 14px 14px;
+
+
+/* 38 more words needed. */
+
+position: absolute;
+width: 124px;
+height: 14px;
+left: 18px;
+top: 14px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #9CA3AF;
+
+
+
+/* Submit */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
+gap: 10px;
+
+position: absolute;
+width: 156px;
+height: 31px;
+left: 696px;
+top: 7px;
+
+background: #C5007C;
+border-radius: 100px;
+
+
+/* Submit for feedback → */
+
+width: 132px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Tutor Panel */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 340px;
+height: 832px;
+left: 940px;
+top: 0px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* Aside Header */
+
+position: absolute;
+width: 340px;
+height: 50px;
+left: 0px;
+top: 0px;
+
+background: #FFFFFF;
+
+
+/* Practice Tutor */
+
+position: absolute;
+width: 81px;
+height: 15px;
+left: 18px;
+top: 18px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #4B5563;
+
+
+
+/* Rectangle */
+
+position: absolute;
+width: 340px;
+height: 1px;
+left: 0px;
+top: 49px;
+
+background: #E5E7EB;
+
+
+/* msg-ai */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 13px;
+gap: 10px;
+
+position: absolute;
+width: 308px;
+height: 80px;
+left: 16px;
+top: 62px;
+
+background: #F6F6FB;
+border-radius: 12px;
+
+
+/* Your brainstorm looked solid. Write your essay now — tap below if you get stuck, or ask me anything. */
+
+width: 282px;
+height: 60px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* or 154% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* msg-user */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 11px;
+gap: 10px;
+
+position: absolute;
+width: 191px;
+height: 40px;
+left: 133px;
+top: 154px;
+
+background: #EFEDFF;
+border-radius: 12px;
+
+
+/* How should I start the intro? */
+
+width: 169px;
+height: 20px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* identical to box height, or 154% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* msg-ai-2 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 13px;
+gap: 10px;
+
+position: absolute;
+width: 308px;
+height: 100px;
+left: 16px;
+top: 206px;
+
+background: #F6F6FB;
+border-radius: 12px;
+
+
+/* Try this: paraphrase the prompt, then state your position. "While some argue DST still has merit, this essay will argue it should be abolished." */
+
+width: 282px;
+height: 80px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* or 154% */
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* chip */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 28px;
+left: 16px;
+top: 613px;
+
+background: #F6F6FB;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* 🤔 What do you think of my argument? */
+
+position: absolute;
+width: 199px;
+height: 14px;
+left: 12px;
+top: 8px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+
+/* chip */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 28px;
+left: 16px;
+top: 649px;
+
+background: #F6F6FB;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* 🔍 Does this sentence sound natural? */
+
+position: absolute;
+width: 194px;
+height: 14px;
+left: 12px;
+top: 8px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+
+/* chip */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 28px;
+left: 16px;
+top: 685px;
+
+background: #F6F6FB;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* 📋 What's missing from my structure? */
+
+position: absolute;
+width: 195px;
+height: 14px;
+left: 12px;
+top: 8px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+
+/* chip */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 28px;
+left: 16px;
+top: 721px;
+
+background: #F6F6FB;
+border: 1px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* 💬 I'm stuck — talk me through it */
+
+position: absolute;
+width: 167px;
+height: 14px;
+left: 12px;
+top: 8px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 11px;
+line-height: 14px;
+/* identical to box height */
+
+color: #4B5563;
+
+
+
+/* Input */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 308px;
+height: 42px;
+left: 16px;
+top: 757px;
+
+background: #F6F6FB;
+border: 1.5px solid #E5E7EB;
+border-radius: 100px;
+
+
+/* Ask anything in your language… */
+
+position: absolute;
+width: 189px;
+height: 16px;
+left: 14px;
+top: 12px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+
+color: #9CA3AF;
+
+
+
+/* Rectangle */
+
+position: absolute;
+width: 28px;
+height: 28px;
+left: 274px;
+top: 7px;
+
+background: #0D004D;
+border-radius: 15px;
+
+
+/* → */
+
+position: absolute;
+width: 10px;
+height: 15px;
+left: 283px;
+top: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+
+/* English, Spanish, Portuguese, Hindi, or any language */
+
+position: absolute;
+width: 308px;
+height: 13px;
+left: 16px;
+top: 807px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+text-align: center;
+
+color: #9CA3AF;
+

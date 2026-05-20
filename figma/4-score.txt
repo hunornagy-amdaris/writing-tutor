@@ -1,0 +1,2038 @@
+/* 4 · Score */
+
+position: relative;
+width: 1280px;
+height: 832px;
+
+background: #EDECF6;
+
+
+/* Nav */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 30px;
+gap: 1069px;
+
+position: absolute;
+width: 1280px;
+height: 56px;
+left: 0px;
+top: 0px;
+
+background: #0D004D;
+
+
+/* Frame 258 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-end;
+padding: 0px;
+gap: 46px;
+
+width: 838.5px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 55 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* pearson-logo */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4.71px;
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* LOGO */
+
+width: 119px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 0%;
+right: 91.19%;
+top: 0%;
+bottom: 1.7%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 5.59%;
+right: 91.19%;
+top: 8.8%;
+bottom: 10.61%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 94.02%;
+top: 0%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Logo */
+
+position: absolute;
+left: 10.81%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 72.82%;
+right: 12.91%;
+top: 30.01%;
+bottom: 0.04%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 23.16%;
+right: 63.39%;
+top: 30.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 87.89%;
+right: 0%;
+top: 30.01%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 52.74%;
+right: 38.09%;
+top: 30.01%;
+bottom: 1.71%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 37.29%;
+right: 48.45%;
+top: 30.01%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 60.7%;
+right: 27.43%;
+top: 30.01%;
+bottom: 0.01%;
+
+background: #FFFFFF;
+
+
+/* Vector */
+
+position: absolute;
+left: 10.81%;
+right: 75.94%;
+top: 0%;
+bottom: 1.7%;
+
+background: #FFFFFF;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 359px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 255 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 88px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 1 */
+
+position: absolute;
+width: 4px;
+height: 11px;
+left: calc(50% - 4px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Brainstorm */
+
+width: 64px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 56px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 2 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Write */
+
+width: 32px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame 259 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 66px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #3D4966;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 3 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #6E778C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Review */
+
+width: 42px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #3D4966;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 22px;
+height: 1px;
+
+background: #FFFFFF;
+opacity: 0.12;
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Frame 256 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 59px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* Frame 254 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+isolation: isolate;
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 20px;
+height: 20px;
+
+background: #FFFFFF;
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* 4 */
+
+position: absolute;
+width: 6px;
+height: 11px;
+left: calc(50% - 6px/2);
+top: calc(50% - 11px/2 + 0.5px);
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #0D1B40;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Score */
+
+width: 35px;
+height: 15px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 251 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 32px;
+height: 32px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 252 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px;
+gap: 10px;
+
+width: 32px;
+height: 32px;
+
+background: rgba(255, 255, 255, 0.2);
+border-radius: 40px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* user/user-circle
+
+<p>icon, users, contact</p>
+
+<p>icon, users, contact, 24</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* box */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Vector */
+
+width: 24px;
+height: 24px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Good work, Sofia 🎉 */
+
+position: absolute;
+width: 254px;
+height: 33px;
+left: 400px;
+top: 80px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 26px;
+line-height: 33px;
+/* identical to box height */
+
+color: #0D1B40;
+
+
+
+/* Session 12 · DST essay · Estimated score based on PTE Academic rubric */
+
+position: absolute;
+width: 480px;
+height: 20px;
+left: 400px;
+top: 120px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+
+color: #4B5563;
+
+
+
+/* YOUR SCORE */
+
+position: absolute;
+width: 60px;
+height: 11px;
+left: 400px;
+top: 152px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #0D1B40;
+
+
+
+/* Score Card - INITIAL SCORE */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 228px;
+height: 160px;
+left: 400px;
+top: 170px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* Header */
+
+position: absolute;
+width: 228px;
+height: 60px;
+left: 0px;
+top: 0px;
+
+background: #F5F5F6;
+
+
+/* 72 */
+
+position: absolute;
+width: 45px;
+height: 48px;
+left: 16px;
+top: 6px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 38px;
+line-height: 48px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* / 90 */
+
+position: absolute;
+width: 28px;
+height: 18px;
+left: 62px;
+top: 20px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: rgba(78, 81, 86, 0.5);
+
+
+
+/* INITIAL SCORE */
+
+position: absolute;
+width: 57px;
+height: 10px;
+left: 16px;
+top: 46px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: rgba(156, 163, 173, 0.5);
+
+
+
+/* Content */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 0px;
+top: 60px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 3/3 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Content */
+
+position: absolute;
+width: 33px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Form */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 57px;
+top: 60px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 2/2 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Form */
+
+position: absolute;
+width: 21px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Develop. */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 114px;
+top: 60px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 5/6 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #FF362A;
+
+
+
+/* Develop. */
+
+position: absolute;
+width: 36px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Grammar */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 171px;
+top: 60px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 1/2 */
+
+position: absolute;
+width: 21px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #FF362A;
+
+
+
+/* Grammar */
+
+position: absolute;
+width: 37px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Ling. */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 0px;
+top: 110px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 1/2 */
+
+position: absolute;
+width: 21px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #FF362A;
+
+
+
+/* Ling. */
+
+position: absolute;
+width: 20px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Vocab */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 57px;
+top: 110px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 2/2 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Vocab */
+
+position: absolute;
+width: 26px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Spell. */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 114px;
+top: 110px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 2/2 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Spell. */
+
+position: absolute;
+width: 23px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Conv. */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 171px;
+top: 110px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 2/2 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Conv. */
+
+position: absolute;
+width: 24px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Score Card - AFTER FIXING */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 228px;
+height: 160px;
+left: 652px;
+top: 170px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* Header */
+
+position: absolute;
+width: 228px;
+height: 60px;
+left: 0px;
+top: 0px;
+
+background: #C1BFFF;
+
+
+/* 79 */
+
+position: absolute;
+width: 45px;
+height: 48px;
+left: 16px;
+top: 6px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 38px;
+line-height: 48px;
+/* identical to box height */
+
+color: #111827;
+
+
+
+/* / 90 */
+
+position: absolute;
+width: 28px;
+height: 18px;
+left: 62px;
+top: 20px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+color: rgba(9, 12, 20, 0.5);
+
+
+
+/* AFTER REVIEWING */
+
+position: absolute;
+width: 72px;
+height: 10px;
+left: 16px;
+top: 46px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: rgba(17, 24, 39, 0.5);
+
+
+
+/* Content */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 0px;
+top: 60px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 3/3 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Content */
+
+position: absolute;
+width: 33px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Form */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 57px;
+top: 60px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 2/2 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Form */
+
+position: absolute;
+width: 21px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Develop. */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 114px;
+top: 60px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 6/6 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Develop. */
+
+position: absolute;
+width: 36px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Grammar */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 171px;
+top: 60px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 2/2 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Grammar */
+
+position: absolute;
+width: 37px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Ling. */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 0px;
+top: 110px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 1/2 */
+
+position: absolute;
+width: 21px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #FF362A;
+
+
+
+/* Ling. */
+
+position: absolute;
+width: 20px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Vocab */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 57px;
+top: 110px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 2/2 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Vocab */
+
+position: absolute;
+width: 26px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Spell. */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 114px;
+top: 110px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 2/2 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Spell. */
+
+position: absolute;
+width: 23px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* Conv. */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 57px;
+height: 50px;
+left: 171px;
+top: 110px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+
+
+/* 2/2 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 6px;
+top: 7px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+
+color: #00B057;
+
+
+
+/* Conv. */
+
+position: absolute;
+width: 24px;
+height: 10px;
+left: 4px;
+top: 27px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+
+/* REFLECT & PLAN */
+
+position: absolute;
+width: 73px;
+height: 11px;
+left: 400px;
+top: 369px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 9px;
+line-height: 11px;
+
+color: #0D1B40;
+
+
+
+/* Reflect - Pattern across 3 sessions */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 12px 16px;
+gap: 6px;
+
+position: absolute;
+width: 480px;
+height: 90px;
+left: 400px;
+top: 389px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* Pattern across 3 sessions */
+
+width: 122px;
+height: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Uncountable nouns have come up three times. What do you notice about when you make this error — is it specific types of nouns, or specific topics? */
+
+width: 448px;
+height: 47px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Reflect - Something to explore next */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 12px 16px;
+gap: 6px;
+
+position: absolute;
+width: 480px;
+height: 90px;
+left: 400px;
+top: 493px;
+
+background: #FFFFFF;
+border: 1px solid #E5E7EB;
+border-radius: 9px;
+
+
+/* Something to explore next */
+
+width: 129px;
+height: 13px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 13px;
+/* identical to box height */
+
+color: #9CA3AD;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Your sentence structures are consistent — a real strength. But Linguistic Range is still capping you. Try varying your sentence openings in the next session. */
+
+width: 448px;
+height: 47px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+
+color: #111827;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Done for today */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 130px;
+height: 34px;
+left: 400px;
+top: 599px;
+
+background: #FFFFFF;
+border: 1.5px solid #E5E7EB;
+border-radius: 17px;
+
+
+/* Done for today */
+
+width: 94px;
+height: 16px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 13px;
+line-height: 16px;
+
+color: #4B5563;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Start Next Session */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 162px;
+height: 34px;
+left: 718px;
+top: 599px;
+
+background: #C5007C;
+border-radius: 17px;
+
+
+/* Start next session → */
+
+width: 125px;
+height: 16px;
+
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 13px;
+line-height: 16px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
