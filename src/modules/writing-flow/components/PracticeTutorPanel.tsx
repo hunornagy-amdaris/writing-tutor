@@ -43,7 +43,7 @@ export function PracticeTutorPanel({
   headerLabel,
 }: PracticeTutorPanelProps) {
   return (
-    <aside className="flex h-full w-tutor-panel flex-col border-l border-line bg-surface">
+    <aside className="motion-fade-in-right flex h-full w-tutor-panel flex-col border-l border-line bg-surface">
       <header className="relative flex h-12 items-center border-b border-line px-card-h-x">
         <span className="text-xs font-semibold text-ink-600">
           {headerLabel ?? DEFAULT_HEADER_LABEL}
@@ -70,7 +70,7 @@ export function PracticeTutorPanel({
             key={chip.id}
             type="button"
             onClick={() => onSendMessage(chip.label)}
-            className="flex h-7 w-full items-center rounded-pill border border-line bg-surface-muted px-3 text-left text-meta font-semibold text-ink-600 transition-opacity duration-200 ease-out hover:opacity-80"
+            className="motion-press flex h-7 w-full items-center rounded-pill border border-line bg-surface-muted px-3 text-left text-meta font-semibold text-ink-600 hover:opacity-80"
           >
             {chip.label}
           </button>

@@ -94,7 +94,7 @@ export function ReviewTutorPanel({ selectedSentence }: ReviewTutorPanelProps) {
   };
 
   return (
-    <aside className="flex h-full w-tutor-panel flex-col border-l border-line bg-surface">
+    <aside className="motion-fade-in-right flex h-full w-tutor-panel flex-col border-l border-line bg-surface">
       <PanelHeader mode={tutorMode} onChangeMode={setTutorMode} />
 
       {tutorMode === 'voice' ? (
@@ -106,14 +106,14 @@ export function ReviewTutorPanel({ selectedSentence }: ReviewTutorPanelProps) {
       ) : (
         <div className="flex flex-1 flex-col gap-3 overflow-y-auto px-4 pt-4">
           {editMode ? (
-            <>
+            <div className="motion-fade-in-down flex flex-col gap-3">
               <AiBubble>
                 {
                   'Great — "energy" is correct. Edit the sentence directly above, then tap Resubmit to see your updated score.'
                 }
               </AiBubble>
               <FixProgressStrip progress={fixProgress} />
-            </>
+            </div>
           ) : null}
 
           <AiBubble>
@@ -132,14 +132,14 @@ export function ReviewTutorPanel({ selectedSentence }: ReviewTutorPanelProps) {
               <button
                 type="button"
                 onClick={handleYesSpotted}
-                className="w-full rounded-button border border-accent-violet-border bg-accent-violet-soft px-3 py-2 text-left text-xs font-bold text-quiz-violet-ink"
+                className="motion-press w-full rounded-button border border-accent-violet-border bg-accent-violet-soft px-3 py-2 text-left text-xs font-bold text-quiz-violet-ink"
               >
                 {"✏️ Yes — I think I know what's off"}
               </button>
               <button
                 type="button"
                 onClick={handleNotSure}
-                className="w-full rounded-button border border-line bg-surface-soft px-3 py-2 text-left text-xs font-bold text-ink-600"
+                className="motion-press w-full rounded-button border border-line bg-surface-soft px-3 py-2 text-left text-xs font-bold text-ink-600"
               >
                 🤷 Not sure — can you help me?
               </button>
@@ -189,7 +189,7 @@ function ModeToggle({
   onChange: (m: TutorMode) => void;
 }) {
   const baseBtn =
-    'flex h-6 w-16 items-center justify-center rounded-msg text-meta font-bold';
+    'motion-press flex h-6 w-16 items-center justify-center rounded-msg text-meta font-bold transition-colors';
   const activeBtn = `${baseBtn} bg-surface text-ink-600 shadow-sm`;
   const inactiveBtn = `${baseBtn} text-ink-400`;
   return (
@@ -253,14 +253,14 @@ function ExplainedBlock({
       <button
         type="button"
         onClick={onEditMyself}
-        className="w-full rounded-button border border-edit-green-border bg-edit-green-bg px-3 py-2 text-xs font-bold text-success"
+        className="motion-press w-full rounded-button border border-edit-green-border bg-edit-green-bg px-3 py-2 text-xs font-bold text-success"
       >
         ✏️ Edit it myself
       </button>
       <button
         type="button"
         onClick={onPractise}
-        className="w-full rounded-button border border-magenta-soft-border bg-magenta-soft-bg px-3 py-2 text-xs font-bold text-magenta"
+        className="motion-press w-full rounded-button border border-magenta-soft-border bg-magenta-soft-bg px-3 py-2 text-xs font-bold text-magenta"
       >
         ⚡ Practise it — 2 quick questions
       </button>

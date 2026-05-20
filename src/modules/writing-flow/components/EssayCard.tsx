@@ -28,8 +28,8 @@ export function EssayCard({
         : `Ready to submit.`;
 
   return (
-    <section className="mt-4 w-full overflow-hidden rounded-card border border-line bg-surface">
-      <div className="flex h-10 items-center justify-between border-b border-line px-card-h-x">
+    <section className="motion-fade-in-up flex min-h-0 w-full flex-1 flex-col overflow-hidden rounded-card border border-line bg-surface">
+      <div className="flex h-10 shrink-0 items-center justify-between border-b border-line px-card-h-x">
         <span className="text-meta font-bold text-ink-400">YOUR ESSAY</span>
         <span className="text-meta font-normal text-ink-400">
           {wordCount} / {MIN_WORDS} words
@@ -40,7 +40,7 @@ export function EssayCard({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Write your essay here…"
-        className="block min-h-essay-min w-full resize-none border-0 bg-surface p-5 text-base-13 font-normal text-ink-700 outline-none placeholder:text-ink-400"
+        className="block w-full flex-1 resize-none border-0 bg-surface p-5 text-base-13 font-normal text-ink-700 outline-none placeholder:text-ink-400"
         aria-label="Your essay"
       />
 
@@ -52,7 +52,7 @@ export function EssayCard({
           type="button"
           onClick={onSubmit}
           disabled={!canSubmit}
-          className="inline-flex h-card-btn items-center justify-center gap-2 rounded-pill bg-magenta px-3 text-base-13 font-bold text-white transition-opacity duration-200 ease-out hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+          className="motion-press inline-flex h-card-btn items-center justify-center gap-2 rounded-pill bg-magenta px-3 text-base-13 font-bold text-white hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {isPending ? 'Analyzing…' : 'Submit for feedback'}
           <ArrowRight className="size-4" aria-hidden />

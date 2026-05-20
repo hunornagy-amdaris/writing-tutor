@@ -16,12 +16,19 @@ export function BrainstormModeToggle({
   mode,
   onChange,
 }: BrainstormModeToggleProps) {
+  const isVoice = mode === 'voice';
   return (
     <div
       role="tablist"
       aria-label="Brainstorm mode"
-      className="flex h-mode-toggle w-mode-toggle-w items-center gap-0.5 rounded-pill border border-line bg-mode-toggle-bg p-0.5"
+      className="relative flex h-mode-toggle w-mode-toggle-w items-center gap-0.5 rounded-pill border border-line bg-mode-toggle-bg p-0.5"
     >
+      <span
+        aria-hidden
+        className={`pointer-events-none absolute top-0.5 left-0.5 h-6 w-17 rounded-pill bg-surface shadow-sm transition-transform duration-base ease-out-quart ${
+          isVoice ? 'translate-x-17' : 'translate-x-0'
+        }`}
+      />
       {OPTIONS.map((opt) => {
         const isActive = mode === opt.id;
         return (
@@ -31,10 +38,8 @@ export function BrainstormModeToggle({
             role="tab"
             aria-selected={isActive}
             onClick={() => onChange(opt.id)}
-            className={`flex h-6 w-17 items-center justify-center rounded-pill text-meta font-bold transition-colors ${
-              isActive
-                ? 'bg-surface text-ink-700 shadow-sm'
-                : 'bg-transparent text-ink-400'
+            className={`motion-press relative z-10 flex h-6 w-17 items-center justify-center rounded-pill text-meta font-bold ${
+              isActive ? 'text-ink-700' : 'text-ink-400'
             }`}
           >
             {opt.label}

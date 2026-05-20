@@ -57,26 +57,28 @@ export function WriteScreen() {
   };
 
   return (
-    <main className="app-container flex w-full gap-8 pt-8 pb-12">
-      <div className="flex flex-1 flex-col gap-6">
-        <PromptCard step="write" prompt={prompt} />
-        <EssayCard
-          value={essay}
-          onChange={setEssay}
-          onSubmit={() => analyze(essay)}
-          isPending={isAnalyzing}
-        />
-      </div>
+    <>
+      <main className="motion-fade-in-up mx-auto flex h-[calc(100vh-var(--spacing-header))] w-full max-w-app-container flex-col gap-6 px-nav-x pt-8 pr-tutor-panel pb-12">
+        <div className="flex min-h-0 flex-1 flex-col gap-6 pr-nav-x">
+          <PromptCard step="write" prompt={prompt} />
+          <EssayCard
+            value={essay}
+            onChange={setEssay}
+            onSubmit={() => analyze(essay)}
+            isPending={isAnalyzing}
+          />
+        </div>
+      </main>
 
-      <PracticeTutorPanel
-        messages={tutorMessages}
-        chips={WRITE_TUTOR_CHIPS}
-        onSendMessage={handleSendMessage}
-        isPending={tutor.isPending}
-        emptyState={
-          <ChatBubble role="ai" content={EMPTY_TUTOR_GREETING} />
-        }
-      />
-    </main>
+      <aside className="fixed top-header right-0 bottom-0 w-tutor-panel">
+        <PracticeTutorPanel
+          messages={tutorMessages}
+          chips={WRITE_TUTOR_CHIPS}
+          onSendMessage={handleSendMessage}
+          isPending={tutor.isPending}
+          emptyState={<ChatBubble role="ai" content={EMPTY_TUTOR_GREETING} />}
+        />
+      </aside>
+    </>
   );
 }

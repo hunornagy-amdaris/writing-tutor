@@ -38,12 +38,12 @@ export function QuizModal() {
   const isComplete = quiz.stage === 'complete';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-overlay">
+    <div className="motion-fade-in fixed inset-0 z-50 flex items-center justify-center bg-overlay">
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="quiz-modal-title"
-        className={`relative w-modal-w overflow-hidden rounded-panel bg-surface ${
+        className={`motion-pop-in relative w-modal-w overflow-hidden rounded-panel bg-surface ${
           isComplete ? 'h-modal-h-complete' : 'h-modal-h'
         }`}
       >
@@ -52,11 +52,17 @@ export function QuizModal() {
         {quiz.questions === null ? (
           <QuizLoadingBody status={status} error={error} />
         ) : quiz.stage === 'mc' ? (
-          <QuizMcContent />
+          <div key="mc" className="motion-fade-in-up">
+            <QuizMcContent />
+          </div>
         ) : quiz.stage === 'gap' ? (
-          <QuizGapContent />
+          <div key="gap" className="motion-fade-in-up">
+            <QuizGapContent />
+          </div>
         ) : (
-          <QuizCompleteContent />
+          <div key="complete" className="motion-fade-in-up">
+            <QuizCompleteContent />
+          </div>
         )}
       </div>
     </div>

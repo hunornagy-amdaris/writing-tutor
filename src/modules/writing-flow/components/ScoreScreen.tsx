@@ -45,12 +45,12 @@ export function ScoreScreen() {
   };
 
   return (
-    <main className="app-container w-full pt-10 pb-12">
-      <h1 className="text-display-26 font-extrabold text-nav-bg">
+    <main className="motion-fade-in-up app-container w-full pt-10 pb-12">
+      <h1 className="motion-fade-in-up text-display-26 font-extrabold text-nav-bg">
         Good work, {STUDENT_NAME} 🎉
       </h1>
 
-      <p className="mt-1 text-base-13 font-normal text-ink-600">
+      <p className="motion-fade-in-up mt-1 text-base-13 font-normal text-ink-600">
         Session 12 · DST essay · Estimated score based on PTE Academic rubric
       </p>
 
@@ -72,14 +72,14 @@ export function ScoreScreen() {
         <button
           type="button"
           onClick={handleDone}
-          className="inline-flex w-score-btn-done h-score-btn-h items-center justify-center rounded-pill border-2 border-line bg-surface text-base-13 font-semibold text-ink-600 transition-opacity duration-200 ease-out hover:opacity-90"
+          className="motion-press inline-flex w-score-btn-done h-score-btn-h items-center justify-center rounded-pill border-2 border-line bg-surface text-base-13 font-semibold text-ink-600 transition-opacity duration-200 ease-out hover:opacity-90"
         >
           Done for today
         </button>
         <button
           type="button"
           onClick={handleNext}
-          className="inline-flex w-score-btn-next h-score-btn-h items-center justify-center rounded-pill bg-magenta text-base-13 font-bold text-white transition-opacity duration-200 ease-out hover:opacity-90"
+          className="motion-press inline-flex w-score-btn-next h-score-btn-h items-center justify-center rounded-pill bg-magenta text-base-13 font-bold text-white transition-opacity duration-200 ease-out hover:opacity-90"
         >
           Start next session →
         </button>

@@ -9,7 +9,7 @@ export function StartWritingButton({ onClick }: StartWritingButtonProps) {
     <button
       type="button"
       onClick={onClick}
-      className="flex h-see-score items-center justify-center rounded-pill bg-magenta px-3 py-2 text-xs font-bold text-surface"
+      className="motion-press motion-fade-in-up flex h-see-score items-center justify-center rounded-pill bg-magenta px-3 py-2 text-xs font-bold text-surface"
     >
       Start writing →
     </button>

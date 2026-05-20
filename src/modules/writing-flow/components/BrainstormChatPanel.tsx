@@ -31,7 +31,7 @@ export function BrainstormChatPanel({
           <ChatBubble key={msg.id} role={msg.role} content={msg.content} />
         ))}
         {isPending && (
-          <div className="flex w-full justify-start">
+          <div className="motion-fade-in-up flex w-full justify-start">
             <p className="rounded-tl-sm rounded-tr-msg rounded-br-msg rounded-bl-msg bg-msg-ai px-msg-x py-msg-y text-prompt text-ink-400">
               …
             </p>

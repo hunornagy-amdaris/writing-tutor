@@ -80,7 +80,7 @@ export function ReviewScreen() {
   };
 
   return (
-    <div className="app-container flex w-full gap-8 pt-8 pb-12">
+    <div className="motion-fade-in-up app-container flex w-full gap-8 pt-8 pb-12">
       <main className="flex flex-1 flex-col gap-4">
         <ScoreBar data={scoreData} />
         <ParagraphTabs
@@ -121,7 +121,7 @@ export function ReviewScreen() {
               <button
                 type="button"
                 onClick={handleReenterEditMode}
-                className="flex h-9 items-center justify-center rounded-pill border border-line bg-surface px-3 text-base-13 font-bold text-ink-600"
+                className="motion-fade-in-up motion-press flex h-9 items-center justify-center rounded-pill border border-line bg-surface px-3 text-base-13 font-bold text-ink-600"
               >
                 ✏️ Edit sentences first
               </button>
@@ -132,7 +132,7 @@ export function ReviewScreen() {
             type="button"
             onClick={handleCta}
             disabled={isPending}
-            className="flex h-9 items-center gap-2 rounded-pill bg-magenta px-3 py-2 text-base-13 font-bold text-white transition-opacity duration-200 ease-out hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+            className="motion-press flex h-9 items-center gap-2 rounded-pill bg-magenta px-3 py-2 text-base-13 font-bold text-white transition-opacity duration-200 ease-out hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {isPending && <Loader2 className="size-4 animate-spin" aria-hidden />}
             {isPending ? 'Re-analyzing…' : ctaLabel}

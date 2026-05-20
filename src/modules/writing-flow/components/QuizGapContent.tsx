@@ -59,7 +59,7 @@ export function QuizGapContent() {
           type="button"
           onClick={handleCheck}
           disabled={quiz.gapAnswer.trim().length === 0}
-          className="flex h-quiz-check-h w-quiz-check-w shrink-0 items-center justify-center rounded-pill bg-magenta px-3 py-2 text-meta font-bold text-white disabled:opacity-50"
+          className="motion-press flex h-quiz-check-h w-quiz-check-w shrink-0 items-center justify-center rounded-pill bg-magenta px-3 py-2 text-meta font-bold text-white disabled:opacity-50"
         >
           {hasResult ? 'Next →' : 'Check →'}
         </button>

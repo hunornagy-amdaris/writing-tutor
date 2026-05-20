@@ -13,7 +13,7 @@ export function ChatBubble({ role, content }: ChatBubbleProps) {
     : 'bg-msg-ai rounded-tl-sm rounded-tr-msg rounded-br-msg rounded-bl-msg';
 
   return (
-    <div className={`flex w-full ${wrapper}`}>
+    <div className={`motion-fade-in-up flex w-full ${wrapper}`}>
       <p
         className={`max-w-4/5 px-msg-x py-msg-y text-prompt text-ink-900 ${bubble}`}
       >

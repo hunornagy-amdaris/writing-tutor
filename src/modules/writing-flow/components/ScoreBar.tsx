@@ -8,7 +8,7 @@ export function ScoreBar({ data }: ScoreBarProps) {
   return (
     <section
       aria-label="Overall score"
-      className="flex h-score-bar w-full items-center rounded-card border border-line bg-surface px-3"
+      className="motion-fade-in-up flex h-score-bar w-full items-center rounded-card border border-line bg-surface px-3"
     >
       <div className="flex h-score-overall-h w-score-overall items-center rounded-button bg-accent-violet-soft px-3">
         <span className="text-2xl font-extrabold leading-none text-ink-600">

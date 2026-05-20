@@ -14,7 +14,7 @@ const EYEBROW_BY_STEP: Record<FlowStep, string> = {
 
 export function PromptCard({ step, prompt }: PromptCardProps) {
   return (
-    <section className="w-full rounded-card bg-surface py-prompt-card-y px-prompt-card-x">
+    <section className="motion-fade-in-up w-full rounded-card bg-surface py-prompt-card-y px-prompt-card-x">
       <p className="text-eyebrow font-bold tracking-normal text-ink-900/35">
         {EYEBROW_BY_STEP[step]}
       </p>

@@ -45,7 +45,7 @@ export function ChatInputBar({
         type="submit"
         disabled={isDisabled || value.trim().length === 0}
         aria-label="Send message"
-        className="flex size-7 items-center justify-center rounded-pill bg-nav-bg text-surface transition-opacity disabled:opacity-50"
+        className="motion-press flex size-7 items-center justify-center rounded-pill bg-nav-bg text-surface disabled:opacity-50"
       >
         <ArrowRight className="size-4" aria-hidden />
       </button>

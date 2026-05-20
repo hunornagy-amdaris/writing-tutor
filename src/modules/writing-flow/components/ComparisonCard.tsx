@@ -6,7 +6,7 @@ type ComparisonCardProps = {
 
 export function ComparisonCard({ pair }: ComparisonCardProps) {
   return (
-    <div className="w-full overflow-hidden rounded-button border border-line bg-canvas">
+    <div className="motion-fade-in-up w-full overflow-hidden rounded-button border border-line bg-canvas">
       <div className="flex items-center gap-3 px-3 py-2">
         <span className="text-eyebrow font-bold text-danger">YOURS</span>
         <span className="text-base-13 font-normal text-ink-900">{pair.yours}</span>

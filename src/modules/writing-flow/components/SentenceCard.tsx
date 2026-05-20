@@ -41,24 +41,25 @@ export function SentenceCard({
   }
 
   // Visual variants.
+  const baseMotion = 'motion-fade-in-up transition-colors';
   let container =
-    'flex w-full flex-col gap-1 rounded-button border border-line bg-surface px-3 py-2 text-left';
+    `${baseMotion} flex w-full flex-col gap-1 rounded-button border border-line bg-surface px-3 py-2 text-left`;
   let labelColor = 'text-ink-400';
   let textColor = 'text-ink-600';
 
   if (isFixed) {
     container =
-      'flex w-full flex-col gap-1 rounded-button border border-success bg-success-soft px-3 py-2 text-left';
+      `${baseMotion} flex w-full flex-col gap-1 rounded-button border border-success bg-success-soft px-3 py-2 text-left`;
     labelColor = 'text-success-ink';
     textColor = 'text-ink-900';
   } else if (hasErrors && isSelected) {
     container =
-      'flex w-full flex-col gap-1 rounded-button border-2 border-danger bg-danger-soft px-3 py-2 text-left';
+      `${baseMotion} flex w-full flex-col gap-1 rounded-button border-2 border-danger bg-danger-soft px-3 py-2 text-left`;
     labelColor = 'text-ink-600';
     textColor = 'text-ink-900';
   } else if (hasErrors) {
     container =
-      'flex w-full flex-col gap-1 rounded-button bg-danger-soft px-3 py-2 text-left';
+      `${baseMotion} flex w-full flex-col gap-1 rounded-button bg-danger-soft px-3 py-2 text-left`;
     labelColor = 'text-ink-600';
     textColor = 'text-ink-900';
   }
@@ -78,7 +79,7 @@ export function SentenceCard({
           Sentence {index + 1}
         </span>
         {isFixed ? (
-          <span className="flex items-center rounded-pill bg-success px-2 py-0.5 text-tiny font-bold text-success-soft">
+          <span className="motion-pop-in flex items-center rounded-pill bg-success px-2 py-0.5 text-tiny font-bold text-success-soft">
             ✓ fixed
           </span>
         ) : badge ? (
@@ -123,7 +124,7 @@ function EditingCard({
   };
 
   return (
-    <div className="flex w-full flex-col gap-1 rounded-button border border-line bg-surface-edit px-3 py-2 text-left">
+    <div className="motion-fade-in-down flex w-full flex-col gap-1 rounded-button border border-line bg-surface-edit px-3 py-2 text-left">
       <span className="text-eyebrow font-bold text-nav-bg">
         Sentence {index + 1} · Editing
       </span>

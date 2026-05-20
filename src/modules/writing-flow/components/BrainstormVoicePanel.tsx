@@ -34,7 +34,7 @@ function VoicePanelInner({ prompt, onDone }: BrainstormVoicePanelProps) {
   }
 
   return (
-    <div className="flex h-voice-panel w-full flex-col items-center justify-center gap-5 rounded-xl border-2 border-line bg-surface p-12">
+    <div className="motion-pop-in flex h-voice-panel w-full flex-col items-center justify-center gap-5 rounded-xl border-2 border-line bg-surface p-12">
       <span aria-hidden className="voice-orb size-20" />
       <h2 className="text-base leading-5 font-bold text-ink-900">
         {VOICE_PANEL_TITLE}
@@ -45,7 +45,7 @@ function VoicePanelInner({ prompt, onDone }: BrainstormVoicePanelProps) {
       <button
         type="button"
         onClick={handleDone}
-        className="flex h-voice-cta-h w-voice-cta-w items-center justify-center rounded-pill bg-magenta text-xs font-bold text-surface"
+        className="motion-press flex h-voice-cta-h w-voice-cta-w items-center justify-center rounded-pill bg-magenta text-xs font-bold text-surface"
       >
         Done — start writing →
       </button>

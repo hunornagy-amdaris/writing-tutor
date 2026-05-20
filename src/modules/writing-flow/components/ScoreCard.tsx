@@ -34,7 +34,7 @@ const EYEBROW_COLOR: Record<ScoreCardVariant, string> = {
 
 export function ScoreCard({ variant, rubric }: ScoreCardProps) {
   return (
-    <article className="w-score-card h-score-card-h overflow-hidden rounded-button border border-line bg-surface">
+    <article className="motion-fade-in-up w-score-card h-score-card-h overflow-hidden rounded-button border border-line bg-surface">
       <header
         className={`relative h-score-head w-full px-4 pt-1.5 ${HEADER_BG[variant]}`}
       >
@@ -72,7 +72,7 @@ function ScoreCardCell({ cell }: { cell: RubricCell }) {
 
   return (
     <div className="w-score-cell h-score-cell-h border border-line bg-surface px-1.5 pt-1.5">
-      <p className={`text-cell-num font-extrabold ${numColor}`}>
+      <p className={`motion-pop-in text-cell-num font-extrabold ${numColor}`}>
         {cell.numerator}/{cell.denominator}
       </p>
       <p className="mt-2.5 text-cell-label font-bold text-ink-300">

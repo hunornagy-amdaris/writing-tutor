@@ -21,7 +21,7 @@ export function QuickActionChip({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`flex h-mode-toggle items-center justify-center gap-1 rounded-pill border border-line px-3 py-2 text-meta font-bold text-ink-900 transition-opacity ${bg} disabled:opacity-50`}
+      className={`motion-press flex h-mode-toggle items-center justify-center gap-1 rounded-pill border border-line px-3 py-2 text-meta font-bold text-ink-900 ${bg} disabled:opacity-50`}
     >
       <span aria-hidden>{emoji}</span>
       <span>{label}</span>

@@ -15,7 +15,11 @@ type ParagraphTabsProps = {
 
 export function ParagraphTabs({ tabs, activeLabel, onChange }: ParagraphTabsProps) {
   return (
-    <div role="tablist" aria-label="Paragraphs" className="flex items-center gap-1">
+    <div
+      role="tablist"
+      aria-label="Paragraphs"
+      className="motion-fade-in-up flex items-center gap-1"
+    >
       {tabs.map((tab) => {
         const isActive = tab.label === activeLabel;
         return (
@@ -27,8 +31,8 @@ export function ParagraphTabs({ tabs, activeLabel, onChange }: ParagraphTabsProp
             onClick={() => onChange(tab.label)}
             className={
               isActive
-                ? 'flex h-paragraph-tab items-center gap-1 rounded-button bg-accent-violet px-3 py-2 text-xs font-semibold text-ink-600'
-                : 'flex h-paragraph-tab items-center gap-1 rounded-button border border-line bg-surface px-3 py-2 text-xs font-semibold text-ink-400'
+                ? 'motion-press flex h-paragraph-tab items-center gap-1 rounded-button bg-accent-violet px-3 py-2 text-xs font-semibold text-ink-600 transition-colors'
+                : 'motion-press flex h-paragraph-tab items-center gap-1 rounded-button border border-line bg-surface px-3 py-2 text-xs font-semibold text-ink-400 transition-colors'
             }
           >
             <span>{tab.label}</span>

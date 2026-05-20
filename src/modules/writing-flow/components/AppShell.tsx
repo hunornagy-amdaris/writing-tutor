@@ -5,7 +5,9 @@ export function AppShell() {
   return (
     <div className="min-h-screen bg-canvas font-sans text-ink-900">
       <AppHeader />
-      <FlowRouter />
+      <div className="pt-header">
+        <FlowRouter />
+      </div>
     </div>
   );
 }

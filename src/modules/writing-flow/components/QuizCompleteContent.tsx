@@ -15,7 +15,7 @@ export function QuizCompleteContent() {
     <div className="flex flex-col items-center gap-3 px-5 pt-3">
       <p
         aria-hidden
-        className="text-quiz-emoji font-normal text-ink-900"
+        className="motion-pop-in text-quiz-emoji font-normal text-ink-900"
       >
         ✅
       </p>
@@ -27,7 +27,7 @@ export function QuizCompleteContent() {
       <button
         type="button"
         onClick={closeQuiz}
-        className="flex h-quiz-continue-h w-quiz-continue-w items-center justify-center rounded-pill bg-magenta px-3 py-2 text-quiz-body font-bold text-white"
+        className="motion-press flex h-quiz-continue-h w-quiz-continue-w items-center justify-center rounded-pill bg-magenta px-3 py-2 text-quiz-body font-bold text-white"
       >
         Continue reviewing →
       </button>

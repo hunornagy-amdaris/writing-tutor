@@ -50,8 +50,8 @@ export function QuizMcContent() {
                 aria-pressed={isSelected}
                 className={
                   isSelected
-                    ? 'flex w-full items-center rounded-button border-2 border-accent-violet bg-accent-violet-soft px-3 py-2 text-left text-base-13 font-semibold text-ink-900'
-                    : 'flex w-full items-center rounded-button border border-line bg-surface px-3 py-2 text-left text-base-13 font-normal text-ink-900'
+                    ? 'motion-press flex w-full items-center rounded-button border-2 border-accent-violet bg-accent-violet-soft px-3 py-2 text-left text-base-13 font-semibold text-ink-900 transition-colors'
+                    : 'motion-press flex w-full items-center rounded-button border border-line bg-surface px-3 py-2 text-left text-base-13 font-normal text-ink-900 transition-colors'
                 }
               >
                 {opt}
@@ -71,7 +71,7 @@ export function QuizMcContent() {
           type="button"
           onClick={handleCheck}
           disabled={quiz.mcChoice === null}
-          className="flex h-quiz-check-h w-quiz-check-w shrink-0 items-center justify-center rounded-pill bg-magenta px-3 py-2 text-meta font-bold text-white disabled:opacity-50"
+          className="motion-press flex h-quiz-check-h w-quiz-check-w shrink-0 items-center justify-center rounded-pill bg-magenta px-3 py-2 text-meta font-bold text-white disabled:opacity-50"
         >
           {hasResult ? 'Next →' : 'Check →'}
         </button>
