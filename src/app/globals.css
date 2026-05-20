@@ -90,10 +90,10 @@
   --spacing-comparison-card: 4.75rem; /* 76px comparison card height */
   --spacing-see-score: 1.9375rem; /* 31px see-score CTA height */
   --spacing-score-card: 14.25rem; /* 228px score card width */
-  --spacing-score-card-h: 10rem; /* 160px score card height */
+  --spacing-score-card-h: 10.5rem; /* 168px score card height */
   --spacing-score-cell: 3.5625rem; /* 57px score cell width */
   --spacing-score-cell-h: 3.125rem; /* 50px score cell height */
-  --spacing-score-head: 3.75rem; /* 60px score card header height */
+  --spacing-score-head: 4.25rem; /* 68px score card header height — fits big num (48px line) + label (10px line) + paddings */
   --spacing-reflect-card: 30rem; /* 480px reflect card width */
   --spacing-reflect-card-h: 5.625rem; /* 90px reflect card height */
   --spacing-score-btn-h: 2.125rem; /* 34px score-screen button height */
@@ -108,18 +108,18 @@
   --spacing-modal-h-complete: 35rem; /* 560px — legacy, unused (modal is now auto-height) */
   --spacing-quiz-loading: 18rem; /* 288px min-height for the loading state */
   --spacing-modal-head: 4.25rem; /* 68px modal header strip height */
-  --spacing-modal-close: 1.625rem; /* 26px close button circle */
+  --spacing-modal-close: 2.25rem; /* 36px close button — was 26 (sub-tap-target) */
   --spacing-quiz-progress-bar-w: 5rem; /* 80px progress bar segment width */
   --spacing-quiz-progress-bar-h: 0.25rem; /* 4px progress bar segment height */
-  --spacing-quiz-check-w: 4.625rem; /* 74px Check pill width */
-  --spacing-quiz-check-h: 1.9375rem; /* 31px Check pill height */
-  --spacing-quiz-fb-h: 1.875rem; /* 30px feedback row height */
+  --spacing-quiz-check-w: 5.5rem; /* 88px Check pill — was 74 (cramped) */
+  --spacing-quiz-check-h: 2.5rem; /* 40px Check pill height — was 31 (sub-tap-target) */
+  --spacing-quiz-fb-h: 2.5rem; /* 40px feedback row min-height — was 30 (now min, not fixed) */
   --spacing-quiz-fb-w: 26.25rem; /* 420px feedback / rule width */
-  --spacing-quiz-gap-w: 5.625rem; /* 90px gap-fill box width */
-  --spacing-quiz-gap-h: 2rem; /* 32px gap-fill box height */
-  --spacing-quiz-rule-h: 4.25rem; /* 68px Rule card height */
-  --spacing-quiz-continue-w: 10.625rem; /* 170px Continue pill width */
-  --spacing-quiz-continue-h: 2.125rem; /* 34px Continue pill height */
+  --spacing-quiz-gap-w: 8rem; /* 128px gap-fill min-width — was 90 (cramped for long answers) */
+  --spacing-quiz-gap-h: 2.5rem; /* 40px gap-fill height — was 32 (sub-tap-target) */
+  --spacing-quiz-rule-h: 4.25rem; /* 68px Rule card min-height — was fixed */
+  --spacing-quiz-continue-w: 12rem; /* 192px Continue pill width — was 170 */
+  --spacing-quiz-continue-h: 2.75rem; /* 44px Continue pill height — was 34 (WCAG min) */
   --spacing-quiz-emoji: 2.75rem; /* 44px completion emoji height */
 
   /* Quiz typography — Figma-specific. */

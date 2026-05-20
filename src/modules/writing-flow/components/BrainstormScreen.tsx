@@ -126,7 +126,7 @@ export function BrainstormScreen() {
         </>
       )}
 
-      <StartWritingButton onClick={handleStartWriting} />
+      {!isVoice && <StartWritingButton onClick={handleStartWriting} />}
     </main>
   );
 }

@@ -43,25 +43,27 @@ export function QuizModal() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="quiz-modal-title"
-        className="motion-pop-in relative flex max-h-[90vh] w-modal-w flex-col overflow-y-auto rounded-panel bg-surface"
+        className="motion-pop-in relative flex max-h-[90vh] w-modal-w flex-col overflow-hidden rounded-panel bg-surface"
       >
         <ModalHeader title={title} isComplete={isComplete} onClose={closeQuiz} />
 
-        {quiz.questions === null ? (
-          <QuizLoadingBody status={status} error={error} />
-        ) : quiz.stage === 'mc' ? (
-          <div key="mc" className="motion-fade-in-up">
-            <QuizMcContent />
-          </div>
-        ) : quiz.stage === 'gap' ? (
-          <div key="gap" className="motion-fade-in-up">
-            <QuizGapContent />
-          </div>
-        ) : (
-          <div key="complete" className="motion-fade-in-up">
-            <QuizCompleteContent />
-          </div>
-        )}
+        <div className="flex-1 overflow-y-auto">
+          {quiz.questions === null ? (
+            <QuizLoadingBody status={status} error={error} />
+          ) : quiz.stage === 'mc' ? (
+            <div key="mc" className="motion-fade-in-up">
+              <QuizMcContent />
+            </div>
+          ) : quiz.stage === 'gap' ? (
+            <div key="gap" className="motion-fade-in-up">
+              <QuizGapContent />
+            </div>
+          ) : (
+            <div key="complete" className="motion-fade-in-up">
+              <QuizCompleteContent />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -99,7 +101,7 @@ function ModalHeader({
         type="button"
         onClick={onClose}
         aria-label="Close quiz"
-        className="absolute right-1 top-1 flex size-modal-close items-center justify-center rounded-pill bg-ink-900/10 text-ink-900"
+        className="motion-press absolute right-3 top-3 flex size-modal-close items-center justify-center rounded-pill bg-ink-900/10 text-ink-900 transition-colors hover:bg-ink-900/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-bg"
       >
         <X className="size-4" aria-hidden />
       </button>

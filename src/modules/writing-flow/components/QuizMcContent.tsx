@@ -27,7 +27,7 @@ export function QuizMcContent() {
   };
 
   return (
-    <div className="flex flex-col gap-3 px-5 pt-3">
+    <div className="flex flex-col gap-4 px-6 pt-4 pb-6">
       <QuizProgressBar step={1} />
 
       <div className="flex flex-col gap-1">
@@ -50,18 +50,18 @@ export function QuizMcContent() {
                 aria-pressed={isSelected}
                 className={
                   isSelected
-                    ? 'motion-press flex w-full items-center rounded-button border-2 border-accent-violet bg-accent-violet-soft px-3 py-2 text-left text-base-13 font-semibold text-ink-900 transition-colors'
-                    : 'motion-press flex w-full items-center rounded-button border border-line bg-surface px-3 py-2 text-left text-base-13 font-normal text-ink-900 transition-colors'
+                    ? 'motion-press flex min-h-11 w-full items-center rounded-button border-2 border-accent-violet bg-accent-violet-soft px-4 py-3 text-left text-base-13 font-semibold text-ink-900 break-words transition-colors hover:bg-accent-violet-soft/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-bg'
+                    : 'motion-press flex min-h-11 w-full items-center rounded-button border border-line bg-surface px-4 py-3 text-left text-base-13 font-normal text-ink-900 break-words transition-colors hover:border-line-strong hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-bg'
                 }
               >
-                {opt}
+                <span className="block w-full whitespace-normal">{opt}</span>
               </button>
             </li>
           );
         })}
       </ul>
 
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
         {hasResult ? (
           <QuizFeedbackRow correct={quiz.mcCorrect === true} />
         ) : (
@@ -71,7 +71,7 @@ export function QuizMcContent() {
           type="button"
           onClick={handleCheck}
           disabled={quiz.mcChoice === null}
-          className="motion-press flex h-quiz-check-h w-quiz-check-w shrink-0 items-center justify-center rounded-pill bg-magenta px-3 py-2 text-meta font-bold text-white disabled:opacity-50"
+          className="motion-press flex h-quiz-check-h w-quiz-check-w shrink-0 items-center justify-center rounded-pill bg-magenta px-3 py-2 text-meta font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-bg disabled:opacity-50"
         >
           {hasResult ? 'Next →' : 'Check →'}
         </button>
