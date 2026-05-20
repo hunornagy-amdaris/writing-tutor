@@ -1,4 +1,5 @@
 import { AppHeader } from '@/modules/writing-flow/components/AppHeader';
+import { DevCheatMenu } from '@/modules/writing-flow/components/DevCheatMenu';
 import { FlowRouter } from '@/modules/writing-flow/components/FlowRouter';
 
 export function AppShell() {
@@ -8,6 +9,7 @@ export function AppShell() {
       <div className="pt-header">
         <FlowRouter />
       </div>
+      <DevCheatMenu />
     </div>
   );
 }

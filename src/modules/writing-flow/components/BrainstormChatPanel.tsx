@@ -22,10 +22,10 @@ export function BrainstormChatPanel({
   }, [messages.length, isPending]);
 
   return (
-    <div className="w-full rounded-xl border-2 border-line bg-surface">
+    <div className="flex min-h-0 w-full flex-1 flex-col rounded-xl border-2 border-line bg-surface">
       <div
         ref={scrollRef}
-        className="flex h-80 flex-col gap-2 overflow-y-auto p-3"
+        className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto p-3"
       >
         {messages.map((msg) => (
           <ChatBubble key={msg.id} role={msg.role} content={msg.content} />
