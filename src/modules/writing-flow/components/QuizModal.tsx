@@ -43,9 +43,7 @@ export function QuizModal() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="quiz-modal-title"
-        className={`motion-pop-in relative w-modal-w overflow-hidden rounded-panel bg-surface ${
-          isComplete ? 'h-modal-h-complete' : 'h-modal-h'
-        }`}
+        className="motion-pop-in relative flex max-h-[90vh] w-modal-w flex-col overflow-y-auto rounded-panel bg-surface"
       >
         <ModalHeader title={title} isComplete={isComplete} onClose={closeQuiz} />
 
@@ -119,7 +117,7 @@ function QuizLoadingBody({
   const message =
     status === 'error' ? (error ?? 'Could not load quiz.') : 'Generating quiz…';
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-3 px-5">
+    <div className="flex min-h-quiz-loading flex-col items-center justify-center gap-3 px-5 py-12">
       <div
         className="size-6 animate-spin rounded-pill border-2 border-line border-t-magenta"
         aria-hidden

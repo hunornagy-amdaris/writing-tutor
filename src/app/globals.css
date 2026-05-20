@@ -103,9 +103,10 @@
   --spacing-score-col-2: 15.75rem; /* 252px offset between two score cards */
 
   /* Quiz modal — Wave 3. */
-  --spacing-modal-w: 28.75rem; /* 460px modal width */
-  --spacing-modal-h: 17.25rem; /* 276px MC + Gap modal height */
-  --spacing-modal-h-complete: 18.25rem; /* 292px Complete modal height */
+  --spacing-modal-w: 48rem; /* 768px modal width */
+  --spacing-modal-h: 34rem; /* 544px — legacy, unused (modal is now auto-height) */
+  --spacing-modal-h-complete: 35rem; /* 560px — legacy, unused (modal is now auto-height) */
+  --spacing-quiz-loading: 18rem; /* 288px min-height for the loading state */
   --spacing-modal-head: 4.25rem; /* 68px modal header strip height */
   --spacing-modal-close: 1.625rem; /* 26px close button circle */
   --spacing-quiz-progress-bar-w: 5rem; /* 80px progress bar segment width */
