@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import type { FormEvent } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import type { AnalyzedSentence } from '@/modules/writing-flow/types/analysis.types';
 import { ComparisonCard } from '@/modules/writing-flow/components/ComparisonCard';
 import { ReviewVoicePanel } from '@/modules/writing-flow/components/ReviewVoicePanel';
@@ -39,7 +40,7 @@ export function ReviewTutorPanel({ selectedSentence }: ReviewTutorPanelProps) {
   const setTutorMode = useFlowStore((s) => s.setTutorMode);
   const prompt = useFlowStore(selectPrompt);
   const editMode = useFlowStore(selectEditMode);
-  const fixProgress = useFlowStore(selectFixProgress);
+  const fixProgress = useFlowStore(useShallow(selectFixProgress));
   const selectedSentenceIndex = useFlowStore(selectSelectedSentenceIndex);
   const setEditMode = useFlowStore((s) => s.setEditMode);
   const setEditingSentenceIndex = useFlowStore((s) => s.setEditingSentenceIndex);
