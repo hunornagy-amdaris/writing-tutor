@@ -81,7 +81,7 @@ export function ReviewScreen() {
 
   return (
     <>
-      <main className="motion-fade-in-up flex h-[calc(100vh-var(--spacing-header))] w-full flex-col gap-4 overflow-hidden pt-8 pr-tutor-panel pb-12 pl-nav-x">
+      <main className="motion-fade-in-up app-content-pad-l flex h-[calc(100vh-var(--spacing-header))] w-full flex-col gap-4 overflow-hidden pt-8 pr-tutor-panel pb-12">
         <div className="flex min-h-0 flex-1 flex-col gap-4 pr-nav-x">
           <ScoreBar data={scoreData} />
           <ParagraphTabs

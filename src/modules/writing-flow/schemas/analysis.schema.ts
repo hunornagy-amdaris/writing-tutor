@@ -46,10 +46,26 @@ export const paragraphSchema = z.object({
   sentenceIndices: z.array(z.number().int().nonnegative()),
 });
 
+export const rawKevSunSchema = z.object({
+  cohesion: z.number().finite(),
+  syntax: z.number().finite(),
+  vocabulary: z.number().finite(),
+  phraseology: z.number().finite(),
+  grammar: z.number().finite(),
+  conventions: z.number().finite(),
+});
+
+export const kevSunAnchorSchema = z.object({
+  min: z.number().finite(),
+  max: z.number().finite(),
+});
+
 export const analysisResultSchema = z.object({
   scores: essayScoresSchema,
   sentences: z.array(analyzedSentenceSchema),
   paragraphs: z.array(paragraphSchema).optional(),
+  raw_kevsun: rawKevSunSchema.optional(),
+  kevsun_anchor: kevSunAnchorSchema.optional(),
 }) satisfies z.ZodType<AnalysisResult>;
 
 export type AnalysisResultInferred = z.infer<typeof analysisResultSchema>;

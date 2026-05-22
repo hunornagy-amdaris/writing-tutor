@@ -13,6 +13,12 @@ export const maxDuration = 60;
 const requestSchema = z.object({
   text: z.string().min(1).max(10000),
   prompt: z.string().min(1).max(2000),
+  kevsun_anchor: z
+    .object({
+      min: z.number().finite(),
+      max: z.number().finite(),
+    })
+    .optional(),
 });
 
 const openRouterResponseSchema = z.object({
@@ -73,7 +79,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       }),
     });
 
-    const kevsunPromise = scoreKevSun(parsed.data.text);
+    const kevsunPromise = scoreKevSun(parsed.data.text, parsed.data.kevsun_anchor);
 
     const [res, kevsun] = await Promise.all([openRouterPromise, kevsunPromise]);
 
@@ -136,12 +142,12 @@ export async function POST(request: Request): Promise<NextResponse> {
       ? (() => {
           const merged = {
             ...validated.data.scores,
-            cohesion: kevsun.cohesion,
-            syntax: kevsun.syntax,
-            vocabulary: kevsun.vocabulary,
-            phraseology: kevsun.phraseology,
-            grammar: kevsun.grammar,
-            conventions: kevsun.conventions,
+            cohesion: kevsun.dims.cohesion,
+            syntax: kevsun.dims.syntax,
+            vocabulary: kevsun.dims.vocabulary,
+            phraseology: kevsun.dims.phraseology,
+            grammar: kevsun.dims.grammar,
+            conventions: kevsun.dims.conventions,
           };
           const glr = (merged.syntax + merged.phraseology) / 2;
           const pteMean =
@@ -158,7 +164,12 @@ export async function POST(request: Request): Promise<NextResponse> {
       : validated.data.scores;
 
     return NextResponse.json(
-      { ...validated.data, scores, sentences: enrichedSentences },
+      {
+        ...validated.data,
+        scores,
+        sentences: enrichedSentences,
+        ...(kevsun ? { raw_kevsun: kevsun.raw, kevsun_anchor: kevsun.anchor } : {}),
+      },
       { status: 200 },
     );
   } catch (error) {

@@ -24,8 +24,19 @@ export type Paragraph = {
   label: ParagraphLabel;
   sentenceIndices: number[];
 };
+export type RawKevSun = {
+  cohesion: number;
+  syntax: number;
+  vocabulary: number;
+  phraseology: number;
+  grammar: number;
+  conventions: number;
+};
+export type KevSunAnchor = { min: number; max: number };
 export type AnalysisResult = {
   scores: EssayScores;
   sentences: AnalyzedSentence[];
   paragraphs?: Paragraph[];
+  raw_kevsun?: RawKevSun;
+  kevsun_anchor?: KevSunAnchor;
 };

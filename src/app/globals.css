@@ -195,6 +195,17 @@
   padding-inline: var(--spacing-nav-x);
 }
 
+/* Left padding that aligns with the centered .app-container's content edge.
+   Used by screens where a fixed right sidebar (w-tutor-panel, right-0) must
+   stay glued to the viewport edge while the main column still starts where
+   the header's logo starts. */
+@utility app-content-pad-l {
+  padding-left: max(
+    var(--spacing-nav-x),
+    calc((100vw - var(--spacing-app-container)) / 2 + var(--spacing-nav-x))
+  );
+}
+
 body {
   @apply bg-canvas text-ink-900 font-sans antialiased;
 }

@@ -1,5 +1,7 @@
 'use client';
 
+import { Loader2 } from 'lucide-react';
+import { useResubmitEssay } from '@/modules/writing-flow/hooks/use-resubmit-essay';
 import {
   selectAnalysis,
   selectQuiz,
@@ -11,6 +13,7 @@ export function QuizCompleteContent() {
   const analysis = useFlowStore(selectAnalysis);
   const closeQuiz = useFlowStore((s) => s.closeQuiz);
   const commitSentenceEdit = useFlowStore((s) => s.commitSentenceEdit);
+  const { resubmit, isPending } = useResubmitEssay();
 
   if (!quiz.questions) return null;
 
@@ -23,6 +26,7 @@ export function QuizCompleteContent() {
       }
     }
     closeQuiz();
+    void resubmit();
   };
 
   return (
@@ -43,9 +47,11 @@ export function QuizCompleteContent() {
       <button
         type="button"
         onClick={handleDone}
-        className="motion-press mt-2 flex h-quiz-continue-h w-quiz-continue-w items-center justify-center rounded-pill bg-magenta px-3 py-2 text-quiz-body font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-bg"
+        disabled={isPending}
+        className="motion-press mt-2 flex h-quiz-continue-h w-quiz-continue-w items-center justify-center gap-2 rounded-pill bg-magenta px-3 py-2 text-quiz-body font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-bg disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Apply fix &amp; continue →
+        {isPending && <Loader2 className="size-4 animate-spin" aria-hidden />}
+        {isPending ? 'Re-analyzing…' : 'Apply fix & continue →'}
       </button>
     </div>
   );

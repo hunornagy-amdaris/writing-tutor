@@ -41,11 +41,19 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
 
     const text = assembleEditedEssay(analysis, edits);
 
+    const requestBody: { text: string; prompt: string; kevsun_anchor?: { min: number; max: number } } = {
+      text,
+      prompt,
+    };
+    if (analysis.kevsun_anchor) {
+      requestBody.kevsun_anchor = analysis.kevsun_anchor;
+    }
+
     try {
       const res = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, prompt }),
+        body: JSON.stringify(requestBody),
       });
       if (!res.ok) {
         const data: unknown = await res.json().catch(() => ({}));

@@ -58,7 +58,7 @@ export function WriteScreen() {
 
   return (
     <>
-      <main className="motion-fade-in-up flex h-[calc(100vh-var(--spacing-header))] w-full flex-col gap-6 pt-8 pb-12 pl-nav-x pr-tutor-panel">
+      <main className="motion-fade-in-up app-content-pad-l flex h-[calc(100vh-var(--spacing-header))] w-full flex-col gap-6 pt-8 pb-12 pr-tutor-panel">
         <div className="flex min-h-0 flex-1 flex-col gap-6 pr-nav-x">
           <PromptCard step="write" prompt={prompt} />
           <EssayCard

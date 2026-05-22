@@ -19,6 +19,12 @@ export type KevSunDims = {
   conventions: number;
 };
 
+export type KevSunResult = {
+  dims: KevSunDims;
+  raw: KevSunDims;
+  anchor: { min: number; max: number };
+};
+
 type HfScore = { label: string; score: number };
 
 const COLD_START_TIMEOUT_MS = 120_000;
@@ -31,11 +37,14 @@ function clamp(n: number, lo: number, hi: number): number {
   return Math.min(Math.max(n, lo), hi);
 }
 
-// Spec normalization: relative min/max scaling of the six raw regression
-// outputs to a 1.0–5.0 band, rounded to the nearest 0.5.
-function normalize(raw: readonly number[]): number[] {
-  const min = Math.min(...raw);
-  const max = Math.max(...raw);
+// Spec normalization: min/max scaling of the six raw regression outputs to a
+// 1.0–5.0 band, rounded to the nearest 0.5. Anchors may be supplied by the
+// caller to keep scores stable across resubmits.
+function normalize(
+  raw: readonly number[],
+  anchor: { min: number; max: number },
+): number[] {
+  const { min, max } = anchor;
   return raw.map((v) => {
     const scaled = 1 + (4 * (v - min)) / (max - min + 1e-8);
     return clamp(round05(scaled), 1, 5);
@@ -68,7 +77,10 @@ function extractScores(json: unknown): number[] | null {
   return pairs.map((p) => p.score);
 }
 
-export async function scoreKevSun(essay: string): Promise<KevSunDims | null> {
+export async function scoreKevSun(
+  essay: string,
+  anchor?: { min: number; max: number },
+): Promise<KevSunResult | null> {
   const url = env.HUGGINGFACE_KEVSUN_ENDPOINT_URL;
   if (!url) return null;
 
@@ -98,11 +110,36 @@ export async function scoreKevSun(essay: string): Promise<KevSunDims | null> {
 
   if (!res.ok) return null;
   const json: unknown = await res.json().catch(() => null);
-  const raw = extractScores(json);
-  if (!raw) return null;
+  const rawScores = extractScores(json);
+  if (!rawScores) return null;
+
+  const usedAnchor = anchor ?? {
+    min: Math.min(...rawScores),
+    max: Math.max(...rawScores),
+  };
 
   const [cohesion, syntax, vocabulary, phraseology, grammar, conventions] =
-    normalize(raw);
+    normalize(rawScores, usedAnchor);
 
-  return { cohesion, syntax, vocabulary, phraseology, grammar, conventions };
+  const [
+    rawCohesion,
+    rawSyntax,
+    rawVocabulary,
+    rawPhraseology,
+    rawGrammar,
+    rawConventions,
+  ] = rawScores;
+
+  return {
+    dims: { cohesion, syntax, vocabulary, phraseology, grammar, conventions },
+    raw: {
+      cohesion: rawCohesion,
+      syntax: rawSyntax,
+      vocabulary: rawVocabulary,
+      phraseology: rawPhraseology,
+      grammar: rawGrammar,
+      conventions: rawConventions,
+    },
+    anchor: usedAnchor,
+  };
 }
