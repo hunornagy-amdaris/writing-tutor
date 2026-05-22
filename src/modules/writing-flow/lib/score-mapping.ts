@@ -14,7 +14,7 @@ import type {
 const DENOMINATORS: Record<ScoreBarCellKey, number> = {
   content: 3,
   form: 2,
-  develop: 6,
+  develop: 2,
   grammar: 2,
   ling: 2,
   vocab: 2,
@@ -76,14 +76,16 @@ const mapToCells = (s: EssayScores): Record<ScoreBarCellKey, ScoreBarCellValue> 
   };
 };
 
+// PTE Academic overall is reported on a 10–90 scale (10 is the floor, not 0).
+// The analyzer pipeline produces "overall" on a 1.0–5.0 scale; we map linearly
+// so 1.0 → 10 and 5.0 → 90.
+const toPteOverall = (overall1To5: number): number =>
+  clamp(10 + Math.round(((overall1To5 - 1) / 4) * 80), 10, 90);
+
 export const buildScoreBarData = (scores: EssayScores): ScoreBarData => {
   const cells = mapToCells(scores);
   const overallOutOf = 90;
-  const overall = clamp(
-    Math.round((scores.overall / 5) * overallOutOf),
-    0,
-    overallOutOf,
-  );
+  const overall = toPteOverall(scores.overall);
   return {
     overall,
     overallOutOf,
@@ -130,7 +132,7 @@ export type RubricScores = {
 export const mapToRubric = (scores: EssayScores): RubricScores => {
   const cells = mapToCells(scores);
   const overallOutOf = 90;
-  const overall = clamp(Math.round((scores.overall / 5) * overallOutOf), 0, overallOutOf);
+  const overall = toPteOverall(scores.overall);
   return {
     overall,
     overallOutOf,
