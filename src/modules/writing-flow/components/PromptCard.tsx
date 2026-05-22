@@ -6,10 +6,10 @@ type PromptCardProps = {
 };
 
 const EYEBROW_BY_STEP: Record<FlowStep, string> = {
-  brainstorm: 'WRITING TASK 2 · BRAINSTORM',
-  write: 'WRITING TASK 2 · 40 MINUTES · 250+ WORDS',
-  review: 'WRITING TASK 2 · REVIEW',
-  score: 'WRITING TASK 2 · SCORE',
+  brainstorm: 'PTE WRITE ESSAY · BRAINSTORM',
+  write: 'PTE WRITE ESSAY · 200-300 WORDS',
+  review: 'PTE WRITE ESSAY · REVIEW',
+  score: 'PTE WRITE ESSAY · SCORE',
 };
 
 export function PromptCard({ step, prompt }: PromptCardProps) {

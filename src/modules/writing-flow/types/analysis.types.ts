@@ -32,11 +32,9 @@ export type RawKevSun = {
   grammar: number;
   conventions: number;
 };
-export type KevSunAnchor = { min: number; max: number };
 export type AnalysisResult = {
   scores: EssayScores;
   sentences: AnalyzedSentence[];
   paragraphs?: Paragraph[];
   raw_kevsun?: RawKevSun;
-  kevsun_anchor?: KevSunAnchor;
 };

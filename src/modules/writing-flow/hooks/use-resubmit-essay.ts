@@ -41,13 +41,10 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
 
     const text = assembleEditedEssay(analysis, edits);
 
-    const requestBody: { text: string; prompt: string; kevsun_anchor?: { min: number; max: number } } = {
+    const requestBody = {
       text,
       prompt,
     };
-    if (analysis.kevsun_anchor) {
-      requestBody.kevsun_anchor = analysis.kevsun_anchor;
-    }
 
     try {
       const res = await fetch('/api/analyze', {

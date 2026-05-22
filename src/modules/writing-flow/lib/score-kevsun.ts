@@ -22,7 +22,6 @@ export type KevSunDims = {
 export type KevSunResult = {
   dims: KevSunDims;
   raw: KevSunDims;
-  anchor: { min: number; max: number };
 };
 
 type HfScore = { label: string; score: number };
@@ -37,17 +36,10 @@ function clamp(n: number, lo: number, hi: number): number {
   return Math.min(Math.max(n, lo), hi);
 }
 
-// Spec normalization: min/max scaling of the six raw regression outputs to a
-// 1.0–5.0 band, rounded to the nearest 0.5. Anchors may be supplied by the
-// caller to keep scores stable across resubmits.
-function normalize(
-  raw: readonly number[],
-  anchor: { min: number; max: number },
-): number[] {
-  const { min, max } = anchor;
+function postprocess(raw: readonly number[]): number[] {
   return raw.map((v) => {
-    const scaled = 1 + (4 * (v - min)) / (max - min + 1e-8);
-    return clamp(round05(scaled), 1, 5);
+    const scaledToTen = 2.25 * v - 1.25;
+    return clamp(round05(scaledToTen / 2), 1, 5);
   });
 }
 
@@ -77,10 +69,7 @@ function extractScores(json: unknown): number[] | null {
   return pairs.map((p) => p.score);
 }
 
-export async function scoreKevSun(
-  essay: string,
-  anchor?: { min: number; max: number },
-): Promise<KevSunResult | null> {
+export async function scoreKevSun(essay: string): Promise<KevSunResult | null> {
   const url = env.HUGGINGFACE_KEVSUN_ENDPOINT_URL;
   if (!url) return null;
 
@@ -113,13 +102,8 @@ export async function scoreKevSun(
   const rawScores = extractScores(json);
   if (!rawScores) return null;
 
-  const usedAnchor = anchor ?? {
-    min: Math.min(...rawScores),
-    max: Math.max(...rawScores),
-  };
-
   const [cohesion, syntax, vocabulary, phraseology, grammar, conventions] =
-    normalize(rawScores, usedAnchor);
+    postprocess(rawScores);
 
   const [
     rawCohesion,
@@ -140,6 +124,5 @@ export async function scoreKevSun(
       grammar: rawGrammar,
       conventions: rawConventions,
     },
-    anchor: usedAnchor,
   };
 }

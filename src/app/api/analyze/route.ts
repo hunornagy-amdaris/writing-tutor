@@ -13,12 +13,6 @@ export const maxDuration = 60;
 const requestSchema = z.object({
   text: z.string().min(1).max(10000),
   prompt: z.string().min(1).max(2000),
-  kevsun_anchor: z
-    .object({
-      min: z.number().finite(),
-      max: z.number().finite(),
-    })
-    .optional(),
 });
 
 const openRouterResponseSchema = z.object({
@@ -79,7 +73,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       }),
     });
 
-    const kevsunPromise = scoreKevSun(parsed.data.text, parsed.data.kevsun_anchor);
+    const kevsunPromise = scoreKevSun(parsed.data.text);
 
     const [res, kevsun] = await Promise.all([openRouterPromise, kevsunPromise]);
 
@@ -168,7 +162,7 @@ export async function POST(request: Request): Promise<NextResponse> {
         ...validated.data,
         scores,
         sentences: enrichedSentences,
-        ...(kevsun ? { raw_kevsun: kevsun.raw, kevsun_anchor: kevsun.anchor } : {}),
+        ...(kevsun ? { raw_kevsun: kevsun.raw } : {}),
       },
       { status: 200 },
     );
