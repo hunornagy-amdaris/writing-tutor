@@ -13,6 +13,10 @@ export const env = createEnv({
       .string()
       .url()
       .default('https://router.huggingface.co/hf-inference/models/FacebookAI/roberta-base'),
+    // Paid HF Inference Endpoint hosting KevSun/Engessay_grading_ML.
+    // When set, takes over the five KevSun-mapped PTE criteria; when blank,
+    // falls back to the LLM-emulated scores.
+    HUGGINGFACE_KEVSUN_ENDPOINT_URL: z.string().url().optional(),
   },
   client: {
     NEXT_PUBLIC_ELEVENLABS_AGENT_ID: z.string().min(1),
@@ -26,6 +30,7 @@ export const env = createEnv({
     OPENROUTER_APP_NAME: process.env.OPENROUTER_APP_NAME,
     HUGGINGFACE_API_KEY: process.env.HUGGINGFACE_API_KEY,
     HUGGINGFACE_FILL_MASK_URL: process.env.HUGGINGFACE_FILL_MASK_URL,
+    HUGGINGFACE_KEVSUN_ENDPOINT_URL: process.env.HUGGINGFACE_KEVSUN_ENDPOINT_URL,
     NEXT_PUBLIC_ELEVENLABS_AGENT_ID: process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID,
     NEXT_PUBLIC_ELEVENLABS_BRAINSTORM_AGENT_ID:
       process.env.NEXT_PUBLIC_ELEVENLABS_BRAINSTORM_AGENT_ID,

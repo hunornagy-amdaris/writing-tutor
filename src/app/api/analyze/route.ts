@@ -4,6 +4,7 @@ import { env } from '@/lib/env';
 import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.schema';
 import { buildAnalyzerPrompt } from '@/modules/writing-flow/constants/analyzer-prompt';
 import { checkPhraseology } from '@/modules/writing-flow/lib/check-phraseology';
+import { scoreKevSun } from '@/modules/writing-flow/lib/score-kevsun';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -56,7 +57,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       headers['HTTP-Referer'] = env.OPENROUTER_SITE_URL;
     }
 
-    const res = await fetch(`${env.OPENROUTER_BASE_URL}/chat/completions`, {
+    const openRouterPromise = fetch(`${env.OPENROUTER_BASE_URL}/chat/completions`, {
       method: 'POST',
       headers,
       body: JSON.stringify({
@@ -71,6 +72,10 @@ export async function POST(request: Request): Promise<NextResponse> {
         ],
       }),
     });
+
+    const kevsunPromise = scoreKevSun(parsed.data.text);
+
+    const [res, kevsun] = await Promise.all([openRouterPromise, kevsunPromise]);
 
     if (!res.ok) {
       return NextResponse.json(
@@ -124,8 +129,36 @@ export async function POST(request: Request): Promise<NextResponse> {
       });
     }
 
+    // If the paid KevSun endpoint returned, it's authoritative for the five
+    // KevSun-mapped PTE criteria. Recompute "overall" as the mean of the six
+    // PTE criteria (content stays from the LLM per the spec).
+    const scores = kevsun
+      ? (() => {
+          const merged = {
+            ...validated.data.scores,
+            cohesion: kevsun.cohesion,
+            syntax: kevsun.syntax,
+            vocabulary: kevsun.vocabulary,
+            phraseology: kevsun.phraseology,
+            grammar: kevsun.grammar,
+            conventions: kevsun.conventions,
+          };
+          const glr = (merged.syntax + merged.phraseology) / 2;
+          const pteMean =
+            (merged.content +
+              merged.cohesion +
+              merged.grammar +
+              glr +
+              merged.vocabulary +
+              merged.conventions) /
+            6;
+          merged.overall = Math.round(pteMean * 2) / 2;
+          return merged;
+        })()
+      : validated.data.scores;
+
     return NextResponse.json(
-      { ...validated.data, sentences: enrichedSentences },
+      { ...validated.data, scores, sentences: enrichedSentences },
       { status: 200 },
     );
   } catch (error) {
