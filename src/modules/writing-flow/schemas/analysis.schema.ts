@@ -55,11 +55,17 @@ export const rawKevSunSchema = z.object({
   conventions: z.number().finite(),
 });
 
+export const kevSunAnchorSchema = z.object({
+  min: z.number().finite(),
+  max: z.number().finite(),
+});
+
 export const analysisResultSchema = z.object({
   scores: essayScoresSchema,
   sentences: z.array(analyzedSentenceSchema),
   paragraphs: z.array(paragraphSchema).optional(),
   raw_kevsun: rawKevSunSchema.optional(),
+  kevsun_anchor: kevSunAnchorSchema.optional(),
 }) satisfies z.ZodType<AnalysisResult>;
 
 export type AnalysisResultInferred = z.infer<typeof analysisResultSchema>;
