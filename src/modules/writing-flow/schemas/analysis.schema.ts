@@ -20,6 +20,7 @@ export const essayScoresSchema = z.object({
   phraseology: z.number().finite(),
   grammar: z.number().finite(),
   conventions: z.number().finite(),
+  content: z.number().finite(),
   overall: z.number().finite(),
 });
 

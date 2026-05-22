@@ -3,12 +3,15 @@ import { z } from 'zod';
 import { env } from '@/lib/env';
 import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.schema';
 import { buildAnalyzerPrompt } from '@/modules/writing-flow/constants/analyzer-prompt';
+import { checkPhraseology } from '@/modules/writing-flow/lib/check-phraseology';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
 
 const requestSchema = z.object({
   text: z.string().min(1).max(10000),
+  prompt: z.string().min(1).max(2000),
 });
 
 const openRouterResponseSchema = z.object({
@@ -61,7 +64,10 @@ export async function POST(request: Request): Promise<NextResponse> {
         max_tokens: 4000,
         response_format: { type: 'json_object' },
         messages: [
-          { role: 'user', content: buildAnalyzerPrompt(parsed.data.text) },
+          {
+            role: 'user',
+            content: buildAnalyzerPrompt(parsed.data.text, parsed.data.prompt),
+          },
         ],
       }),
     });
@@ -102,7 +108,26 @@ export async function POST(request: Request): Promise<NextResponse> {
       );
     }
 
-    return NextResponse.json(validated.data, { status: 200 });
+    // Enrich every sentence with real phraseology data from FacebookAI/roberta-base.
+    // Serial over sentences to keep HF concurrency bounded (per-sentence parallelism
+    // lives inside checkPhraseology); the route's maxDuration is 60s.
+    const enrichedSentences = [];
+    for (const sentence of validated.data.sentences) {
+      const grammarTokens = new Set(
+        sentence.grammar_edits.map((e) => e.token.toLowerCase()),
+      );
+      const phraseology = await checkPhraseology(sentence.original, grammarTokens);
+      enrichedSentences.push({
+        ...sentence,
+        phraseology_flags: phraseology.flags,
+        phraseology_score: phraseology.score,
+      });
+    }
+
+    return NextResponse.json(
+      { ...validated.data, sentences: enrichedSentences },
+      { status: 200 },
+    );
   } catch (error) {
     const messageText =
       error instanceof Error ? error.message : 'Unknown error';

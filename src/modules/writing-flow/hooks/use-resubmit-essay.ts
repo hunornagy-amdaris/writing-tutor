@@ -6,6 +6,7 @@ import { assembleEditedEssay } from '@/modules/writing-flow/lib/assemble-edited-
 import {
   selectAnalysis,
   selectEdits,
+  selectPrompt,
   useFlowStore,
 } from '@/modules/writing-flow/stores/use-flow-store';
 
@@ -22,6 +23,7 @@ type UseResubmitEssayReturn = {
 export function useResubmitEssay(): UseResubmitEssayReturn {
   const analysis = useFlowStore(selectAnalysis);
   const edits = useFlowStore(selectEdits);
+  const prompt = useFlowStore(selectPrompt);
   const setScoreAfterEdits = useFlowStore((s) => s.setScoreAfterEdits);
   const setStep = useFlowStore((s) => s.setStep);
   const [status, setStatus] = useState<Status>('idle');
@@ -43,7 +45,7 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
       const res = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, prompt }),
       });
       if (!res.ok) {
         const data: unknown = await res.json().catch(() => ({}));

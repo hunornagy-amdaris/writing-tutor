@@ -2,7 +2,10 @@
 
 import { useState } from 'react';
 import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.schema';
-import { useFlowStore } from '@/modules/writing-flow/stores/use-flow-store';
+import {
+  selectPrompt,
+  useFlowStore,
+} from '@/modules/writing-flow/stores/use-flow-store';
 
 // TODO Wave 3: migrate to TanStack Query mutation
 type Status = 'idle' | 'pending' | 'success' | 'error';
@@ -17,6 +20,7 @@ type UseAnalyzeEssayReturn = {
 export function useAnalyzeEssay(): UseAnalyzeEssayReturn {
   const setAnalysis = useFlowStore((s) => s.setAnalysis);
   const setStep = useFlowStore((s) => s.setStep);
+  const prompt = useFlowStore(selectPrompt);
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);
 
@@ -27,7 +31,7 @@ export function useAnalyzeEssay(): UseAnalyzeEssayReturn {
       const res = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, prompt }),
       });
       if (!res.ok) {
         const data: unknown = await res.json().catch(() => ({}));

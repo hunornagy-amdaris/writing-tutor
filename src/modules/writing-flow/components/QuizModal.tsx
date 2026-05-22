@@ -43,7 +43,7 @@ export function QuizModal() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="quiz-modal-title"
-        className="motion-pop-in relative flex max-h-[90vh] w-modal-w flex-col overflow-hidden rounded-panel bg-surface"
+        className="motion-pop-in relative flex max-h-[90vh] w-modal-w flex-col overflow-hidden rounded-panel bg-surface shadow-2xl"
       >
         <ModalHeader title={title} isComplete={isComplete} onClose={closeQuiz} />
 

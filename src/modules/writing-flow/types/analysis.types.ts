@@ -8,6 +8,7 @@ export type EssayScores = {
   phraseology: number;
   grammar: number;
   conventions: number;
+  content: number;
   overall: number;
 };
 export type AnalyzedSentence = {

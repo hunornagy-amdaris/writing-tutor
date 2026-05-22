@@ -5,10 +5,11 @@ import type {
   ScoreBarData,
 } from '@/modules/writing-flow/types/review.types';
 
-// TODO Wave 3: replace mapping when /api/analyze returns new rubric
-// The legacy EssayScores rubric (cohesion/syntax/vocabulary/phraseology/grammar/conventions/overall)
-// uses a 0..5 scale. The new Figma rubric has 8 cells with per-cell denominators and an overall /90.
-// This file bridges the two until the analyzer is upgraded.
+// PTE-criterion → UI-cell bridge. The analyzer returns six raw KevSun dims
+// (cohesion/syntax/vocabulary/phraseology/grammar/conventions) plus a Claude-graded
+// content score; this file folds them into the six PTE criteria and lays them out
+// across the eight Figma cells. Form is UI-enforced (word-count gate), so it always
+// gets full marks once an essay reaches this stage.
 
 const DENOMINATORS: Record<ScoreBarCellKey, number> = {
   content: 3,
@@ -46,29 +47,43 @@ export const SCORE_BAR_CELL_KEYS: readonly ScoreBarCellKey[] = [
 const clamp = (n: number, min: number, max: number): number =>
   Math.min(Math.max(n, min), max);
 
-const cellFrom = (key: ScoreBarCellKey, legacy: number): ScoreBarCellValue => {
+const cellFrom = (key: ScoreBarCellKey, pteScore: number): ScoreBarCellValue => {
   const denom = DENOMINATORS[key];
-  const numerator = clamp(Math.round((legacy / 5) * denom), 0, denom);
+  const numerator = clamp(Math.round((pteScore / 5) * denom), 0, denom);
   return { key, label: LABELS[key], numerator, denominator: denom };
 };
 
-// Legacy → new-rubric mapping (provisional).
-// Choices are intentionally simple and deterministic.
-const mapLegacyToCells = (s: EssayScores): Record<ScoreBarCellKey, ScoreBarCellValue> => ({
-  content: cellFrom('content', s.cohesion),
-  form: cellFrom('form', s.syntax),
-  develop: cellFrom('develop', s.cohesion),
-  grammar: cellFrom('grammar', s.grammar),
-  ling: cellFrom('ling', s.syntax),
-  vocab: cellFrom('vocab', s.vocabulary),
-  spelling: cellFrom('spelling', s.conventions),
-  conv: cellFrom('conv', s.conventions),
-});
+// PTE criteria derived from the analyzer's raw KevSun dims + Claude content score.
+// - Content                = content (Claude vs writing prompt)
+// - Development/Structure/Coherence = cohesion
+// - Grammar                = grammar
+// - General Linguistic Range = avg(syntax, phraseology)
+// - Vocabulary Range       = vocabulary
+// - Spelling               = conventions
+const linguisticRange = (s: EssayScores): number => (s.syntax + s.phraseology) / 2;
+
+const mapToCells = (s: EssayScores): Record<ScoreBarCellKey, ScoreBarCellValue> => {
+  const formDenom = DENOMINATORS.form;
+  return {
+    content: cellFrom('content', s.content),
+    form: { key: 'form', label: LABELS.form, numerator: formDenom, denominator: formDenom },
+    develop: cellFrom('develop', s.cohesion),
+    grammar: cellFrom('grammar', s.grammar),
+    ling: cellFrom('ling', linguisticRange(s)),
+    vocab: cellFrom('vocab', s.vocabulary),
+    spelling: cellFrom('spelling', s.conventions),
+    conv: cellFrom('conv', s.conventions),
+  };
+};
 
 export const buildScoreBarData = (scores: EssayScores): ScoreBarData => {
-  const cells = mapLegacyToCells(scores);
+  const cells = mapToCells(scores);
   const overallOutOf = 90;
-  const overall = clamp(Math.round((scores.overall / 5) * 18), 0, overallOutOf);
+  const overall = clamp(
+    Math.round((scores.overall / 5) * overallOutOf),
+    0,
+    overallOutOf,
+  );
   return {
     overall,
     overallOutOf,
@@ -113,7 +128,7 @@ export type RubricScores = {
 };
 
 export const mapToRubric = (scores: EssayScores): RubricScores => {
-  const cells = mapLegacyToCells(scores);
+  const cells = mapToCells(scores);
   const overallOutOf = 90;
   const overall = clamp(Math.round((scores.overall / 5) * overallOutOf), 0, overallOutOf);
   return {
