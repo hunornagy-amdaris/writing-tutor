@@ -98,20 +98,29 @@ export async function POST(request: Request): Promise<NextResponse> {
       });
     }
 
-    // KevSun overwrites the five model-graded per-dim cells (informational), but
-    // we keep the LLM's own "overall" — KevSun's HF endpoint returns softmax-
-    // normalized dims (the six values sum to 1.0), so any recomputed mean stays
-    // locked across resubmits. The LLM's overall actually moves with the essay.
     const scores = kevsun
-      ? {
-          ...validated.data.scores,
-          cohesion: kevsun.dims.cohesion,
-          syntax: kevsun.dims.syntax,
-          vocabulary: kevsun.dims.vocabulary,
-          phraseology: kevsun.dims.phraseology,
-          grammar: kevsun.dims.grammar,
-          conventions: kevsun.dims.conventions,
-        }
+      ? (() => {
+          const merged = {
+            ...validated.data.scores,
+            cohesion: kevsun.dims.cohesion,
+            syntax: kevsun.dims.syntax,
+            vocabulary: kevsun.dims.vocabulary,
+            phraseology: kevsun.dims.phraseology,
+            grammar: kevsun.dims.grammar,
+            conventions: kevsun.dims.conventions,
+          };
+          const glr = (merged.syntax + merged.phraseology) / 2;
+          const pteMean =
+            (merged.content +
+              merged.cohesion +
+              merged.grammar +
+              glr +
+              merged.vocabulary +
+              merged.conventions) /
+            6;
+          merged.overall = Math.round(pteMean * 2) / 2;
+          return merged;
+        })()
       : validated.data.scores;
 
     return NextResponse.json(
