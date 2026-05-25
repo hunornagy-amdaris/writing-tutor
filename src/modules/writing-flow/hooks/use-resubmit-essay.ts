@@ -12,16 +12,15 @@ type UseResubmitEssayReturn = {
   status: Status;
   error: string | null;
   isPending: boolean;
-  resubmit: () => Promise<void>;
+  resubmit: () => Promise<boolean>;
 };
 
 export function useResubmitEssay(): UseResubmitEssayReturn {
   const setScoreAfterEdits = useFlowStore((s) => s.setScoreAfterEdits);
-  const setStep = useFlowStore((s) => s.setStep);
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);
 
-  const resubmit = async (): Promise<void> => {
+  const resubmit = async (): Promise<boolean> => {
     // Read the LATEST store state at call time. Closing over the values
     // captured at render time creates a stale-closure bug when the caller
     // updates the store immediately before calling resubmit() — e.g. the
@@ -35,7 +34,7 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
     if (!analysis) {
       setError('No analysis to resubmit');
       setStatus('error');
-      return;
+      return false;
     }
 
     setStatus('pending');
@@ -66,22 +65,23 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
             : `Request failed (${res.status})`;
         setError(message);
         setStatus('error');
-        return;
+        return false;
       }
       const json: unknown = await res.json();
       const validated = analysisResultSchema.safeParse(json);
       if (!validated.success) {
         setError('Invalid analysis response');
         setStatus('error');
-        return;
+        return false;
       }
       setScoreAfterEdits(validated.data.scores);
       setStatus('success');
-      setStep('score');
+      return true;
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Unknown error';
       setError(message);
       setStatus('error');
+      return false;
     }
   };
 

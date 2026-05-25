@@ -7,6 +7,7 @@ import { QuizModal } from '@/modules/writing-flow/components/QuizModal';
 import { ReviewTutorPanel } from '@/modules/writing-flow/components/ReviewTutorPanel';
 import { ScoreBar } from '@/modules/writing-flow/components/ScoreBar';
 import { SentenceCard } from '@/modules/writing-flow/components/SentenceCard';
+import { useDevCheatTrigger } from '@/modules/writing-flow/hooks/useDevCheatTrigger';
 import { useResubmitEssay } from '@/modules/writing-flow/hooks/use-resubmit-essay';
 import { deriveParagraphTabs } from '@/modules/writing-flow/lib/derive-paragraph-tabs';
 import { buildScoreBarData } from '@/modules/writing-flow/lib/score-mapping';
@@ -33,6 +34,7 @@ export function ReviewScreen() {
   const commitSentenceEdit = useFlowStore((s) => s.commitSentenceEdit);
   const setStep = useFlowStore((s) => s.setStep);
   const { resubmit, isPending } = useResubmitEssay();
+  const { isOpen: devActive } = useDevCheatTrigger();
 
   const paragraphTabs = analysis ? deriveParagraphTabs(analysis) : [];
   const defaultLabel: ParagraphLabel = paragraphTabs[0]?.label ?? 'Introduction';
@@ -46,7 +48,9 @@ export function ReviewScreen() {
     : 'Click a flagged sentence to discuss or edit it inline.';
   const handleCta = (): void => {
     if (showResubmit) {
-      void resubmit();
+      void resubmit().then((ok) => {
+        if (ok) setStep('score');
+      });
     } else {
       setStep('score');
     }
@@ -76,6 +80,16 @@ export function ReviewScreen() {
       setSelectedSentenceIndex(null);
     } else {
       setSelectedSentenceIndex(index);
+    }
+  };
+
+  const handleDevAutoFixChunk = (): void => {
+    for (const i of visibleIndices) {
+      const sentence = analysis.sentences[i];
+      if (!sentence || !sentence.has_errors) continue;
+      const corrected = sentence.corrected?.trim();
+      if (!corrected) continue;
+      commitSentenceEdit(i, corrected);
     }
   };
 
@@ -118,6 +132,16 @@ export function ReviewScreen() {
           </ul>
           <div className="flex items-center justify-between pt-2">
             <div className="flex items-center gap-3">
+              {devActive ? (
+                <button
+                  type="button"
+                  onClick={handleDevAutoFixChunk}
+                  title="dev cheat — auto-fix this chunk"
+                  className="motion-press flex h-9 items-center justify-center rounded-pill border border-line-strong bg-surface-muted px-3 text-base-13 font-bold text-magenta"
+                >
+                  🛠 Auto-fix this chunk
+                </button>
+              ) : null}
               {!editMode && fixedSentenceIndices.length > 0 ? (
                 <button
                   type="button"
