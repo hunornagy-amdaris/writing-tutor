@@ -17,6 +17,7 @@ type UseResubmitEssayReturn = {
 
 export function useResubmitEssay(): UseResubmitEssayReturn {
   const setScoreAfterEdits = useFlowStore((s) => s.setScoreAfterEdits);
+  const setAnalysis = useFlowStore((s) => s.setAnalysis);
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);
 
@@ -74,6 +75,11 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
         setStatus('error');
         return false;
       }
+      setAnalysis({
+        ...validated.data,
+        kevsun_anchor: analysis.kevsun_anchor ?? validated.data.kevsun_anchor,
+      });
+      useFlowStore.setState({ edits: {}, fixedSentenceIndices: [] });
       setScoreAfterEdits(validated.data.scores);
       setStatus('success');
       return true;

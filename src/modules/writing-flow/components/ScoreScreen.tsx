@@ -1,6 +1,5 @@
 'use client';
 
-import { ReflectCard } from '@/modules/writing-flow/components/ReflectCard';
 import { ScoreCard } from '@/modules/writing-flow/components/ScoreCard';
 import { mapToRubric } from '@/modules/writing-flow/lib/score-mapping';
 import {
@@ -11,14 +10,6 @@ import {
 
 // TODO Wave 4+: wire real student name from session/user
 const STUDENT_NAME = 'Sofia';
-
-// TODO Wave 4+: generate reflect bodies via AI from session history.
-const REFLECT_PATTERN_EYEBROW = 'Pattern across 3 sessions';
-const REFLECT_PATTERN_BODY =
-  'Uncountable nouns have come up three times. What do you notice about when you make this error — is it specific types of nouns, or specific topics?';
-const REFLECT_NEXT_EYEBROW = 'Something to explore next';
-const REFLECT_NEXT_BODY =
-  'Your sentence structures are consistent — a real strength. But Linguistic Range is still capping you. Try varying your sentence openings in the next session.';
 
 export function ScoreScreen() {
   const analysis = useFlowStore(selectAnalysis);
@@ -62,14 +53,7 @@ export function ScoreScreen() {
           <ScoreCard variant="after" rubric={afterRubric} />
         </div>
 
-        <p className="mt-10 text-tiny font-bold text-nav-bg">REFLECT &amp; PLAN</p>
-
-        <div className="mt-2 flex flex-col gap-3.5">
-          <ReflectCard eyebrow={REFLECT_PATTERN_EYEBROW} body={REFLECT_PATTERN_BODY} />
-          <ReflectCard eyebrow={REFLECT_NEXT_EYEBROW} body={REFLECT_NEXT_BODY} />
-        </div>
-
-        <div className="mt-4 flex items-center justify-between">
+        <div className="mt-10 flex items-center justify-between">
           <button
             type="button"
             onClick={handleDone}
