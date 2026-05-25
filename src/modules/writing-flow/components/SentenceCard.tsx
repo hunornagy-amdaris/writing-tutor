@@ -34,7 +34,7 @@ export function SentenceCard({
     return (
       <EditingCard
         index={index}
-        initialValue={initialEditValue ?? sentence.corrected ?? sentence.original}
+        initialValue={initialEditValue ?? sentence.original}
         onCommit={(text) => onCommitEdit?.(index, text)}
       />
     );

@@ -108,7 +108,7 @@ export function ReviewScreen() {
                     isEditing={isEditing}
                     isFixed={isFixed}
                     fixedText={fixedText}
-                    initialEditValue={edits[i] ?? sentence.corrected}
+                    initialEditValue={edits[i] ?? sentence.original}
                     onSelect={handleSelect}
                     onCommitEdit={commitSentenceEdit}
                   />

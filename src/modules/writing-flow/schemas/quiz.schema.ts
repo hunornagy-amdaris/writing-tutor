@@ -2,8 +2,8 @@ import { z } from 'zod';
 
 export const quizMcQuestionSchema = z.object({
   stem: z.string().min(1),
-  options: z.array(z.string().min(1)).min(2).max(4),
-  correctIndex: z.number().int().min(0).max(3),
+  options: z.array(z.string().min(1)).length(2),
+  correctIndex: z.number().int().min(0).max(1),
 });
 
 export const quizGapQuestionSchema = z.object({

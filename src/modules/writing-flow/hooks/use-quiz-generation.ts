@@ -78,7 +78,18 @@ export function useQuizGeneration(): UseQuizGenerationReturn {
         if (!parsed.success) {
           throw new Error('Invalid quiz response');
         }
-        setQuizQuestions(parsed.data);
+        // Force MC to a strict 2-option compare: the student's original
+        // (incorrect) sentence vs the corrected version from the analysis.
+        // This bypasses any distractors the LLM may have generated.
+        const overridden = {
+          ...parsed.data,
+          mc: {
+            stem: 'Which sentence is correct?',
+            options: [sentence.original, sentence.corrected],
+            correctIndex: 1,
+          },
+        };
+        setQuizQuestions(overridden);
         setStatus('success');
       } catch (err: unknown) {
         if (err instanceof DOMException && err.name === 'AbortError') {
