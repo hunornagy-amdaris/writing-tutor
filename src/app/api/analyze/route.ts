@@ -98,30 +98,13 @@ export async function POST(request: Request): Promise<NextResponse> {
       });
     }
 
-    const scores = kevsun
-      ? (() => {
-          const merged = {
-            ...validated.data.scores,
-            cohesion: kevsun.dims.cohesion,
-            syntax: kevsun.dims.syntax,
-            vocabulary: kevsun.dims.vocabulary,
-            phraseology: kevsun.dims.phraseology,
-            grammar: kevsun.dims.grammar,
-            conventions: kevsun.dims.conventions,
-          };
-          const glr = (merged.syntax + merged.phraseology) / 2;
-          const pteMean =
-            (merged.content +
-              merged.cohesion +
-              merged.grammar +
-              glr +
-              merged.vocabulary +
-              merged.conventions) /
-            6;
-          merged.overall = Math.round(pteMean * 2) / 2;
-          return merged;
-        })()
-      : validated.data.scores;
+    // Scoring is LLM-only. The KevSun HF endpoint at this deployment returns
+    // softmax-normalized output (the six dims sum to 1.0) instead of raw
+    // regression logits — that breaks BOTH model-card formulas (the 1-5 min-max
+    // formula loses absolute scale, the 1-10 formula collapses everything to
+    // floor). The LLM scores absolutely, so we trust those. Raw KevSun output
+    // is still returned in `raw_kevsun` for inspection.
+    const scores = validated.data.scores;
 
     return NextResponse.json(
       {
