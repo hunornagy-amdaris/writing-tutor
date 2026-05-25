@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { env } from '@/lib/env';
+import { openai, OPENAI_MODEL } from '@/lib/openai';
 import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.schema';
 import { buildAnalyzerPrompt } from '@/modules/writing-flow/constants/analyzer-prompt';
 import { checkPhraseology } from '@/modules/writing-flow/lib/check-phraseology';
@@ -13,16 +13,6 @@ export const maxDuration = 60;
 const requestSchema = z.object({
   text: z.string().min(1).max(10000),
   prompt: z.string().min(1).max(2000),
-});
-
-const openRouterResponseSchema = z.object({
-  choices: z
-    .array(
-      z.object({
-        message: z.object({ content: z.string() }),
-      }),
-    )
-    .min(1),
 });
 
 function stripCodeFences(input: string): string {
@@ -48,52 +38,31 @@ export async function POST(request: Request): Promise<NextResponse> {
   }
 
   try {
-    const headers: Record<string, string> = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${env.OPENROUTER_API_KEY}`,
-      'X-Title': env.OPENROUTER_APP_NAME,
-    };
-    if (env.OPENROUTER_SITE_URL) {
-      headers['HTTP-Referer'] = env.OPENROUTER_SITE_URL;
-    }
-
-    const openRouterPromise = fetch(`${env.OPENROUTER_BASE_URL}/chat/completions`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({
-        model: env.OPENROUTER_MODEL,
-        max_tokens: 4000,
-        response_format: { type: 'json_object' },
-        messages: [
-          {
-            role: 'user',
-            content: buildAnalyzerPrompt(parsed.data.text, parsed.data.prompt),
-          },
-        ],
-      }),
+    const openaiPromise = openai.chat.completions.create({
+      model: OPENAI_MODEL,
+      max_tokens: 4000,
+      response_format: { type: 'json_object' },
+      messages: [
+        {
+          role: 'user',
+          content: buildAnalyzerPrompt(parsed.data.text, parsed.data.prompt),
+        },
+      ],
     });
 
     const kevsunPromise = scoreKevSun(parsed.data.text);
 
-    const [res, kevsun] = await Promise.all([openRouterPromise, kevsunPromise]);
+    const [completion, kevsun] = await Promise.all([openaiPromise, kevsunPromise]);
 
-    if (!res.ok) {
+    const content = completion.choices[0]?.message?.content;
+    if (!content) {
       return NextResponse.json(
-        { error: `OpenRouter ${res.status}` },
+        { error: 'Unexpected OpenAI response shape' },
         { status: 502 },
       );
     }
 
-    const rawJson: unknown = await res.json();
-    const orParsed = openRouterResponseSchema.safeParse(rawJson);
-    if (!orParsed.success) {
-      return NextResponse.json(
-        { error: 'Unexpected OpenRouter response shape' },
-        { status: 502 },
-      );
-    }
-
-    const stripped = stripCodeFences(orParsed.data.choices[0].message.content);
+    const stripped = stripCodeFences(content);
 
     let json: unknown;
     try {
