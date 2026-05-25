@@ -36,7 +36,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   try {
     const completion = await openai.chat.completions.create({
       model: OPENAI_MODEL,
-      max_tokens: 600,
+      max_completion_tokens: 600,
       messages: [
         { role: 'system', content: WRITE_TUTOR_SYSTEM_PROMPT },
         { role: 'system', content: contextBlock },

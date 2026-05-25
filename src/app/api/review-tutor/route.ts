@@ -43,7 +43,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   try {
     const completion = await openai.chat.completions.create({
       model: OPENAI_MODEL,
-      max_tokens: 400,
+      max_completion_tokens: 400,
       messages: chatMessages,
     });
 
