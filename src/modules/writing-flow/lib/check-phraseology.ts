@@ -11,6 +11,7 @@ const TOP_K = 100;
 const RANK_THRESHOLD = 80;
 
 const MAX_PARALLEL = 6;
+const FILL_MASK_TIMEOUT_MS = 12_000;
 
 // Tokens that aren't worth masking — function words always rank high, and very
 // short or non-alphabetic tokens have no useful naturalness signal.
@@ -61,10 +62,13 @@ function buildMaskedSentence(parts: string[], index: number): string {
 }
 
 async function callFillMask(maskedSentence: string): Promise<HfPrediction[] | null> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FILL_MASK_TIMEOUT_MS);
   let res: Response;
   try {
     res = await fetch(env.HUGGINGFACE_FILL_MASK_URL, {
       method: 'POST',
+      signal: controller.signal,
       headers: {
         Authorization: `Bearer ${env.HUGGINGFACE_API_KEY}`,
         'Content-Type': 'application/json',
@@ -76,8 +80,10 @@ async function callFillMask(maskedSentence: string): Promise<HfPrediction[] | nu
       }),
     });
   } catch {
+    clearTimeout(timer);
     return null;
   }
+  clearTimeout(timer);
   if (!res.ok) return null;
   const json: unknown = await res.json().catch(() => null);
   if (!Array.isArray(json)) return null;
