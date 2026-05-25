@@ -36,10 +36,18 @@ function clamp(n: number, lo: number, hi: number): number {
   return Math.min(Math.max(n, lo), hi);
 }
 
+// Empirical: this HF endpoint returns per-dim scores in the ~0.05–0.30 range
+// (six values sum to ≈1.0, softmax-style). Map that operational range linearly
+// onto the PTE 1.0–5.0 scale so the postprocessed score actually moves when
+// the essay changes. Calibration: raw 0.05 → 1.0, raw 0.30 → 5.0.
+const KEVSUN_RAW_FLOOR = 0.05;
+const KEVSUN_RAW_CEIL = 0.3;
+
 function postprocess(raw: readonly number[]): number[] {
+  const span = KEVSUN_RAW_CEIL - KEVSUN_RAW_FLOOR;
   return raw.map((v) => {
-    const scaledToTen = 2.25 * v - 1.25;
-    return clamp(round05(scaledToTen / 2), 1, 5);
+    const mapped = 1 + ((v - KEVSUN_RAW_FLOOR) / span) * 4;
+    return clamp(round05(mapped), 1, 5);
   });
 }
 
@@ -88,7 +96,7 @@ export async function scoreKevSun(essay: string): Promise<KevSunResult | null> {
       body: JSON.stringify({
         inputs: essay,
         parameters: { function_to_apply: 'none', truncation: true },
-        options: { wait_for_model: true },
+        options: { wait_for_model: true, use_cache: false },
       }),
     });
   } catch {
