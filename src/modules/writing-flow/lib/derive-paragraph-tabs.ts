@@ -3,6 +3,7 @@ import type {
   Paragraph,
   ParagraphLabel,
 } from '@/modules/writing-flow/types/analysis.types';
+import { hasSentenceIssues } from '@/modules/writing-flow/lib/sentence-fix';
 
 export type DerivedParagraphTab = {
   label: ParagraphLabel;
@@ -24,7 +25,10 @@ export function deriveParagraphTabs(
     label: p.label,
     sentenceIndices: p.sentenceIndices,
     hasErrors: p.sentenceIndices.some(
-      (i) => analysis.sentences[i]?.has_errors === true,
+      (i) => {
+        const sentence = analysis.sentences[i];
+        return sentence ? hasSentenceIssues(sentence) : false;
+      },
     ),
   }));
 }

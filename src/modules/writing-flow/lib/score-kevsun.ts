@@ -36,18 +36,27 @@ function clamp(n: number, lo: number, hi: number): number {
   return Math.min(Math.max(n, lo), hi);
 }
 
-// Empirical: this HF endpoint returns per-dim scores in the ~0.05–0.30 range
-// (six values sum to ≈1.0, softmax-style). Map that operational range linearly
-// onto the PTE 1.0–5.0 scale so the postprocessed score actually moves when
-// the essay changes. Calibration: raw 0.05 → 1.0, raw 0.30 → 5.0.
-const KEVSUN_RAW_FLOOR = 0.05;
-const KEVSUN_RAW_CEIL = 0.3;
-
+// Per the official KevSun/Engessay_grading_ML model card on HuggingFace:
+//   scaled = 1 + 4 * (raw - min(raw)) / (max(raw) - min(raw))
+//   rounded = round(scaled * 2) / 2
+// i.e. min-max normalize the six per-essay raw scores onto the 1–5 PTE scale
+// and snap to 0.5 increments. This is rank-style within each essay (one dim
+// always lands at 5, one at 1) but it's how the model author intends scoring.
 function postprocess(raw: readonly number[]): number[] {
-  const span = KEVSUN_RAW_CEIL - KEVSUN_RAW_FLOOR;
+  if (raw.length === 0) return [];
+  let min = raw[0];
+  let max = raw[0];
+  for (const v of raw) {
+    if (v < min) min = v;
+    if (v > max) max = v;
+  }
+  const span = max - min;
+  if (span === 0) {
+    return raw.map(() => 3);
+  }
   return raw.map((v) => {
-    const mapped = 1 + ((v - KEVSUN_RAW_FLOOR) / span) * 4;
-    return clamp(round05(mapped), 1, 5);
+    const scaled = 1 + 4 * ((v - min) / span);
+    return clamp(round05(scaled), 1, 5);
   });
 }
 

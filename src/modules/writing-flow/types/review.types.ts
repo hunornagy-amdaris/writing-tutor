@@ -30,7 +30,7 @@ export type ParagraphTab = {
   hasErrors: boolean;
 };
 
-export type SentenceBadgeKind = 'grammar' | 'vocab' | null;
+export type SentenceBadgeKind = 'grammar' | 'phrasing' | 'grammar + phrasing' | null;
 
 export type SentenceFixPair = {
   yours: string;

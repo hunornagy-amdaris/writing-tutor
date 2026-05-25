@@ -2,6 +2,7 @@
 
 import { create } from 'zustand';
 import { FLOW_STEPS, DEFAULT_PROMPT } from '@/modules/writing-flow/constants/steps.constants';
+import { hasSentenceIssues } from '@/modules/writing-flow/lib/sentence-fix';
 import type {
   BrainstormMode,
   BrainstormState,
@@ -220,7 +221,7 @@ export type FixProgress = { fixed: number; total: number; remaining: number };
 
 export const selectFixProgress = (s: FlowState & FlowActions): FixProgress => {
   const total = s.analysis
-    ? s.analysis.sentences.filter((sentence) => sentence.has_errors).length
+    ? s.analysis.sentences.filter(hasSentenceIssues).length
     : 0;
   const fixed = s.fixedSentenceIndices.length;
   return { fixed, total, remaining: Math.max(0, total - fixed) };

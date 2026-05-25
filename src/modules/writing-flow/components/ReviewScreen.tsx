@@ -11,6 +11,7 @@ import { useDevCheatTrigger } from '@/modules/writing-flow/hooks/useDevCheatTrig
 import { useResubmitEssay } from '@/modules/writing-flow/hooks/use-resubmit-essay';
 import { deriveParagraphTabs } from '@/modules/writing-flow/lib/derive-paragraph-tabs';
 import { buildScoreBarData } from '@/modules/writing-flow/lib/score-mapping';
+import { hasSentenceIssues } from '@/modules/writing-flow/lib/sentence-fix';
 import {
   selectAnalysis,
   selectEditMode,
@@ -86,7 +87,7 @@ export function ReviewScreen() {
   const handleDevAutoFixChunk = (): void => {
     for (const i of visibleIndices) {
       const sentence = analysis.sentences[i];
-      if (!sentence || !sentence.has_errors) continue;
+      if (!sentence || !hasSentenceIssues(sentence)) continue;
       const corrected = sentence.corrected?.trim();
       if (!corrected) continue;
       commitSentenceEdit(i, corrected);

@@ -5,6 +5,7 @@ import {
   quizGenerationResponseSchema,
   type quizGenerationRequestSchema,
 } from '@/modules/writing-flow/schemas/quiz.schema';
+import { getSentencePracticeCorrection } from '@/modules/writing-flow/lib/sentence-fix';
 import {
   selectAnalysis,
   selectPrompt,
@@ -81,11 +82,12 @@ export function useQuizGeneration(): UseQuizGenerationReturn {
         // Force MC to a strict 2-option compare: the student's original
         // (incorrect) sentence vs the corrected version from the analysis.
         // This bypasses any distractors the LLM may have generated.
+        const corrected = getSentencePracticeCorrection(sentence);
         const overridden = {
           ...parsed.data,
           mc: {
             stem: 'Which sentence is correct?',
-            options: [sentence.original, sentence.corrected],
+            options: [sentence.original, corrected],
             correctIndex: 1,
           },
         };

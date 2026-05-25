@@ -75,8 +75,12 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
         setStatus('error');
         return false;
       }
+      // Preserve the ORIGINAL analysis.scores so the Score screen's "initial"
+      // side keeps showing the first-analyze numbers. The new scores live in
+      // scoreAfterEdits only.
       setAnalysis({
         ...validated.data,
+        scores: analysis.scores,
         kevsun_anchor: analysis.kevsun_anchor ?? validated.data.kevsun_anchor,
       });
       useFlowStore.setState({ edits: {}, fixedSentenceIndices: [] });

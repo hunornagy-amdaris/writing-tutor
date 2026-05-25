@@ -4,11 +4,15 @@ import type {
   SentenceFixPair,
 } from '@/modules/writing-flow/types/review.types';
 
-// Returns the badge kind for a flagged sentence (grammar takes precedence over vocab).
+export const hasSentenceIssues = (s: AnalyzedSentence): boolean =>
+  s.grammar_edits.length > 0 || s.phraseology_flags.length > 0;
+
 export const getSentenceBadgeKind = (s: AnalyzedSentence): SentenceBadgeKind => {
-  if (!s.has_errors) return null;
-  if (s.grammar_edits.length > 0) return 'grammar';
-  if (s.phraseology_flags.length > 0) return 'vocab';
+  const hasGrammar = s.grammar_edits.length > 0;
+  const hasPhrasing = s.phraseology_flags.length > 0;
+  if (hasGrammar && hasPhrasing) return 'grammar + phrasing';
+  if (hasGrammar) return 'grammar';
+  if (hasPhrasing) return 'phrasing';
   return null;
 };
 
@@ -35,4 +39,14 @@ export const getSentenceFixPair = (s: AnalyzedSentence): SentenceFixPair => {
     }
   }
   return null;
+};
+
+export const getSentencePracticeCorrection = (s: AnalyzedSentence): string => {
+  if (s.grammar_edits.length > 0) return s.corrected;
+  const flag = s.phraseology_flags[0];
+  const suggestion = flag?.suggestions[0];
+  if (!flag || !suggestion) return s.corrected;
+  const escaped = flag.token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const pattern = new RegExp(`\\b${escaped}\\b`, 'i');
+  return s.original.replace(pattern, suggestion);
 };

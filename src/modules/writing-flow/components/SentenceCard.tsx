@@ -2,7 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { AnalyzedSentence } from '@/modules/writing-flow/types/analysis.types';
-import { getSentenceBadgeKind } from '@/modules/writing-flow/lib/sentence-fix';
+import {
+  getSentenceBadgeKind,
+  hasSentenceIssues,
+} from '@/modules/writing-flow/lib/sentence-fix';
 
 type SentenceCardProps = {
   index: number;
@@ -28,7 +31,7 @@ export function SentenceCard({
   onCommitEdit,
 }: SentenceCardProps) {
   const badge = getSentenceBadgeKind(sentence);
-  const hasErrors = sentence.has_errors;
+  const hasIssues = hasSentenceIssues(sentence);
 
   if (isEditing) {
     return (
@@ -52,12 +55,12 @@ export function SentenceCard({
       `${baseMotion} flex w-full flex-col gap-1 rounded-button border border-success bg-success-soft px-3 py-2 text-left`;
     labelColor = 'text-success-ink';
     textColor = 'text-ink-900';
-  } else if (hasErrors && isSelected) {
+  } else if (hasIssues && isSelected) {
     container =
       `${baseMotion} flex w-full flex-col gap-1 rounded-button border-2 border-danger bg-danger-soft px-3 py-2 text-left`;
     labelColor = 'text-ink-600';
     textColor = 'text-ink-900';
-  } else if (hasErrors) {
+  } else if (hasIssues) {
     container =
       `${baseMotion} flex w-full flex-col gap-1 rounded-button bg-danger-soft px-3 py-2 text-left`;
     labelColor = 'text-ink-600';
@@ -69,9 +72,9 @@ export function SentenceCard({
   return (
     <button
       type="button"
-      onClick={() => (hasErrors ? onSelect(index) : undefined)}
+      onClick={() => (hasIssues ? onSelect(index) : undefined)}
       aria-pressed={isSelected}
-      disabled={!hasErrors}
+      disabled={!hasIssues}
       className={container}
     >
       <div className="flex w-full items-center justify-between">
