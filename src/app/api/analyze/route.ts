@@ -98,13 +98,33 @@ export async function POST(request: Request): Promise<NextResponse> {
       });
     }
 
-    // Scoring is LLM-only. The KevSun HF endpoint at this deployment returns
-    // softmax-normalized output (the six dims sum to 1.0) instead of raw
-    // regression logits — that breaks BOTH model-card formulas (the 1-5 min-max
-    // formula loses absolute scale, the 1-10 formula collapses everything to
-    // floor). The LLM scores absolutely, so we trust those. Raw KevSun output
-    // is still returned in `raw_kevsun` for inspection.
-    const scores = validated.data.scores;
+    // PTE scoring map: LLM provides ONLY content; the five linguistic dims
+    // come straight from KevSun's postprocessed values (1:1 mapping, no merge
+    // with the LLM's dim guesses). Overall is the mean of the six PTE criteria.
+    const scores = kevsun
+      ? (() => {
+          const pte = {
+            ...validated.data.scores,
+            cohesion: kevsun.dims.cohesion,
+            syntax: kevsun.dims.syntax,
+            vocabulary: kevsun.dims.vocabulary,
+            phraseology: kevsun.dims.phraseology,
+            grammar: kevsun.dims.grammar,
+            conventions: kevsun.dims.conventions,
+          };
+          const glr = (pte.syntax + pte.phraseology) / 2;
+          const pteMean =
+            (pte.content +
+              pte.cohesion +
+              pte.grammar +
+              glr +
+              pte.vocabulary +
+              pte.conventions) /
+            6;
+          pte.overall = Math.round(pteMean * 2) / 2;
+          return pte;
+        })()
+      : validated.data.scores;
 
     return NextResponse.json(
       {

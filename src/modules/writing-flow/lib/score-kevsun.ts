@@ -36,28 +36,13 @@ function clamp(n: number, lo: number, hi: number): number {
   return Math.min(Math.max(n, lo), hi);
 }
 
-// Per the official KevSun/Engessay_grading_ML model card on HuggingFace:
-//   scaled = 1 + 4 * (raw - min(raw)) / (max(raw) - min(raw))
-//   rounded = round(scaled * 2) / 2
-// i.e. min-max normalize the six per-essay raw scores onto the 1–5 PTE scale
-// and snap to 0.5 increments. This is rank-style within each essay (one dim
-// always lands at 5, one at 1) but it's how the model author intends scoring.
+// Simple absolute mapping from the KevSun endpoint's softmax-style outputs to
+// the PTE 1.0–5.0 scale. With six dims that sum to ≈1.0, the average raw is
+// 1/6 ≈ 0.167 — we anchor that to a 3.0 midpoint via score = 1 + 12*raw, then
+// clamp and snap to 0.5. No min-max, no per-essay rescaling: a higher raw on
+// a dim always maps to a higher PTE score.
 function postprocess(raw: readonly number[]): number[] {
-  if (raw.length === 0) return [];
-  let min = raw[0];
-  let max = raw[0];
-  for (const v of raw) {
-    if (v < min) min = v;
-    if (v > max) max = v;
-  }
-  const span = max - min;
-  if (span === 0) {
-    return raw.map(() => 3);
-  }
-  return raw.map((v) => {
-    const scaled = 1 + 4 * ((v - min) / span);
-    return clamp(round05(scaled), 1, 5);
-  });
+  return raw.map((v) => clamp(round05(1 + 12 * v), 1, 5));
 }
 
 function parseLabelIndex(label: string): number {
