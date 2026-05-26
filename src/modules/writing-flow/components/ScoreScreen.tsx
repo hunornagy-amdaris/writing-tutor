@@ -3,8 +3,8 @@
 import { ScoreCard } from '@/modules/writing-flow/components/ScoreCard';
 import { mapToRubric } from '@/modules/writing-flow/lib/score-mapping';
 import {
-  selectAnalysis,
-  selectScoreAfterEdits,
+  selectInitialAnalysis,
+  selectResubmitAnalysis,
   useFlowStore,
 } from '@/modules/writing-flow/stores/use-flow-store';
 
@@ -12,11 +12,11 @@ import {
 const STUDENT_NAME = 'Sofia';
 
 export function ScoreScreen() {
-  const analysis = useFlowStore(selectAnalysis);
-  const scoreAfterEdits = useFlowStore(selectScoreAfterEdits);
+  const initialAnalysis = useFlowStore(selectInitialAnalysis);
+  const resubmitAnalysis = useFlowStore(selectResubmitAnalysis);
   const reset = useFlowStore((s) => s.reset);
 
-  if (!analysis) {
+  if (!initialAnalysis) {
     return (
       <main className="app-container py-12 text-ink-600">
         <p className="text-base-13">No analysis available yet.</p>
@@ -24,8 +24,10 @@ export function ScoreScreen() {
     );
   }
 
-  const initialRubric = mapToRubric(analysis.scores);
-  const afterRubric = mapToRubric(scoreAfterEdits ?? analysis.scores);
+  const initialRubric = mapToRubric(initialAnalysis.scores);
+  const afterRubric = mapToRubric(
+    resubmitAnalysis?.scores ?? initialAnalysis.scores,
+  );
 
   const handleDone = (): void => {
     reset();

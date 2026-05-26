@@ -16,7 +16,7 @@ type UseResubmitEssayReturn = {
 };
 
 export function useResubmitEssay(): UseResubmitEssayReturn {
-  const setScoreAfterEdits = useFlowStore((s) => s.setScoreAfterEdits);
+  const setResubmitAnalysis = useFlowStore((s) => s.setResubmitAnalysis);
   const setAnalysis = useFlowStore((s) => s.setAnalysis);
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);
@@ -75,16 +75,15 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
         setStatus('error');
         return false;
       }
-      // Preserve the ORIGINAL analysis.scores so the Score screen's "initial"
-      // side keeps showing the first-analyze numbers. The new scores live in
-      // scoreAfterEdits only.
-      setAnalysis({
+      // Carry over the original kevsun_anchor so re-checks keep scoring against
+      // the same band. initialAnalysis is left untouched for the side-by-side.
+      const resubmitResult = {
         ...validated.data,
-        scores: analysis.scores,
         kevsun_anchor: analysis.kevsun_anchor ?? validated.data.kevsun_anchor,
-      });
+      };
+      setResubmitAnalysis(resubmitResult);
+      setAnalysis(resubmitResult);
       useFlowStore.setState({ edits: {}, fixedSentenceIndices: [] });
-      setScoreAfterEdits(validated.data.scores);
       setStatus('success');
       return true;
     } catch (err) {

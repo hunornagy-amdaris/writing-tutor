@@ -1,10 +1,13 @@
 'use client';
 
-import type { ParagraphLabel } from '@/modules/writing-flow/types/review.types';
+import type {
+  ParagraphLabel,
+  ParagraphTabStatus,
+} from '@/modules/writing-flow/types/review.types';
 
 type ParagraphTabItem = {
   label: ParagraphLabel;
-  hasErrors: boolean;
+  status: ParagraphTabStatus;
 };
 
 type ParagraphTabsProps = {
@@ -39,8 +42,12 @@ export function ParagraphTabs({ tabs, activeLabel, onChange }: ParagraphTabsProp
             }
           >
             <span>{formatTabLabel(tab.label)}</span>
-            {tab.hasErrors ? (
+            {tab.status === 'errors' ? (
               <span aria-label="has errors" className="text-xs leading-none text-danger">
+                ●
+              </span>
+            ) : tab.status === 'fixed' ? (
+              <span aria-label="all fixed" className="text-xs leading-none text-success">
                 ●
               </span>
             ) : null}

@@ -2,6 +2,7 @@
 
 import { Loader2 } from 'lucide-react';
 import { useResubmitEssay } from '@/modules/writing-flow/hooks/use-resubmit-essay';
+import { getSentencePracticeCorrection } from '@/modules/writing-flow/lib/sentence-fix';
 import {
   selectAnalysis,
   selectQuiz,
@@ -20,9 +21,11 @@ export function QuizCompleteContent() {
   const handleDone = () => {
     if (quiz.sentenceIndex !== null && analysis) {
       const sentence = analysis.sentences[quiz.sentenceIndex];
-      const correctedText = sentence?.corrected?.trim();
-      if (correctedText) {
-        commitSentenceEdit(quiz.sentenceIndex, correctedText);
+      if (sentence) {
+        const correctedText = getSentencePracticeCorrection(sentence).trim();
+        if (correctedText) {
+          commitSentenceEdit(quiz.sentenceIndex, correctedText);
+        }
       }
     }
     closeQuiz();

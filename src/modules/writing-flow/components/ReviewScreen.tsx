@@ -11,7 +11,10 @@ import { useDevCheatTrigger } from '@/modules/writing-flow/hooks/useDevCheatTrig
 import { useResubmitEssay } from '@/modules/writing-flow/hooks/use-resubmit-essay';
 import { deriveParagraphTabs } from '@/modules/writing-flow/lib/derive-paragraph-tabs';
 import { buildScoreBarData } from '@/modules/writing-flow/lib/score-mapping';
-import { hasSentenceIssues } from '@/modules/writing-flow/lib/sentence-fix';
+import {
+  getSentencePracticeCorrection,
+  hasSentenceIssues,
+} from '@/modules/writing-flow/lib/sentence-fix';
 import {
   selectAnalysis,
   selectEditMode,
@@ -37,7 +40,9 @@ export function ReviewScreen() {
   const { resubmit, isPending } = useResubmitEssay();
   const { isOpen: devActive } = useDevCheatTrigger();
 
-  const paragraphTabs = analysis ? deriveParagraphTabs(analysis) : [];
+  const paragraphTabs = analysis
+    ? deriveParagraphTabs(analysis, fixedSentenceIndices)
+    : [];
   const defaultLabel: ParagraphLabel = paragraphTabs[0]?.label ?? 'Introduction';
   const [activeLabel, setActiveLabel] = useState<ParagraphLabel>(defaultLabel);
 
@@ -88,7 +93,7 @@ export function ReviewScreen() {
     for (const i of visibleIndices) {
       const sentence = analysis.sentences[i];
       if (!sentence || !hasSentenceIssues(sentence)) continue;
-      const corrected = sentence.corrected?.trim();
+      const corrected = getSentencePracticeCorrection(sentence).trim();
       if (!corrected) continue;
       commitSentenceEdit(i, corrected);
     }
@@ -102,7 +107,7 @@ export function ReviewScreen() {
           <ParagraphTabs
             tabs={paragraphTabs.map((t) => ({
               label: t.label,
-              hasErrors: t.hasErrors,
+              status: t.status,
             }))}
             activeLabel={activeTab?.label ?? defaultLabel}
             onChange={setActiveLabel}

@@ -19,6 +19,8 @@ type UseAnalyzeEssayReturn = {
 
 export function useAnalyzeEssay(): UseAnalyzeEssayReturn {
   const setAnalysis = useFlowStore((s) => s.setAnalysis);
+  const setInitialAnalysis = useFlowStore((s) => s.setInitialAnalysis);
+  const setResubmitAnalysis = useFlowStore((s) => s.setResubmitAnalysis);
   const setStep = useFlowStore((s) => s.setStep);
   const prompt = useFlowStore(selectPrompt);
   const [status, setStatus] = useState<Status>('idle');
@@ -50,6 +52,8 @@ export function useAnalyzeEssay(): UseAnalyzeEssayReturn {
         setStatus('error');
         return;
       }
+      setInitialAnalysis(validated.data);
+      setResubmitAnalysis(null);
       setAnalysis(validated.data);
       setStatus('success');
       setStep('review');

@@ -30,6 +30,8 @@ export type ParagraphTab = {
   hasErrors: boolean;
 };
 
+export type ParagraphTabStatus = 'none' | 'errors' | 'fixed';
+
 export type SentenceBadgeKind = 'grammar' | 'phrasing' | 'grammar + phrasing' | null;
 
 export type SentenceFixPair = {

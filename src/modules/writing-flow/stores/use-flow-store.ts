@@ -8,7 +8,6 @@ import type {
   BrainstormState,
   ChatMessage,
   FlowAnalysis,
-  FlowScores,
   FlowStep,
   ReviewChatMessage,
   TutorMode,
@@ -25,8 +24,9 @@ type FlowState = {
   brainstorm: BrainstormState;
   essay: string;
   analysis: FlowAnalysis | null;
+  initialAnalysis: FlowAnalysis | null;
+  resubmitAnalysis: FlowAnalysis | null;
   edits: Record<number, string>;
-  scoreAfterEdits: FlowScores | null;
   selectedSentenceIndex: number | null;
   tutorMode: TutorMode;
   quiz: QuizState;
@@ -44,8 +44,9 @@ type FlowActions = {
   setVoiceActive: (active: boolean) => void;
   setEssay: (essay: string) => void;
   setAnalysis: (analysis: FlowAnalysis | null) => void;
+  setInitialAnalysis: (analysis: FlowAnalysis | null) => void;
+  setResubmitAnalysis: (analysis: FlowAnalysis | null) => void;
   setEdit: (index: number, value: string) => void;
-  setScoreAfterEdits: (scores: FlowScores | null) => void;
   setSelectedSentenceIndex: (index: number | null) => void;
   setTutorMode: (mode: TutorMode) => void;
   openQuiz: (sentenceIndex: number) => void;
@@ -78,8 +79,9 @@ const initialState: FlowState = {
   },
   essay: '',
   analysis: null,
+  initialAnalysis: null,
+  resubmitAnalysis: null,
   edits: {},
-  scoreAfterEdits: null,
   selectedSentenceIndex: null,
   tutorMode: 'type',
   quiz: {
@@ -134,9 +136,10 @@ export const useFlowStore = create<FlowState & FlowActions>((set) => ({
     set((state) => ({ brainstorm: { ...state.brainstorm, isVoiceActive: active } })),
   setEssay: (essay) => set({ essay }),
   setAnalysis: (analysis) => set({ analysis }),
+  setInitialAnalysis: (analysis) => set({ initialAnalysis: analysis }),
+  setResubmitAnalysis: (analysis) => set({ resubmitAnalysis: analysis }),
   setEdit: (index, value) =>
     set((state) => ({ edits: { ...state.edits, [index]: value } })),
-  setScoreAfterEdits: (scores) => set({ scoreAfterEdits: scores }),
   setSelectedSentenceIndex: (index) => set({ selectedSentenceIndex: index }),
   setTutorMode: (mode) => set({ tutorMode: mode }),
   openQuiz: (sentenceIndex) => set({ quiz: freshQuiz(sentenceIndex) }),
@@ -180,13 +183,30 @@ export const useFlowStore = create<FlowState & FlowActions>((set) => ({
   setEditMode: (value) => set({ editMode: value }),
   setEditingSentenceIndex: (index) => set({ editingSentenceIndex: index }),
   commitSentenceEdit: (index, text) =>
-    set((state) => ({
-      edits: { ...state.edits, [index]: text },
-      fixedSentenceIndices: state.fixedSentenceIndices.includes(index)
-        ? state.fixedSentenceIndices
-        : [...state.fixedSentenceIndices, index],
-      editingSentenceIndex: null,
-    })),
+    set((state) => {
+      const trimmed = text.trim();
+      const original = state.analysis?.sentences[index]?.original.trim() ?? '';
+      const changed = trimmed.length > 0 && trimmed !== original;
+      if (!changed) {
+        // Unchanged (or reverted to the original) — never report "fixed".
+        const edits = { ...state.edits };
+        delete edits[index];
+        return {
+          edits,
+          fixedSentenceIndices: state.fixedSentenceIndices.filter(
+            (i) => i !== index,
+          ),
+          editingSentenceIndex: null,
+        };
+      }
+      return {
+        edits: { ...state.edits, [index]: trimmed },
+        fixedSentenceIndices: state.fixedSentenceIndices.includes(index)
+          ? state.fixedSentenceIndices
+          : [...state.fixedSentenceIndices, index],
+        editingSentenceIndex: null,
+      };
+    }),
   addReviewMessage: (message) =>
     set((state) => ({
       reviewMessages: [...state.reviewMessages, message],
@@ -200,9 +220,11 @@ export const selectPrompt = (s: FlowState & FlowActions): string => s.prompt;
 export const selectBrainstorm = (s: FlowState & FlowActions): BrainstormState => s.brainstorm;
 export const selectEssay = (s: FlowState & FlowActions): string => s.essay;
 export const selectAnalysis = (s: FlowState & FlowActions): FlowAnalysis | null => s.analysis;
+export const selectInitialAnalysis = (s: FlowState & FlowActions): FlowAnalysis | null =>
+  s.initialAnalysis;
+export const selectResubmitAnalysis = (s: FlowState & FlowActions): FlowAnalysis | null =>
+  s.resubmitAnalysis;
 export const selectEdits = (s: FlowState & FlowActions): Record<number, string> => s.edits;
-export const selectScoreAfterEdits = (s: FlowState & FlowActions): FlowScores | null =>
-  s.scoreAfterEdits;
 export const selectSelectedSentenceIndex = (
   s: FlowState & FlowActions,
 ): number | null => s.selectedSentenceIndex;
