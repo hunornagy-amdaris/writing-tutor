@@ -5,6 +5,11 @@ import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.sc
 import { buildAnalyzerPrompt } from '@/modules/writing-flow/constants/analyzer-prompt';
 import { checkPhraseology } from '@/modules/writing-flow/lib/check-phraseology';
 import { scoreKevSun } from '@/modules/writing-flow/lib/score-kevsun';
+import {
+  essayFingerprint,
+  wtLog,
+  wtRunId,
+} from '@/modules/writing-flow/lib/debug-log';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -25,6 +30,7 @@ function stripCodeFences(input: string): string {
 }
 
 export async function POST(request: Request): Promise<NextResponse> {
+  const requestId = wtRunId();
   let body: unknown;
   try {
     body = await request.json();
@@ -34,8 +40,20 @@ export async function POST(request: Request): Promise<NextResponse> {
 
   const parsed = requestSchema.safeParse(body);
   if (!parsed.success) {
+    wtLog(`analyze[${requestId}] ◀ rejected: invalid input`);
     return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
   }
+
+  const receivedKevsunAnchor =
+    typeof body === 'object' && body !== null && 'kevsun_anchor' in body;
+  wtLog(`analyze[${requestId}] ◀ request received`, {
+    ...essayFingerprint(parsed.data.text),
+    promptLength: parsed.data.prompt.length,
+    receivedKevsunAnchor,
+    anchorNote: receivedKevsunAnchor
+      ? 'kevsun_anchor present in body but the route schema STRIPS it — ignored'
+      : undefined,
+  });
 
   try {
     const openaiPromise = openai.chat.completions.create({
@@ -53,6 +71,17 @@ export async function POST(request: Request): Promise<NextResponse> {
     const kevsunPromise = scoreKevSun(parsed.data.text);
 
     const [completion, kevsun] = await Promise.all([openaiPromise, kevsunPromise]);
+
+    wtLog(
+      `analyze[${requestId}] kevsun result`,
+      kevsun
+        ? { source: 'kevsun', raw: kevsun.raw, dims: kevsun.dims }
+        : {
+            source: 'llm-fallback',
+            reason:
+              'scoreKevSun returned null — no endpoint URL, timeout, non-200, or bad shape',
+          },
+    );
 
     const content = completion.choices[0]?.message?.content;
     if (!content) {
@@ -81,6 +110,11 @@ export async function POST(request: Request): Promise<NextResponse> {
         { status: 500 },
       );
     }
+
+    wtLog(
+      `analyze[${requestId}] LLM raw scores (linguistic dims discarded when kevsun present)`,
+      validated.data.scores,
+    );
 
     // Enrich every sentence with real phraseology data from FacebookAI/roberta-base.
     // Serial over sentences to keep HF concurrency bounded (per-sentence parallelism
@@ -126,18 +160,47 @@ export async function POST(request: Request): Promise<NextResponse> {
         })()
       : validated.data.scores;
 
+    const scoringSource = kevsun ? 'kevsun' : 'llm-fallback';
+    const phraseologyTotalFlags = enrichedSentences.reduce(
+      (n, s) => n + s.phraseology_flags.length,
+      0,
+    );
+
+    const debug = {
+      requestId,
+      scoringSource,
+      inputText: essayFingerprint(parsed.data.text),
+      receivedKevsunAnchor,
+      kevsunRaw: kevsun?.raw ?? null,
+      kevsunDims: kevsun?.dims ?? null,
+      llmContent: validated.data.scores.content,
+      llmRawScores: validated.data.scores,
+      computedScores: scores,
+      overall1to5: scores.overall,
+      phraseologyTotalFlags,
+    };
+
+    wtLog(`analyze[${requestId}] ▶ final scores`, {
+      scoringSource,
+      overall1to5: scores.overall,
+      scores,
+      phraseologyTotalFlags,
+    });
+
     return NextResponse.json(
       {
         ...validated.data,
         scores,
         sentences: enrichedSentences,
         ...(kevsun ? { raw_kevsun: kevsun.raw } : {}),
+        __debug: debug,
       },
       { status: 200 },
     );
   } catch (error) {
     const messageText =
       error instanceof Error ? error.message : 'Unknown error';
+    wtLog(`analyze[${requestId}] ✕ error`, messageText);
     return NextResponse.json({ error: messageText }, { status: 500 });
   }
 }

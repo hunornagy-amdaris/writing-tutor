@@ -26,3 +26,18 @@ export type BrainstormState = {
 
 export type FlowAnalysis = AnalysisResult;
 export type FlowScores = EssayScores;
+
+export type RunScoringSource = 'kevsun' | 'llm-fallback' | 'unknown';
+
+// One entry per analyze/resubmit round-trip, so every run is saved separately
+// (the store otherwise keeps only the initial + latest analysis).
+export type RunLogEntry = {
+  runId: string;
+  kind: 'initial' | 'resubmit';
+  at: string;
+  textLength: number;
+  editCount: number;
+  scoringSource: RunScoringSource;
+  scores: EssayScores;
+  overallPte: number;
+};

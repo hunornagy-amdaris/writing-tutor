@@ -1,6 +1,7 @@
 import 'server-only';
 
 import { env } from '@/lib/env';
+import { wtLog } from '@/modules/writing-flow/lib/debug-log';
 
 // KevSun/Engessay_grading_ML is a roberta-large regression head producing six
 // outputs in this fixed order (per the spec's reference Python):
@@ -73,7 +74,12 @@ function extractScores(json: unknown): number[] | null {
 
 export async function scoreKevSun(essay: string): Promise<KevSunResult | null> {
   const url = env.HUGGINGFACE_KEVSUN_ENDPOINT_URL;
-  if (!url) return null;
+  if (!url) {
+    wtLog(
+      'kevsun ✕ no HUGGINGFACE_KEVSUN_ENDPOINT_URL set — LINGUISTIC DIMS COME FROM THE LLM FALLBACK (non-deterministic)',
+    );
+    return null;
+  }
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), COLD_START_TIMEOUT_MS);
@@ -93,16 +99,27 @@ export async function scoreKevSun(essay: string): Promise<KevSunResult | null> {
         options: { wait_for_model: true, use_cache: false },
       }),
     });
-  } catch {
+  } catch (err) {
     clearTimeout(timer);
+    wtLog('kevsun ✕ fetch failed/aborted (timeout?) — falling back to LLM scores', {
+      error: err instanceof Error ? err.message : String(err),
+    });
     return null;
   }
   clearTimeout(timer);
 
-  if (!res.ok) return null;
+  if (!res.ok) {
+    wtLog('kevsun ✕ non-200 — falling back to LLM scores', {
+      status: res.status,
+    });
+    return null;
+  }
   const json: unknown = await res.json().catch(() => null);
   const rawScores = extractScores(json);
-  if (!rawScores) return null;
+  if (!rawScores) {
+    wtLog('kevsun ✕ unexpected response shape — falling back to LLM scores');
+    return null;
+  }
 
   const [cohesion, syntax, vocabulary, phraseology, grammar, conventions] =
     postprocess(rawScores);
@@ -116,7 +133,7 @@ export async function scoreKevSun(essay: string): Promise<KevSunResult | null> {
     rawConventions,
   ] = rawScores;
 
-  return {
+  const result = {
     dims: { cohesion, syntax, vocabulary, phraseology, grammar, conventions },
     raw: {
       cohesion: rawCohesion,
@@ -127,4 +144,10 @@ export async function scoreKevSun(essay: string): Promise<KevSunResult | null> {
       conventions: rawConventions,
     },
   };
+  wtLog('kevsun ✓ scored (deterministic per identical input)', {
+    rawModelScores: rawScores,
+    raw: result.raw,
+    dims: result.dims,
+  });
+  return result;
 }

@@ -10,6 +10,7 @@ import type {
   FlowAnalysis,
   FlowStep,
   ReviewChatMessage,
+  RunLogEntry,
   TutorMode,
 } from '@/modules/writing-flow/types/flow.types';
 import type {
@@ -34,6 +35,7 @@ type FlowState = {
   editingSentenceIndex: number | null;
   fixedSentenceIndices: number[];
   reviewMessages: ReviewChatMessage[];
+  runLog: RunLogEntry[];
 };
 
 type FlowActions = {
@@ -61,6 +63,7 @@ type FlowActions = {
   setEditingSentenceIndex: (index: number | null) => void;
   commitSentenceEdit: (index: number, text: string) => void;
   addReviewMessage: (message: ReviewChatMessage) => void;
+  appendRunLog: (entry: RunLogEntry) => void;
   reset: () => void;
 };
 
@@ -100,6 +103,7 @@ const initialState: FlowState = {
   editingSentenceIndex: null,
   fixedSentenceIndices: [],
   reviewMessages: [],
+  runLog: [],
 };
 
 const freshQuiz = (sentenceIndex: number): QuizState => ({
@@ -211,6 +215,8 @@ export const useFlowStore = create<FlowState & FlowActions>((set) => ({
     set((state) => ({
       reviewMessages: [...state.reviewMessages, message],
     })),
+  appendRunLog: (entry) =>
+    set((state) => ({ runLog: [...state.runLog, entry] })),
   reset: () => set({ ...initialState }),
 }));
 
@@ -233,6 +239,7 @@ export const selectQuiz = (s: FlowState & FlowActions): QuizState => s.quiz;
 export const selectReviewMessages = (
   s: FlowState & FlowActions,
 ): ReviewChatMessage[] => s.reviewMessages;
+export const selectRunLog = (s: FlowState & FlowActions): RunLogEntry[] => s.runLog;
 export const selectEditMode = (s: FlowState & FlowActions): boolean => s.editMode;
 export const selectEditingSentenceIndex = (s: FlowState & FlowActions): number | null =>
   s.editingSentenceIndex;

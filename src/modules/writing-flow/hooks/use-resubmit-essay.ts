@@ -3,7 +3,14 @@
 import { useState } from 'react';
 import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.schema';
 import { assembleEditedEssay } from '@/modules/writing-flow/lib/assemble-edited-essay';
+import {
+  essayFingerprint,
+  wtLog,
+  wtRunId,
+} from '@/modules/writing-flow/lib/debug-log';
+import { mapToRubric } from '@/modules/writing-flow/lib/score-mapping';
 import { useFlowStore } from '@/modules/writing-flow/stores/use-flow-store';
+import type { RunScoringSource } from '@/modules/writing-flow/types/flow.types';
 
 // TODO Wave 4 TanStack: migrate to a useMutation hook
 type Status = 'idle' | 'pending' | 'success' | 'error';
@@ -18,6 +25,7 @@ type UseResubmitEssayReturn = {
 export function useResubmitEssay(): UseResubmitEssayReturn {
   const setResubmitAnalysis = useFlowStore((s) => s.setResubmitAnalysis);
   const setAnalysis = useFlowStore((s) => s.setAnalysis);
+  const appendRunLog = useFlowStore((s) => s.appendRunLog);
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);
 
@@ -52,6 +60,15 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
       requestBody.kevsun_anchor = analysis.kevsun_anchor;
     }
 
+    const editCount = Object.keys(edits).length;
+    wtLog('resubmit ◀ sending RESUBMIT run', {
+      editedSentenceIndices: Object.keys(edits),
+      editCount,
+      edits,
+      assembledText: essayFingerprint(text),
+      kevsunAnchorSent: requestBody.kevsun_anchor ?? null,
+    });
+
     try {
       const res = await fetch('/api/analyze', {
         method: 'POST',
@@ -84,6 +101,49 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
       setResubmitAnalysis(resubmitResult);
       setAnalysis(resubmitResult);
       useFlowStore.setState({ edits: {}, fixedSentenceIndices: [] });
+
+      const debug = (json as { __debug?: Record<string, unknown> }).__debug;
+      const scoringSource =
+        (debug?.scoringSource as RunScoringSource | undefined) ?? 'unknown';
+      const overallPte = mapToRubric(resubmitResult.scores).overall;
+      const runId =
+        typeof debug?.requestId === 'string' ? debug.requestId : wtRunId();
+      appendRunLog({
+        runId,
+        kind: 'resubmit',
+        at: new Date().toISOString(),
+        textLength: text.length,
+        editCount,
+        scoringSource,
+        scores: resubmitResult.scores,
+        overallPte,
+      });
+
+      const initialPte = state.initialAnalysis
+        ? mapToRubric(state.initialAnalysis.scores).overall
+        : null;
+      wtLog('resubmit ▶ COMPARISON initial → after', {
+        initialOverall1to5: state.initialAnalysis?.scores.overall ?? null,
+        afterOverall1to5: resubmitResult.scores.overall,
+        initialPte,
+        afterPte: overallPte,
+        deltaPte: initialPte !== null ? overallPte - initialPte : null,
+        verdict:
+          initialPte === null
+            ? 'n/a'
+            : overallPte > initialPte
+              ? 'IMPROVED ✓'
+              : overallPte === initialPte
+                ? 'NO CHANGE'
+                : 'DROPPED ✕',
+        afterScoringSource: scoringSource,
+        serverDebug: debug ?? null,
+      });
+      wtLog(
+        'resubmit runLog (all runs saved separately)',
+        useFlowStore.getState().runLog,
+      );
+
       setStatus('success');
       return true;
     } catch (err) {

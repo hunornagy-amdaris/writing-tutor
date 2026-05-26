@@ -3,9 +3,16 @@
 import { useState } from 'react';
 import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.schema';
 import {
+  essayFingerprint,
+  wtLog,
+  wtRunId,
+} from '@/modules/writing-flow/lib/debug-log';
+import { mapToRubric } from '@/modules/writing-flow/lib/score-mapping';
+import {
   selectPrompt,
   useFlowStore,
 } from '@/modules/writing-flow/stores/use-flow-store';
+import type { RunScoringSource } from '@/modules/writing-flow/types/flow.types';
 
 // TODO Wave 3: migrate to TanStack Query mutation
 type Status = 'idle' | 'pending' | 'success' | 'error';
@@ -21,6 +28,7 @@ export function useAnalyzeEssay(): UseAnalyzeEssayReturn {
   const setAnalysis = useFlowStore((s) => s.setAnalysis);
   const setInitialAnalysis = useFlowStore((s) => s.setInitialAnalysis);
   const setResubmitAnalysis = useFlowStore((s) => s.setResubmitAnalysis);
+  const appendRunLog = useFlowStore((s) => s.appendRunLog);
   const setStep = useFlowStore((s) => s.setStep);
   const prompt = useFlowStore(selectPrompt);
   const [status, setStatus] = useState<Status>('idle');
@@ -29,6 +37,10 @@ export function useAnalyzeEssay(): UseAnalyzeEssayReturn {
   const analyze = async (text: string): Promise<void> => {
     setStatus('pending');
     setError(null);
+    wtLog('analyze-client ◀ sending INITIAL run', {
+      ...essayFingerprint(text),
+      promptLength: prompt.length,
+    });
     try {
       const res = await fetch('/api/analyze', {
         method: 'POST',
@@ -46,8 +58,10 @@ export function useAnalyzeEssay(): UseAnalyzeEssayReturn {
         return;
       }
       const json: unknown = await res.json();
+      const debug = (json as { __debug?: Record<string, unknown> }).__debug;
       const validated = analysisResultSchema.safeParse(json);
       if (!validated.success) {
+        wtLog('analyze-client ✕ invalid analysis response', json);
         setError('Invalid analysis response');
         setStatus('error');
         return;
@@ -55,6 +69,34 @@ export function useAnalyzeEssay(): UseAnalyzeEssayReturn {
       setInitialAnalysis(validated.data);
       setResubmitAnalysis(null);
       setAnalysis(validated.data);
+
+      const scoringSource =
+        (debug?.scoringSource as RunScoringSource | undefined) ?? 'unknown';
+      const overallPte = mapToRubric(validated.data.scores).overall;
+      const runId =
+        typeof debug?.requestId === 'string' ? debug.requestId : wtRunId();
+      appendRunLog({
+        runId,
+        kind: 'initial',
+        at: new Date().toISOString(),
+        textLength: text.length,
+        editCount: 0,
+        scoringSource,
+        scores: validated.data.scores,
+        overallPte,
+      });
+      wtLog('analyze-client ▶ INITIAL run stored', {
+        runId,
+        scoringSource,
+        overall1to5: validated.data.scores.overall,
+        overallPte,
+        serverDebug: debug ?? null,
+      });
+      wtLog(
+        'analyze-client runLog (all runs saved separately)',
+        useFlowStore.getState().runLog,
+      );
+
       setStatus('success');
       setStep('review');
     } catch (err) {
