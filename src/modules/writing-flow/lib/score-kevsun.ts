@@ -91,10 +91,15 @@ export async function scoreKevSun(essay: string): Promise<KevSunResult | null> {
         Authorization: `Bearer ${env.HUGGINGFACE_API_KEY}`,
         'Content-Type': 'application/json',
       },
+      // The endpoint runs TEI (Text Embeddings Inference), which ignores
+      // `function_to_apply` and softmaxes by default. `raw_scores: true` makes
+      // it return the raw regression logits instead. TEI fields are top-level
+      // (no `parameters`/`options` wrapper).
       body: JSON.stringify({
         inputs: essay,
-        parameters: { function_to_apply: 'none', truncation: true },
-        options: { wait_for_model: true, use_cache: false },
+        raw_scores: true,
+        truncate: true,
+        truncation_direction: 'Right',
       }),
     });
   } catch (err) {
@@ -122,7 +127,7 @@ export async function scoreKevSun(essay: string): Promise<KevSunResult | null> {
   const sum = rawScores.reduce((a, b) => a + b, 0);
   if (Math.abs(sum - 1) < 0.02 && rawScores.every((v) => v < 0.5)) {
     wtLog(
-      'kevsun ✕ endpoint returned SOFTMAX (values sum to ≈1, not raw regression logits) — absolute scoring impossible; redeploy the endpoint to return raw logits — falling back',
+      'kevsun ✕ endpoint returned SOFTMAX (values sum to ≈1, not raw logits) — TEI ignored raw_scores; absolute scoring impossible — falling back',
       { sum, rawScores },
     );
     return null;
