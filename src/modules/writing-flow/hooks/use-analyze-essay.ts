@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.schema';
 import {
   essayFingerprint,
+  wtJson,
   wtLog,
   wtRunId,
 } from '@/modules/writing-flow/lib/debug-log';
@@ -85,14 +86,14 @@ export function useAnalyzeEssay(): UseAnalyzeEssayReturn {
         scores: validated.data.scores,
         overallPte,
       });
-      wtLog('analyze-client ▶ INITIAL run stored', {
+      wtJson('analyze-client ▶ INITIAL run stored', {
         runId,
         scoringSource,
         overall1to5: validated.data.scores.overall,
         overallPte,
         serverDebug: debug ?? null,
       });
-      wtLog(
+      wtJson(
         'analyze-client runLog (all runs saved separately)',
         useFlowStore.getState().runLog,
       );

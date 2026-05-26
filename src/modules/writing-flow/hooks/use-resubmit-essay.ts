@@ -5,6 +5,7 @@ import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.sc
 import { assembleEditedEssay } from '@/modules/writing-flow/lib/assemble-edited-essay';
 import {
   essayFingerprint,
+  wtJson,
   wtLog,
   wtRunId,
 } from '@/modules/writing-flow/lib/debug-log';
@@ -122,7 +123,7 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
       const initialPte = state.initialAnalysis
         ? mapToRubric(state.initialAnalysis.scores).overall
         : null;
-      wtLog('resubmit ▶ COMPARISON initial → after', {
+      wtJson('resubmit ▶ COMPARISON initial → after', {
         initialOverall1to5: state.initialAnalysis?.scores.overall ?? null,
         afterOverall1to5: resubmitResult.scores.overall,
         initialPte,
@@ -139,7 +140,7 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
         afterScoringSource: scoringSource,
         serverDebug: debug ?? null,
       });
-      wtLog(
+      wtJson(
         'resubmit runLog (all runs saved separately)',
         useFlowStore.getState().runLog,
       );
