@@ -11,15 +11,19 @@ import type {
 // across the eight Figma cells. Form is UI-enforced (word-count gate), so it always
 // gets full marks once an essay reaches this stage.
 
+// Display denominators are 5 across the board so each PTE cell shows the
+// exact 1:1 equivalent of its source (KevSun-postprocessed dim or LLM content),
+// e.g. KevSun cohesion 3.5 → "3.5/5". Form is UI-enforced (200–300 words gate)
+// and always 5/5 once the essay reaches this stage.
 const DENOMINATORS: Record<ScoreBarCellKey, number> = {
-  content: 3,
-  form: 2,
-  develop: 2,
-  grammar: 2,
-  ling: 2,
-  vocab: 2,
-  spelling: 2,
-  conv: 2,
+  content: 5,
+  form: 5,
+  develop: 5,
+  grammar: 5,
+  ling: 5,
+  vocab: 5,
+  spelling: 5,
+  conv: 5,
 };
 
 const LABELS: Record<ScoreBarCellKey, string> = {
@@ -49,7 +53,7 @@ const clamp = (n: number, min: number, max: number): number =>
 
 const cellFrom = (key: ScoreBarCellKey, pteScore: number): ScoreBarCellValue => {
   const denom = DENOMINATORS[key];
-  const numerator = clamp(Math.round((pteScore / 5) * denom), 0, denom);
+  const numerator = clamp(Math.round(pteScore * 2) / 2, 0, denom);
   return { key, label: LABELS[key], numerator, denominator: denom };
 };
 
