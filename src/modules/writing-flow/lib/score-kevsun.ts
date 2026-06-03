@@ -37,13 +37,12 @@ function clamp(n: number, lo: number, hi: number): number {
   return Math.min(Math.max(n, lo), hi);
 }
 
-// Simple absolute mapping from the KevSun endpoint's softmax-style outputs to
-// the PTE 1.0–5.0 scale. With six dims that sum to ≈1.0, the average raw is
-// 1/6 ≈ 0.167 — we anchor that to a 3.0 midpoint via score = 1 + 12*raw, then
-// clamp and snap to 0.5. No min-max, no per-essay rescaling: a higher raw on
-// a dim always maps to a higher PTE score.
+// The KevSun endpoint returns six INDEPENDENT raw regression logits — not a
+// softmax distribution — each already on roughly a 1.0–5.0 scale per the model
+// card's absolute calibration. We snap each to the nearest 0.5 and clamp to
+// [1, 5]: no softmax, no min-max, no per-essay rescaling.
 function postprocess(raw: readonly number[]): number[] {
-  return raw.map((v) => clamp(round05(1 + 12 * v), 1, 5));
+  return raw.map((v) => clamp(round05(v), 1, 5));
 }
 
 function parseLabelIndex(label: string): number {
@@ -119,6 +118,14 @@ export async function scoreKevSun(essay: string): Promise<KevSunResult | null> {
   if (!rawScores) {
     wtLog('kevsun ✕ unexpected response shape — falling back to LLM scores');
     return null;
+  }
+
+  const maxRaw = Math.max(...rawScores);
+  if (maxRaw < 1 || maxRaw > 6) {
+    wtLog(
+      '⚠ kevsun raw out of expected ~1–5 range — postprocess may be miscalibrated for this endpoint',
+      { rawModelScores: rawScores },
+    );
   }
 
   const [cohesion, syntax, vocabulary, phraseology, grammar, conventions] =

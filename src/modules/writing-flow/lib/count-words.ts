@@ -5,4 +5,4 @@ export function countWords(text: string): number {
 }
 
 export const MIN_WORDS = 200;
-export const MAX_WORDS = 300;
+export const MAX_WORDS = 220;

@@ -95,8 +95,14 @@ export function useResubmitEssay(): UseResubmitEssayReturn {
       }
       // Carry over the original kevsun_anchor so re-checks keep scoring against
       // the same band. initialAnalysis is left untouched for the side-by-side.
+      // Content is the prompt-relevance grade — sentence-level grammar/spelling
+      // fixes don't change it, so we hold the initial content score rather than
+      // let the (non-deterministic) LLM re-grade and spuriously drop it.
+      const heldContent =
+        state.initialAnalysis?.scores.content ?? validated.data.scores.content;
       const resubmitResult = {
         ...validated.data,
+        scores: { ...validated.data.scores, content: heldContent },
         kevsun_anchor: analysis.kevsun_anchor ?? validated.data.kevsun_anchor,
       };
       setResubmitAnalysis(resubmitResult);

@@ -5,6 +5,7 @@ import { analysisResultSchema } from '@/modules/writing-flow/schemas/analysis.sc
 import { buildAnalyzerPrompt } from '@/modules/writing-flow/constants/analyzer-prompt';
 import { checkPhraseology } from '@/modules/writing-flow/lib/check-phraseology';
 import { scoreKevSun } from '@/modules/writing-flow/lib/score-kevsun';
+import { countWords, MAX_WORDS } from '@/modules/writing-flow/lib/count-words';
 import {
   essayFingerprint,
   wtLog,
@@ -16,7 +17,13 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 const requestSchema = z.object({
-  text: z.string().min(1).max(10000),
+  text: z
+    .string()
+    .min(1)
+    .max(10000)
+    .refine((value) => countWords(value) <= MAX_WORDS, {
+      message: `Essay exceeds the ${MAX_WORDS}-word hard cap`,
+    }),
   prompt: z.string().min(1).max(2000),
 });
 
@@ -58,7 +65,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   try {
     const openaiPromise = openai.chat.completions.create({
       model: OPENAI_MODEL,
-      max_completion_tokens: 4000,
+      max_completion_tokens: 16000,
       response_format: { type: 'json_object' },
       messages: [
         {
@@ -82,6 +89,18 @@ export async function POST(request: Request): Promise<NextResponse> {
               'scoreKevSun returned null — no endpoint URL, timeout, non-200, or bad shape',
           },
     );
+
+    const finishReason = completion.choices[0]?.finish_reason;
+    if (finishReason === 'length') {
+      wtLog(
+        `analyze[${requestId}] ✕ completion truncated (finish_reason=length) — raise max_completion_tokens`,
+        { usage: completion.usage },
+      );
+      return NextResponse.json(
+        { error: 'Analysis truncated — output exceeded token budget' },
+        { status: 502 },
+      );
+    }
 
     const content = completion.choices[0]?.message?.content;
     if (!content) {

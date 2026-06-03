@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Writing Tutor — System Architecture Overview</title>
+<style>
+  @page {
+    size: A4;
+    margin: 11mm 17mm 11mm 17mm;
+  }
+
+  :root {
+    --ink: #1a2233;
+    --ink-soft: #3b4456;
+    --muted: #6b7385;
+    --hairline: #d9dde5;
+    --bg-soft: #f4f6fa;
+    --accent: #2454b8;
+    --accent-soft: #e8efff;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    color: var(--ink);
+    font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { color: var(--ink); margin: 0; font-weight: 600; }
+  h1 { font-size: 26pt; line-height: 1.15; letter-spacing: -0.01em; }
+  h2 { font-size: 15pt; line-height: 1.2; margin-bottom: 6pt; letter-spacing: -0.005em; }
+  h3 { font-size: 11pt; margin-bottom: 4pt; }
+
+  p { margin: 0 0 7pt 0; }
+  strong { color: var(--ink); font-weight: 600; }
+  em { color: var(--ink-soft); font-style: normal; font-weight: 500; }
+
+  .page {
+    page-break-after: always;
+    break-after: page;
+    min-height: 275mm;
+    display: flex;
+    flex-direction: column;
+  }
+  .page:last-of-type { page-break-after: auto; }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 8.5pt;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10pt;
+  }
+
+  .hairline {
+    height: 1px;
+    background: var(--hairline);
+    margin: 14pt 0;
+  }
+
+  /* ---------- Cover page ---------- */
+  .cover {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cover-mark {
+    font-size: 10pt;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .cover-title {
+    margin-top: 60mm;
+  }
+  .cover-title h1 {
+    font-size: 34pt;
+    line-height: 1.1;
+  }
+  .cover-title .sub {
+    font-size: 14pt;
+    color: var(--ink-soft);
+    margin-top: 10pt;
+    font-weight: 400;
+  }
+  .cover-meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 9.5pt;
+    border-top: 1px solid var(--hairline);
+    padding-top: 10pt;
+  }
+  .cover-meta span { display: block; color: var(--ink); font-weight: 600; }
+
+  /* ---------- Section header ---------- */
+  .section-header {
+    margin-bottom: 7pt;
+  }
+  .section-header .num {
+    font-size: 8.5pt;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4pt;
+  }
+
+  /* ---------- Cards & layout ---------- */
+  .card {
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 9pt 12pt;
+    margin-bottom: 7pt;
+    background: #ffffff;
+  }
+  .card.soft {
+    background: var(--bg-soft);
+    border-color: transparent;
+  }
+  .card h3 {
+    display: flex;
+    align-items: baseline;
+    gap: 8pt;
+  }
+  .card h3 .step-num {
+    display: inline-block;
+    width: 22pt;
+    height: 22pt;
+    line-height: 22pt;
+    text-align: center;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    font-size: 10pt;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .card h3 .role-tag {
+    margin-left: auto;
+    font-size: 8.5pt;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2pt 7pt;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .card p { margin-bottom: 0; color: var(--ink-soft); }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10pt;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10pt;
+  }
+
+  .pillar {
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 9pt 10pt;
+  }
+  .pillar .name {
+    font-size: 10.5pt;
+    font-weight: 600;
+    margin-bottom: 2pt;
+  }
+  .pillar .role {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 5pt;
+  }
+  .pillar p { font-size: 9.5pt; color: var(--ink-soft); margin: 0; line-height: 1.45; }
+
+  /* ---------- Diagram ---------- */
+  .flow-diagram {
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 10pt;
+    background: var(--bg-soft);
+    margin-bottom: 10pt;
+  }
+  .flow-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 8pt;
+  }
+  .flow-box {
+    background: white;
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 9pt;
+    text-align: center;
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .flow-box .small {
+    display: block;
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 8.5pt;
+    margin-top: 2pt;
+  }
+  .flow-arrow {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 14pt;
+    text-align: center;
+  }
+  .flow-caption {
+    margin-top: 10pt;
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---------- Pull quote / callout ---------- */
+  .callout {
+    border-left: 3px solid var(--accent);
+    padding: 8pt 12pt;
+    background: var(--accent-soft);
+    border-radius: 0 4px 4px 0;
+    margin: 8pt 0 12pt 0;
+    color: var(--ink);
+    font-size: 10pt;
+  }
+
+  /* ---------- Checklist ---------- */
+  ul.clean {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 9pt 0;
+  }
+  ul.clean li {
+    padding: 3pt 0 3pt 14pt;
+    position: relative;
+    color: var(--ink-soft);
+    border-bottom: 1px dashed var(--hairline);
+    font-size: 9.2pt;
+    line-height: 1.42;
+  }
+  ul.clean li:last-child { border-bottom: none; }
+  ul.clean li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8pt;
+    width: 6pt;
+    height: 6pt;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  ul.clean li strong { color: var(--ink); display: block; margin-bottom: 1pt; }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    margin-top: auto;
+    padding-top: 10pt;
+    border-top: 1px solid var(--hairline);
+    color: var(--muted);
+    font-size: 8.5pt;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ---------- Technical-section additions ---------- */
+  .part-tag {
+    display: inline-block;
+    font-size: 7.5pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: white;
+    padding: 2pt 7pt;
+    border-radius: 3px;
+    margin-bottom: 6pt;
+    font-weight: 600;
+  }
+  code, pre, .mono {
+    font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  code {
+    font-size: 8.8pt;
+    background: var(--bg-soft);
+    padding: 1pt 4pt;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+  pre {
+    margin: 0 0 6pt 0;
+    padding: 7pt 9pt;
+    background: #0f1626;
+    color: #d6e2ff;
+    font-size: 7.6pt;
+    line-height: 1.38;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  pre .k { color: #82a8ff; }
+  pre .s { color: #c2e88a; }
+  pre .n { color: #ffd479; }
+  pre .c { color: #6e7a90; font-style: italic; }
+  pre .t { color: #f49ec7; }
+
+  table.spec {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.6pt;
+    margin-bottom: 6pt;
+  }
+  table.spec th, table.spec td {
+    text-align: left;
+    padding: 4pt 6pt;
+    border-bottom: 1px solid var(--hairline);
+    vertical-align: top;
+    line-height: 1.4;
+  }
+  table.spec th {
+    background: var(--bg-soft);
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  table.spec td.mono { font-family: "SF Mono", Consolas, monospace; font-size: 8.5pt; }
+
+  .pipeline {
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8pt;
+  }
+  .pipeline .step {
+    display: grid;
+    grid-template-columns: 24pt 1fr;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 8.6pt;
+  }
+  .pipeline .step:last-child { border-bottom: none; }
+  .pipeline .step .idx {
+    background: var(--bg-soft);
+    color: var(--accent);
+    font-weight: 600;
+    text-align: center;
+    padding: 4pt 0;
+    border-right: 1px solid var(--hairline);
+    font-family: "SF Mono", Consolas, monospace;
+    font-size: 8pt;
+  }
+  .pipeline .step .body {
+    padding: 4pt 8pt;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .pipeline .step .body strong { color: var(--ink); }
+  .pipeline .step .body code { font-size: 8.4pt; }
+
+  .tree {
+    font-family: "SF Mono", Consolas, monospace;
+    font-size: 7.7pt;
+    line-height: 1.42;
+    background: var(--bg-soft);
+    border-radius: 5px;
+    padding: 8pt 10pt;
+    color: var(--ink);
+    margin-bottom: 6pt;
+    white-space: pre;
+  }
+  .tree .c { color: var(--muted); font-style: italic; }
+
+  .label-block {
+    font-size: 7.8pt;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 6pt 0 3pt 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PAGE 1 — COVER -->
+<!-- ============================================================ -->
+<section class="page cover">
+  <div>
+    <div class="cover-mark">Writing Tutor</div>
+  </div>
+
+  <div class="cover-title">
+    <h1>System Architecture Overview</h1>
+    <div class="sub">
+      Part 1 &mdash; plain-language overview for stakeholders.<br />
+      Part 2 &mdash; technical reference for engineers, architects, and reviewers.
+    </div>
+  </div>
+
+  <div class="cover-meta">
+    <div>
+      <span>Document</span>
+      Architecture overview &middot; v1.0
+    </div>
+    <div>
+      <span>Audience</span>
+      Non-technical readers
+    </div>
+    <div>
+      <span>Date</span>
+      May 2026
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 2 — WHAT THE PRODUCT DOES -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-header">
+    <div class="num">01 &middot; The product in one minute</div>
+    <h2>An AI essay tutor that scores, explains, and coaches</h2>
+  </div>
+
+  <p>
+    The Writing Tutor is a web application that helps English-language learners
+    improve their essay writing. A student is given a writing task, drafts an
+    essay, and receives a structured, sentence-by-sentence analysis. The app
+    then guides the student through corrections &mdash; in text or via a live
+    voice tutor &mdash; and lets them resubmit to see their score improve.
+  </p>
+
+  <p>
+    The experience is organised as a clear four-step journey. The student
+    always knows where they are, what they just did, and what comes next.
+  </p>
+
+  <div class="card">
+    <h3>
+      <span class="step-num">1</span> Brainstorm
+      <span class="role-tag">Plan &amp; explore</span>
+    </h3>
+    <p>
+      Before writing, the student talks through ideas with an AI brainstorming
+      partner &mdash; by typing or by voice &mdash; to clarify their stance and
+      collect supporting points for the prompt.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>
+      <span class="step-num">2</span> Write
+      <span class="role-tag">Draft</span>
+    </h3>
+    <p>
+      The student writes their essay in a focused editor. An optional AI writing
+      coach is available on the side to answer questions or unblock the student
+      without writing the essay for them.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>
+      <span class="step-num">3</span> Review
+      <span class="role-tag">Learn &amp; fix</span>
+    </h3>
+    <p>
+      The essay is broken down sentence by sentence. Each sentence is shown
+      alongside detected grammar issues, awkward phrasing, and suggested
+      corrections. A voice tutor or a short quiz helps the student understand
+      <em>why</em> each fix matters, not just <em>what</em> to change.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>
+      <span class="step-num">4</span> Score
+      <span class="role-tag">Measure progress</span>
+    </h3>
+    <p>
+      The essay is scored against established writing criteria &mdash; content,
+      grammar, vocabulary, cohesion, and more. After applying their fixes, the
+      student can resubmit and see the side-by-side improvement in their score.
+    </p>
+  </div>
+
+  <div class="footer">
+    <span>Writing Tutor &middot; Architecture Overview</span>
+    <span>Page 2 of 10</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 3 — HOW IT IS PUT TOGETHER -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-header">
+    <div class="num">02 &middot; How the system is put together</div>
+    <h2>Three layers, one experience</h2>
+  </div>
+
+  <p>
+    The product is built from three layers that work together. Each layer has
+    one clear job, which keeps the system reliable and makes it straightforward
+    to evolve over time.
+  </p>
+
+  <div class="flow-diagram">
+    <div class="flow-row">
+      <div class="flow-box">
+        The Student
+        <span class="small">Web browser</span>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-box">
+        Writing Tutor App
+        <span class="small">Hosted on Vercel</span>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-box">
+        AI Services
+        <span class="small">OpenAI &middot; ElevenLabs &middot; Hugging Face</span>
+      </div>
+    </div>
+    <div class="flow-caption">
+      The student only ever talks to the Writing Tutor App. The app talks to the
+      AI services on the student's behalf, so credentials and prompts stay safely
+      on the server.
+    </div>
+  </div>
+
+  <h3 style="margin-top: 6pt; margin-bottom: 8pt;">The three layers, explained</h3>
+
+  <div class="grid-3">
+    <div class="pillar">
+      <div class="role">Front of house</div>
+      <div class="name">The interface</div>
+      <p>
+        What the student sees and interacts with in their browser: the writing
+        editor, the sentence-by-sentence review, the live voice tutor, and the
+        scoring screen. Designed to feel calm and guided rather than busy.
+      </p>
+    </div>
+    <div class="pillar">
+      <div class="role">The kitchen</div>
+      <div class="name">The application server</div>
+      <p>
+        Receives the student's essay, decides which AI services to call,
+        validates every response, and assembles the final result. This is also
+        the only place that holds API keys &mdash; the browser never sees them.
+      </p>
+    </div>
+    <div class="pillar">
+      <div class="role">The specialists</div>
+      <div class="name">External AI services</div>
+      <p>
+        Three specialised providers handle the parts that need machine
+        intelligence: writing analysis, voice conversation, and impartial
+        language scoring. The app coordinates them.
+      </p>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 14pt; margin-bottom: 8pt;">Who does what among the AI providers</h3>
+
+  <div class="grid-3">
+    <div class="pillar">
+      <div class="role">OpenAI</div>
+      <div class="name">The analyst &amp; coach</div>
+      <p>
+        Reads the essay, identifies grammar errors and awkward phrasing,
+        generates explanations, runs the brainstorming and writing-help chats,
+        and creates short practice quizzes.
+      </p>
+    </div>
+    <div class="pillar">
+      <div class="role">ElevenLabs</div>
+      <div class="name">The voice tutor</div>
+      <p>
+        Powers the natural-sounding spoken conversations in both the
+        Brainstorm step and the sentence-by-sentence Review step, so the
+        student can practise out loud.
+      </p>
+    </div>
+    <div class="pillar">
+      <div class="role">Hugging Face</div>
+      <div class="name">The impartial examiner</div>
+      <p>
+        Provides two specialised language models that give a second, neutral
+        opinion: one rates the writing across six dimensions, the other flags
+        unnatural word choices.
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Writing Tutor &middot; Architecture Overview</span>
+    <span>Page 3 of 10</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 4 — TRUST, QUALITY, SAFETY -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-header">
+    <div class="num">03 &middot; Why the result can be trusted</div>
+    <h2>Quality, safety, and the second opinion</h2>
+  </div>
+
+  <p>
+    Because the app makes judgements about a student's writing, every score
+    and every correction needs to be defensible. Several design choices exist
+    specifically to keep results trustworthy and consistent.
+  </p>
+
+  <div class="callout">
+    Every essay is reviewed by <strong>two independent systems</strong>: a
+    generative model that explains <em>what</em> to fix, and a specialised
+    scoring model that gives a stable, repeatable mark. The two are then
+    combined into the score the student sees.
+  </div>
+
+  <ul class="clean">
+    <li>
+      <strong>Cross-checked scoring</strong>
+      The five language sub-scores (cohesion, syntax, vocabulary, phraseology,
+      grammar, conventions) come from a specialised scoring model rather than
+      from the generative AI alone. This makes scores stable: the same essay
+      submitted twice receives the same mark.
+    </li>
+    <li>
+      <strong>Sentence-level accountability</strong>
+      Feedback is anchored to individual sentences, not just paragraphs. The
+      student can see exactly which sentence each suggestion refers to and
+      decide whether to accept it.
+    </li>
+    <li>
+      <strong>Validated AI responses</strong>
+      Every reply from an AI service is checked against a strict schema before
+      it reaches the student. Anything malformed is rejected on the server
+      instead of being shown as a broken screen.
+    </li>
+    <li>
+      <strong>Graceful fallbacks</strong>
+      If the specialised scoring model is unavailable, the app falls back to
+      the generative model and clearly marks the source of the score. The
+      student is never blocked.
+    </li>
+    <li>
+      <strong>Credentials stay on the server</strong>
+      API keys for the AI providers are held only on the application server.
+      The student's browser never holds a key and cannot be used to run up
+      costs or abuse the providers.
+    </li>
+    <li>
+      <strong>No essay storage by default</strong>
+      The app is stateless with respect to student work &mdash; essays live in
+      the current browser session and are passed to AI providers only for the
+      duration of a single request.
+    </li>
+  </ul>
+
+  <div class="footer">
+    <span>Writing Tutor &middot; Architecture Overview</span>
+    <span>Page 4 of 10</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 5 — FOUNDATIONS, OPERATIONS, ROADMAP -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-header">
+    <div class="num">04 &middot; Foundations &amp; what comes next</div>
+    <h2>Built on modern, well-supported foundations</h2>
+  </div>
+
+  <p>
+    The application uses widely adopted, actively maintained technology with
+    strong ecosystems and developer availability. This protects the product
+    against being stuck with niche or aging tools.
+  </p>
+
+  <div class="grid-2">
+    <div class="card soft">
+      <h3>The web platform</h3>
+      <p>
+        The app is built on <strong>Next.js</strong> and <strong>React</strong>
+        &mdash; the same foundation used by major publishers and SaaS products.
+        It loads quickly, works on phones and laptops, and is easy to update.
+      </p>
+    </div>
+    <div class="card soft">
+      <h3>How it is hosted</h3>
+      <p>
+        Deployed on <strong>Vercel</strong>, a managed hosting platform that
+        scales automatically with traffic. No server administration is required,
+        and updates roll out in minutes whenever code is published.
+      </p>
+    </div>
+    <div class="card soft">
+      <h3>Design system</h3>
+      <p>
+        The visual language uses a consistent token-based design system. This
+        means colours, spacing, and typography are defined in one place and
+        applied uniformly, which keeps the product looking polished.
+      </p>
+    </div>
+    <div class="card soft">
+      <h3>Operations</h3>
+      <p>
+        AI provider costs are usage-based and fully observable. The app logs
+        each analysis run with a unique ID, so any reported issue can be
+        traced end-to-end without re-running the student's essay.
+      </p>
+    </div>
+  </div>
+
+  <div class="hairline"></div>
+
+  <h3 style="margin-bottom: 8pt;">Where the architecture is heading</h3>
+  <p>
+    The current shape supports the immediate product goal: a single student,
+    a single essay, a complete coaching loop. A few natural extensions are
+    already supported by the foundations:
+  </p>
+
+  <ul class="clean">
+    <li>
+      <strong>Student accounts and history</strong>
+      Adding sign-in and persistent essay history is a straightforward
+      addition that does not change the core flow.
+    </li>
+    <li>
+      <strong>Teacher and classroom views</strong>
+      The same scoring and review pipeline can feed dashboards for teachers
+      tracking class progress over time.
+    </li>
+    <li>
+      <strong>Additional languages and task types</strong>
+      The prompt-driven design means new writing tasks (letters, reports,
+      academic essays) and additional target languages can be added
+      incrementally.
+    </li>
+    <li>
+      <strong>Swappable AI providers</strong>
+      Each AI service sits behind a clear boundary, so any one provider can
+      be replaced or supplemented without rewriting the rest of the system.
+    </li>
+  </ul>
+
+  <div class="footer">
+    <span>Writing Tutor &middot; Architecture Overview</span>
+    <span>Page 5 of 10</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 6 — TECHNICAL: RUNTIME ARCHITECTURE -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-header">
+    <span class="part-tag">Part 2 &middot; Technical reference</span>
+    <div class="num">05 &middot; Runtime architecture</div>
+    <h2>Processes, boundaries, and external services</h2>
+  </div>
+
+  <p>
+    The application is a single Next.js 16 deployment (App Router, React 19,
+    Turbopack, <code>output: 'standalone'</code>) hosted on Vercel. There is no
+    custom server, no database, and no persistent state &mdash; the system is
+    a thin orchestrator that fans requests out to three external providers and
+    returns a validated, composed response.
+  </p>
+
+  <div class="label-block">Process topology</div>
+
+  <div class="flow-diagram">
+    <div class="flow-row">
+      <div class="flow-box">
+        Browser
+        <span class="small">React 19 client bundle<br />Zustand store</span>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-box">
+        Next.js server
+        <span class="small">Route Handlers<br />Node.js runtime</span>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-box">
+        External APIs
+        <span class="small">OpenAI &middot; Hugging Face<br />ElevenLabs</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="label-block">Route handlers (all in <code>src/app/api/*</code>)</div>
+  <table class="spec">
+    <thead>
+      <tr><th>Endpoint</th><th>Purpose</th><th>Upstream</th><th>Budget</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mono">POST /api/analyze</td>
+        <td>Score essay; per-sentence grammar &amp; phraseology enrichment</td>
+        <td>OpenAI chat &middot; HF KevSun TEI &middot; HF roberta-base fill-mask</td>
+        <td class="mono">maxDuration 60s<br />4 000 tokens</td>
+      </tr>
+      <tr>
+        <td class="mono">POST /api/brainstorm-chat</td>
+        <td>Multi-turn chat for the Brainstorm step (text mode)</td>
+        <td>OpenAI chat</td>
+        <td class="mono">400 tokens</td>
+      </tr>
+      <tr>
+        <td class="mono">POST /api/write-tutor</td>
+        <td>Side-panel coaching while the student drafts</td>
+        <td>OpenAI chat</td>
+        <td class="mono">600 tokens</td>
+      </tr>
+      <tr>
+        <td class="mono">POST /api/review-tutor</td>
+        <td>Per-sentence tutor reply (text mode), grounded in edits + flags</td>
+        <td>OpenAI chat</td>
+        <td class="mono">400 tokens</td>
+      </tr>
+      <tr>
+        <td class="mono">POST /api/quiz</td>
+        <td>Generates 2-stage MC + gap-fill quiz for a flagged sentence</td>
+        <td>OpenAI chat (JSON mode)</td>
+        <td class="mono">1 500 tokens</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="label-block">External services &amp; integration mode</div>
+  <table class="spec">
+    <thead>
+      <tr><th>Service</th><th>Used for</th><th>Transport</th><th>Auth</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mono">OpenAI Chat Completions</td>
+        <td>All generative work (analyzer, chats, quiz)</td>
+        <td class="mono">openai SDK, server-side</td>
+        <td class="mono">OPENAI_API_KEY</td>
+      </tr>
+      <tr>
+        <td class="mono">HF Inference Endpoint<br />(KevSun roberta-large)</td>
+        <td>Deterministic 6-dim essay scoring (TEI <code>raw_scores: true</code>)</td>
+        <td class="mono">fetch, server-side</td>
+        <td class="mono">HUGGINGFACE_API_KEY</td>
+      </tr>
+      <tr>
+        <td class="mono">HF Inference Router<br />(FacebookAI/roberta-base)</td>
+        <td>Per-token <code>&lt;mask&gt;</code> rank check for phraseology flags</td>
+        <td class="mono">fetch, server-side</td>
+        <td class="mono">HUGGINGFACE_API_KEY</td>
+      </tr>
+      <tr>
+        <td class="mono">ElevenLabs Conversational AI</td>
+        <td>Live voice tutors (Brainstorm &amp; per-sentence Review)</td>
+        <td class="mono">@elevenlabs/react, browser&nbsp;WebRTC</td>
+        <td>Public agent ID; no server key</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 4pt;">
+    All Route Handlers declare <code>runtime = 'nodejs'</code> and
+    <code>dynamic = 'force-dynamic'</code>; nothing in the application is
+    cached, prerendered, or revalidated. Middleware (<code>src/proxy.ts</code>)
+    is a no-op pass-through that excludes <code>/api</code>, <code>/_next</code>,
+    <code>/_vercel</code>, and static files.
+  </p>
+
+  <div class="footer">
+    <span>Writing Tutor &middot; Architecture Overview</span>
+    <span>Page 6 of 10</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 7 — TECHNICAL: THE ANALYZE PIPELINE -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-header">
+    <span class="part-tag">Part 2 &middot; Technical reference</span>
+    <div class="num">06 &middot; The analyze pipeline</div>
+    <h2>POST <code>/api/analyze</code> &mdash; end-to-end</h2>
+  </div>
+
+  <p>
+    The analyze route is the central piece of the system: it composes scores
+    from two independent models and enriches every sentence with masked-LM
+    phraseology data. The same handler serves both the initial submission and
+    later resubmissions.
+  </p>
+
+  <div class="pipeline">
+    <div class="step"><div class="idx">01</div><div class="body"><strong>Parse</strong> JSON body; reject non-JSON with 400.</div></div>
+    <div class="step"><div class="idx">02</div><div class="body"><strong>Validate</strong> against <code>requestSchema</code> = <code>{ text: 1&ndash;10 000, prompt: 1&ndash;2 000 }</code>. Extra fields are stripped.</div></div>
+    <div class="step"><div class="idx">03</div><div class="body"><strong>Mint</strong> a request ID via <code>wtRunId()</code>; log essay fingerprint (length + first/last chars) for traceability.</div></div>
+    <div class="step"><div class="idx">04</div><div class="body"><strong>Fan out in parallel</strong> via <code>Promise.all</code>: <code>openai.chat.completions.create</code> with <code>response_format: { type: 'json_object' }</code> using <code>buildAnalyzerPrompt</code>, and <code>scoreKevSun(text)</code> against the HF endpoint.</div></div>
+    <div class="step"><div class="idx">05</div><div class="body"><strong>KevSun postprocess:</strong> raw regression logits &rarr; <code>2.25 &middot; x &minus; 1.25</code>, clamp to <code>[1, 5]</code>, snap to <code>0.5</code>. Returns <code>null</code> if endpoint URL is unset, response is non-200, response shape is wrong, or values are softmaxed (sum &asymp; 1).</div></div>
+    <div class="step"><div class="idx">06</div><div class="body"><strong>Strip code fences</strong> from the OpenAI message, <code>JSON.parse</code>, then validate against <code>analysisResultSchema</code> (Zod). Failure &rarr; 500.</div></div>
+    <div class="step"><div class="idx">07</div><div class="body"><strong>Per-sentence enrichment</strong> (serial across sentences, parallel within): for each sentence call <code>checkPhraseology(original, grammarTokens)</code>. Each candidate word becomes a masked sentence sent to <code>roberta-base</code> with <code>top_k=100</code>.</div></div>
+    <div class="step"><div class="idx">08</div><div class="body"><strong>Flag rule:</strong> a word is flagged when its rank in the MLM distribution at that position is <code>&gt; 80</code>, or it doesn't appear in the top 100. Stop-words and tokens already covered by a grammar edit are skipped.</div></div>
+    <div class="step"><div class="idx">09</div><div class="body"><strong>Phraseology sentence score</strong> = <code>max(1, 5 &minus; flags &middot; 0.5)</code>, snapped to <code>0.5</code>.</div></div>
+    <div class="step"><div class="idx">10</div><div class="body"><strong>Score composition</strong> (when KevSun is present): five linguistic dims come from KevSun, content from the LLM, then PTE recomposition.</div></div>
+    <div class="step"><div class="idx">11</div><div class="body"><strong>Overall</strong> = <code>round05((content + cohesion + grammar + (syntax+phraseology)/2 + vocabulary + conventions) / 6)</code>.</div></div>
+    <div class="step"><div class="idx">12</div><div class="body"><strong>Respond</strong> with the validated payload plus a <code>__debug</code> envelope containing the request ID, scoring source, raw KevSun, LLM scores, computed scores, and phraseology flag totals.</div></div>
+  </div>
+
+  <div class="label-block">UI overall (PTE 10&ndash;90 scale)</div>
+<pre><span class="c">// src/modules/writing-flow/lib/score-mapping.ts</span>
+<span class="k">const</span> toPteOverall = (x1to5: <span class="t">number</span>): <span class="t">number</span> =&gt;
+  clamp(<span class="n">10</span> + Math.round(((x1to5 &minus; <span class="n">1</span>) / <span class="n">4</span>) * <span class="n">80</span>), <span class="n">10</span>, <span class="n">90</span>);</pre>
+
+  <div class="footer">
+    <span>Writing Tutor &middot; Architecture Overview</span>
+    <span>Page 7 of 10</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 8 — TECHNICAL: MODULE LAYOUT -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-header">
+    <span class="part-tag">Part 2 &middot; Technical reference</span>
+    <div class="num">07 &middot; Module layout &amp; boundaries</div>
+    <h2>One feature module, strict file-placement rules</h2>
+  </div>
+
+  <p>
+    All product code lives inside a single feature module
+    <code>src/modules/writing-flow/</code>. The App Router shell is a single
+    page that mounts <code>&lt;AppShell /&gt;</code>. The folder layout below
+    is enforced by project rules and reviewed on every change.
+  </p>
+
+<div class="tree">src/
+  app/
+    api/
+      analyze/route.ts          <span class="c"># orchestrator: OpenAI + KevSun + phraseology</span>
+      brainstorm-chat/route.ts
+      quiz/route.ts
+      review-tutor/route.ts
+      write-tutor/route.ts
+    globals.css                 <span class="c"># Tailwind v4 + @theme tokens (Pearson palette)</span>
+    layout.tsx                  <span class="c"># root layout, no providers</span>
+    page.tsx                    <span class="c"># &lt;AppShell /&gt;</span>
+  lib/
+    env.ts                      <span class="c"># @t3-oss/env-nextjs schema</span>
+    openai.ts                   <span class="c"># singleton SDK client (server-only)</span>
+  modules/writing-flow/
+    components/                 <span class="c"># 35 React components (screens, cards, panels)</span>
+    constants/                  <span class="c"># analyzer-prompt, steps, brainstorm, dev</span>
+    hooks/                      <span class="c"># use-analyze-essay, use-resubmit-essay,</span>
+                                <span class="c">#   use-quiz-generation, use-*-voice, use-*-tutor</span>
+    lib/                        <span class="c"># pure helpers: score-kevsun, score-mapping,</span>
+                                <span class="c">#   check-phraseology, assemble-edited-essay,</span>
+                                <span class="c">#   sentence-fix, derive-paragraph-tabs,</span>
+                                <span class="c">#   *-system-prompt, debug-log</span>
+    schemas/                    <span class="c"># Zod: analysis, quiz, brainstorm-chat,</span>
+                                <span class="c">#   review-tutor, write-tutor</span>
+    stores/use-flow-store.ts    <span class="c"># single Zustand store (state + actions)</span>
+    types/                      <span class="c"># analysis.types, flow.types, quiz.types, review.types</span>
+    index.ts                    <span class="c"># barrel: exports &lt;AppShell /&gt; and useFlowStore</span>
+  proxy.ts                      <span class="c"># Next 16 middleware (pass-through)</span></div>
+
+  <div class="label-block">Naming &amp; placement rules</div>
+  <table class="spec">
+    <thead>
+      <tr><th>Kind</th><th>Convention</th><th>Required location</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Component</td><td>PascalCase <code>.tsx</code></td><td><code>components/</code></td></tr>
+      <tr><td>Hook</td><td><code>useX</code> camelCase</td><td><code>hooks/</code></td></tr>
+      <tr><td>Zustand store</td><td><code>use-x-store.ts</code></td><td><code>stores/</code></td></tr>
+      <tr><td>Zod schema</td><td><code>x.schema.ts</code></td><td><code>schemas/</code></td></tr>
+      <tr><td>Pure utility</td><td>kebab-case</td><td><code>lib/</code></td></tr>
+    </tbody>
+  </table>
+
+  <div class="label-block">Server / client boundary</div>
+  <ul class="clean">
+    <li>
+      <strong>Server-only modules.</strong>
+      <code>src/lib/openai.ts</code>, <code>score-kevsun.ts</code>, and
+      <code>check-phraseology.ts</code> start with <code>import 'server-only'</code>.
+    </li>
+    <li>
+      <strong>Client components.</strong>
+      The entire <code>writing-flow</code> UI tree, the Zustand store, and all
+      hooks begin with <code>'use client'</code>.
+    </li>
+    <li>
+      <strong>One feature, one store.</strong>
+      A single <code>useFlowStore</code> holds the whole UI state machine;
+      selectors live in the same file.
+    </li>
+  </ul>
+
+  <div class="footer">
+    <span>Writing Tutor &middot; Architecture Overview</span>
+    <span>Page 8 of 10</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 9 — TECHNICAL: DATA MODEL -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-header">
+    <span class="part-tag">Part 2 &middot; Technical reference</span>
+    <div class="num">08 &middot; Data model</div>
+    <h2>The contracts crossing every boundary</h2>
+  </div>
+
+  <p>
+    Every request and every response is validated with Zod on the server, and
+    the analyze response is validated <em>again</em> on the client before it
+    enters the store. The shapes below are the authoritative contract.
+  </p>
+
+  <div class="label-block">Analysis result &mdash; the analyze response</div>
+<pre><span class="k">type</span> <span class="t">AnalysisResult</span> = {
+  scores: {
+    cohesion: <span class="t">number</span>; syntax: <span class="t">number</span>; vocabulary: <span class="t">number</span>;
+    phraseology: <span class="t">number</span>; grammar: <span class="t">number</span>; conventions: <span class="t">number</span>;
+    content: <span class="t">number</span>; overall: <span class="t">number</span>;          <span class="c">// 1.0&ndash;5.0, step 0.5</span>
+  };
+  sentences: <span class="t">AnalyzedSentence</span>[];
+  paragraphs?: { label: <span class="s">'Introduction'</span> | <span class="s">'Conclusion'</span> | <span class="s">`Body ${number}`</span>;
+                 sentenceIndices: <span class="t">number</span>[] }[];
+  raw_kevsun?: <span class="t">RawKevSun</span>;                <span class="c">// raw model logits (debug/anchor)</span>
+  kevsun_anchor?: { min: <span class="t">number</span>; max: <span class="t">number</span> };
+};
+
+<span class="k">type</span> <span class="t">AnalyzedSentence</span> = {
+  original: <span class="t">string</span>;
+  corrected: <span class="t">string</span>;
+  has_errors: <span class="t">boolean</span>;
+  grammar_edits: { type: <span class="s">'replace'</span>|<span class="s">'delete'</span>|<span class="s">'insert'</span>;
+                    token: <span class="t">string</span>; correction?: <span class="t">string</span> }[];
+  phraseology_flags: { token: <span class="t">string</span>; rank: <span class="t">number</span>;
+                       suggestions: <span class="t">string</span>[] }[];
+  phraseology_score?: <span class="t">number</span>;            <span class="c">// 1.0&ndash;5.0, server-computed</span>
+};</pre>
+
+  <div class="label-block">Zustand store &mdash; <code>useFlowStore</code> (single store, all UI state)</div>
+<pre><span class="k">type</span> <span class="t">FlowState</span> = {
+  step: <span class="t">FlowStep</span>; maxStep: <span class="t">FlowStep</span>;          <span class="c">// nav state, forward-only</span>
+  prompt: <span class="t">string</span>; essay: <span class="t">string</span>;
+  brainstorm: { mode: <span class="s">'type'</span>|<span class="s">'voice'</span>; messages: <span class="t">ChatMessage</span>[]; isVoiceActive: <span class="t">boolean</span> };
+  analysis: <span class="t">AnalysisResult</span> | <span class="k">null</span>;             <span class="c">// current view</span>
+  initialAnalysis: <span class="t">AnalysisResult</span> | <span class="k">null</span>;       <span class="c">// preserved for comparison</span>
+  resubmitAnalysis: <span class="t">AnalysisResult</span> | <span class="k">null</span>;
+  edits: <span class="t">Record</span>&lt;<span class="t">number</span>, <span class="t">string</span>&gt;;              <span class="c">// sentenceIndex &rarr; corrected text</span>
+  selectedSentenceIndex: <span class="t">number</span> | <span class="k">null</span>; tutorMode: <span class="s">'type'</span>|<span class="s">'voice'</span>;
+  quiz: <span class="t">QuizState</span>;                             <span class="c">// MC + gap-fill state machine</span>
+  editMode: <span class="t">boolean</span>; editingSentenceIndex: <span class="t">number</span> | <span class="k">null</span>;
+  fixedSentenceIndices: <span class="t">number</span>[]; reviewMessages: <span class="t">ReviewChatMessage</span>[];
+  runLog: <span class="t">RunLogEntry</span>[];                        <span class="c">// every analyze/resubmit round-trip</span>
+};</pre>
+
+  <div class="label-block">Run log entry &mdash; one per analyze round-trip</div>
+<pre><span class="k">type</span> <span class="t">RunLogEntry</span> = {
+  runId: <span class="t">string</span>;
+  kind: <span class="s">'initial'</span> | <span class="s">'resubmit'</span>;
+  at: <span class="t">string</span>;                              <span class="c">// ISO timestamp</span>
+  textLength: <span class="t">number</span>;
+  editCount: <span class="t">number</span>;
+  scoringSource: <span class="s">'kevsun'</span> | <span class="s">'llm-fallback'</span> | <span class="s">'unknown'</span>;
+  scores: <span class="t">EssayScores</span>;
+  overallPte: <span class="t">number</span>;                       <span class="c">// 10&ndash;90 display scale</span>
+};</pre>
+
+  <div class="footer">
+    <span>Writing Tutor &middot; Architecture Overview</span>
+    <span>Page 9 of 10</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 10 — TECHNICAL: OPS, SECURITY, OBSERVABILITY, GAPS -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-header">
+    <span class="part-tag">Part 2 &middot; Technical reference</span>
+    <div class="num">09 &middot; Configuration, security, observability</div>
+    <h2>How it runs in production</h2>
+  </div>
+
+  <div class="label-block">Environment variables &mdash; validated in <code>src/lib/env.ts</code></div>
+  <table class="spec">
+    <thead>
+      <tr><th>Variable</th><th>Scope</th><th>Required</th><th>Default / notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">OPENAI_API_KEY</td><td>server</td><td>yes</td><td>Model defaults to <code>gpt-5.4-mini</code> (override via <code>OPENAI_MODEL</code>)</td></tr>
+      <tr><td class="mono">HUGGINGFACE_API_KEY</td><td>server</td><td>yes</td><td>Used for both HF calls</td></tr>
+      <tr><td class="mono">HUGGINGFACE_FILL_MASK_URL</td><td>server</td><td>no</td><td>HF roberta-base router (default)</td></tr>
+      <tr><td class="mono">HUGGINGFACE_KEVSUN_ENDPOINT_URL</td><td>server</td><td>optional</td><td>Unset &rarr; LLM fallback, run tagged <code>llm-fallback</code></td></tr>
+      <tr><td class="mono">NEXT_PUBLIC_ELEVENLABS_AGENT_ID</td><td>client</td><td>yes</td><td>Review (per-sentence) voice tutor</td></tr>
+      <tr><td class="mono">NEXT_PUBLIC_ELEVENLABS_BRAINSTORM_AGENT_ID</td><td>client</td><td>optional</td><td>Brainstorm voice tutor (separate agent)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="label-block">Security boundaries</div>
+  <ul class="clean">
+    <li>
+      <strong>Server-only secrets.</strong>
+      <code>OPENAI_API_KEY</code> and <code>HUGGINGFACE_API_KEY</code> are
+      declared under <code>server:</code> in the env schema, so any client
+      import would be a build-time error. The OpenAI SDK and HF
+      <code>fetch</code> calls live in <code>'server-only'</code> modules.
+    </li>
+    <li>
+      <strong>Zod-validated in and out.</strong>
+      Every <code>POST</code> body is validated server-side (limits:
+      <code>text &le; 10 000</code>, <code>prompt &le; 2 000</code>,
+      <code>messages &le; 50</code>); analyze responses are revalidated
+      client-side against <code>analysisResultSchema</code> before they enter
+      the store.
+    </li>
+    <li>
+      <strong>ElevenLabs key never reaches the browser.</strong>
+      Voice tutors use the ElevenLabs public-agent flow with dynamic variables;
+      no <code>ELEVENLABS_API_KEY</code> exists in the app.
+    </li>
+  </ul>
+
+  <div class="label-block">Observability</div>
+  <ul class="clean">
+    <li>
+      <strong>Per-run identifiers.</strong>
+      Every analyze call mints <code>wtRunId()</code> and threads it through
+      logs and the <code>__debug</code> envelope returned to the client, so a
+      single submission is traceable end-to-end.
+    </li>
+    <li>
+      <strong>Scoring source surfaced.</strong>
+      Each run is tagged <code>kevsun</code>, <code>llm-fallback</code>, or
+      <code>unknown</code>; the tag is shown on the Score screen and stored
+      in <code>runLog</code> together with an essay fingerprint (length +
+      head/tail chars) instead of the raw text.
+    </li>
+  </ul>
+
+  <div class="label-block">Deployment &amp; known limitations</div>
+  <p style="margin-bottom: 4pt;">
+    <code>output: 'standalone'</code> on Vercel; same artefact runs in any
+    container. No workers, queues, or database. Horizontal scale is bounded
+    by upstream quotas and the analyze route's <code>maxDuration: 60</code>.
+  </p>
+  <ul class="clean">
+    <li>
+      <strong>No persistence.</strong>
+      All state lives in memory in the browser session. Refresh resets the
+      flow. Adding auth and persistent essay history is the most natural next
+      step and does not require changes to the analyze pipeline.
+    </li>
+    <li>
+      <strong>Pipeline shape, by design and by TODO.</strong>
+      Phraseology runs one sentence at a time (parallel within) to keep HF
+      concurrency under the 60s route ceiling;
+      <code>use-analyze-essay</code> and <code>use-resubmit-essay</code> are
+      hand-rolled <code>fetch</code>+<code>useState</code> with in-file TODOs
+      to move to TanStack <code>useMutation</code>.
+    </li>
+  </ul>
+
+  <div class="footer">
+    <span>Writing Tutor &middot; Architecture Overview</span>
+    <span>Page 10 of 10</span>
+  </div>
+</section>
+
+</body>
+</html>

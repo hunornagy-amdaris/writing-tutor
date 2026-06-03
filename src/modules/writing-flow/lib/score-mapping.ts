@@ -5,25 +5,22 @@ import type {
   ScoreBarData,
 } from '@/modules/writing-flow/types/review.types';
 
-// PTE-criterion → UI-cell bridge. The analyzer returns six raw KevSun dims
-// (cohesion/syntax/vocabulary/phraseology/grammar/conventions) plus a Claude-graded
-// content score; this file folds them into the six PTE criteria and lays them out
-// across the eight Figma cells. Form is UI-enforced (word-count gate), so it always
-// gets full marks once an essay reaches this stage.
-
-// Display denominators are 5 across the board so each PTE cell shows the
-// exact 1:1 equivalent of its source (KevSun-postprocessed dim or LLM content),
-// e.g. KevSun cohesion 3.5 → "3.5/5". Form is UI-enforced (200–300 words gate)
-// and always 5/5 once the essay reaches this stage.
+// Real PTE Academic "Write Essay" trait rubric (raw total 15):
+//   Content 0–3 · Formal Requirement 0–2 · Development, Structure & Coherence 0–2 ·
+//   Grammar 0–2 · General Linguistic Range 0–2 · Vocabulary Range 0–2 · Spelling 0–2
+// The analyzer produces each dim on a 1.0–5.0 scale (KevSun linguistic dims +
+// Claude content). Each is linearly remapped onto its trait band (1.0 → 0,
+// 5.0 → band max) and snapped to the nearest 0.5. Form is word-count-gated, so
+// it always earns full marks once an essay reaches this stage.
 const DENOMINATORS: Record<ScoreBarCellKey, number> = {
-  content: 5,
-  form: 5,
-  develop: 5,
-  grammar: 5,
-  ling: 5,
-  vocab: 5,
-  spelling: 5,
-  conv: 5,
+  content: 3,
+  form: 2,
+  develop: 2,
+  grammar: 2,
+  ling: 2,
+  vocab: 2,
+  spelling: 2,
+  conv: 2,
 };
 
 const LABELS: Record<ScoreBarCellKey, string> = {
@@ -37,7 +34,9 @@ const LABELS: Record<ScoreBarCellKey, string> = {
   conv: 'Conv.',
 };
 
-// Subset shown in the score-bar (Score screen will show all 8 incl. Conv.)
+// The seven PTE traits, in display order. The legacy 'conv' key is retained in
+// the maps above (Spelling already covers conventions) but is no longer shown
+// as its own trait.
 export const SCORE_BAR_CELL_KEYS: readonly ScoreBarCellKey[] = [
   'content',
   'form',
@@ -51,53 +50,65 @@ export const SCORE_BAR_CELL_KEYS: readonly ScoreBarCellKey[] = [
 const clamp = (n: number, min: number, max: number): number =>
   Math.min(Math.max(n, min), max);
 
-const cellFrom = (key: ScoreBarCellKey, pteScore: number): ScoreBarCellValue => {
+const round05 = (n: number): number => Math.round(n * 2) / 2;
+
+// Linear remap of a 1.0–5.0 analyzer dim onto a 0–max trait band, snapped to 0.5.
+const toBand = (score1to5: number, max: number): number =>
+  clamp(round05(((score1to5 - 1) / 4) * max), 0, max);
+
+const cellFrom = (key: ScoreBarCellKey, score1to5: number): ScoreBarCellValue => {
   const denom = DENOMINATORS[key];
-  const numerator = clamp(Math.round(pteScore * 2) / 2, 0, denom);
-  return { key, label: LABELS[key], numerator, denominator: denom };
-};
-
-// PTE criteria derived from the analyzer's raw KevSun dims + Claude content score.
-// - Content                = content (Claude vs writing prompt)
-// - Development/Structure/Coherence = cohesion
-// - Grammar                = grammar
-// - General Linguistic Range = avg(syntax, phraseology)
-// - Vocabulary Range       = vocabulary
-// - Spelling               = conventions
-const linguisticRange = (s: EssayScores): number => (s.syntax + s.phraseology) / 2;
-
-const mapToCells = (s: EssayScores): Record<ScoreBarCellKey, ScoreBarCellValue> => {
-  const formDenom = DENOMINATORS.form;
   return {
-    content: cellFrom('content', s.content),
-    form: { key: 'form', label: LABELS.form, numerator: formDenom, denominator: formDenom },
-    develop: cellFrom('develop', s.cohesion),
-    grammar: cellFrom('grammar', s.grammar),
-    ling: cellFrom('ling', linguisticRange(s)),
-    vocab: cellFrom('vocab', s.vocabulary),
-    spelling: cellFrom('spelling', s.conventions),
-    conv: cellFrom('conv', s.conventions),
+    key,
+    label: LABELS[key],
+    numerator: toBand(score1to5, denom),
+    denominator: denom,
   };
 };
 
-// PTE Academic overall is reported on a 10–90 scale (10 is the floor, not 0).
-// The analyzer pipeline produces "overall" on a 1.0–5.0 scale; we map linearly
-// so 1.0 → 10 and 5.0 → 90.
-const toPteOverall = (overall1To5: number): number =>
-  clamp(10 + Math.round(((overall1To5 - 1) / 4) * 80), 10, 90);
+// PTE criteria derived from the analyzer's KevSun dims + Claude content score.
+// - Content                          = content (Claude vs writing prompt)
+// - Formal Requirement               = full marks (word-count gated)
+// - Development/Structure/Coherence  = cohesion
+// - Grammar                          = grammar
+// - General Linguistic Range         = avg(syntax, phraseology)
+// - Vocabulary Range                 = vocabulary
+// - Spelling                         = conventions
+const linguisticRange = (s: EssayScores): number => (s.syntax + s.phraseology) / 2;
+
+const mapToCells = (s: EssayScores): Record<ScoreBarCellKey, ScoreBarCellValue> => ({
+  content: cellFrom('content', s.content),
+  form: {
+    key: 'form',
+    label: LABELS.form,
+    numerator: DENOMINATORS.form,
+    denominator: DENOMINATORS.form,
+  },
+  develop: cellFrom('develop', s.cohesion),
+  grammar: cellFrom('grammar', s.grammar),
+  ling: cellFrom('ling', linguisticRange(s)),
+  vocab: cellFrom('vocab', s.vocabulary),
+  spelling: cellFrom('spelling', s.conventions),
+  conv: cellFrom('conv', s.conventions),
+});
+
+// PTE Write Essay raw trait total: the sum of the seven traits, out of 15.
+const OVERALL_OUT_OF = 15;
+
+const overallFromCells = (
+  cells: Record<ScoreBarCellKey, ScoreBarCellValue>,
+): number => SCORE_BAR_CELL_KEYS.reduce((sum, k) => sum + cells[k].numerator, 0);
 
 export const buildScoreBarData = (scores: EssayScores): ScoreBarData => {
   const cells = mapToCells(scores);
-  const overallOutOf = 90;
-  const overall = toPteOverall(scores.overall);
   return {
-    overall,
-    overallOutOf,
+    overall: overallFromCells(cells),
+    overallOutOf: OVERALL_OUT_OF,
     cells: SCORE_BAR_CELL_KEYS.map((k) => cells[k]),
   };
 };
 
-// Score screen needs all 8 cells (incl. Conv.) with short labels matching Figma 4.
+// Score screen shows the same seven traits with short labels matching Figma 4.
 export const RUBRIC_CELL_KEYS: readonly ScoreBarCellKey[] = [
   'content',
   'form',
@@ -106,7 +117,6 @@ export const RUBRIC_CELL_KEYS: readonly ScoreBarCellKey[] = [
   'ling',
   'vocab',
   'spelling',
-  'conv',
 ] as const;
 
 const RUBRIC_SHORT_LABELS: Record<ScoreBarCellKey, string> = {
@@ -135,11 +145,9 @@ export type RubricScores = {
 
 export const mapToRubric = (scores: EssayScores): RubricScores => {
   const cells = mapToCells(scores);
-  const overallOutOf = 90;
-  const overall = toPteOverall(scores.overall);
   return {
-    overall,
-    overallOutOf,
+    overall: overallFromCells(cells),
+    overallOutOf: OVERALL_OUT_OF,
     cells: RUBRIC_CELL_KEYS.map((k) => ({
       key: k,
       label: RUBRIC_SHORT_LABELS[k],
